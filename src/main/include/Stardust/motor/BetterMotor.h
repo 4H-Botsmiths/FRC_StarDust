@@ -12,5 +12,5 @@ public:
     }
 
 private:
-    frc::SpeedController* mMotor;
+    frc::PWMSpeedController* mMotor;
 }
