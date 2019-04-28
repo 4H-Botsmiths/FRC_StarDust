@@ -54,16 +54,16 @@ private:
     frc::XboxController* mXbox;
 
     /* flag states are as followed:
-    2<<0 A button
-    2<<1 B button
-    2<<2 X button
-    2<<3 Y button
-    2<<4 Start button
-    2<<5 Back button
-    2<<6 Left bumper
-    2<<7 Right bumper
-    2<<8 Left stick down
-    2<<9 Right stock down
+    1<<0 A button
+    1<<1 B button
+    1<<2 X button
+    1<<3 Y button
+    1<<4 Start button
+    1<<5 Back button
+    1<<6 Left bumper
+    1<<7 Right bumper
+    1<<8 Left stick down
+    1<<9 Right stock down
     */
     int released;
     int pressed;
