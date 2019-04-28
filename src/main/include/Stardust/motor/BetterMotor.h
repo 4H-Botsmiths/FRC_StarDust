@@ -1,11 +1,13 @@
-#include "SpeedController.h"
+#include "PWMSpeedController.h"
 
-//wrapper class for inverting motors upon construction
-class BetterMotor {
+//wrapper class for inverting motors upon construction (if needed)
+class BetterMotor : frc::PWMSpeedController {
 public:
-    BetterMotor(frc::SpeedController* m) : mMotor(m) {};
+    //create PWM controler from only port
+    BetterMotor(int n) : frc::PWMSpeedController(n) {}
 
-    BetterMotor(frc::SpeedController* m, bool invert) : mMotor(m) {
+    //create PWM controller from port and polarity
+    BetterMotor(int n, bool invert) : frc::PWMSpeedController(n) {
         mMotor->SetInverted(invert);
     }
 
