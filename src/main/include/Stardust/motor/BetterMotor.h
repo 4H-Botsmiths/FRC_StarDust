@@ -1,7 +1,7 @@
 #include "PWMSpeedController.h"
 
 //wrapper class for inverting motors upon construction (if needed)
-class BetterMotor : frc::PWMSpeedController {
+class BetterMotor : public frc::PWMSpeedController {
 public:
     //create PWM controler from only port
     BetterMotor(int n) : frc::PWMSpeedController(n) {}

@@ -3,7 +3,7 @@
 #include <drive/DifferentialDrive.h>
 #include <frc/SpeedController.h>
 
-class DriveMecanum : DriveBase {
+class DriveMecanum : public DriveBase {
 public:
     //DriveBase requires 4 motors, only 2 are used, other 2 motors are set to the firt one
     DriveMecanum(frc::SpeedController* m0, frc::SpeedController* m1) : DriveBase(m0, m1, m0, m0) {

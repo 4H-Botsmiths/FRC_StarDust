@@ -3,7 +3,7 @@
 #include <drive/MecanumDrive.h>
 #include <frc/SpeedController.h>
 
-class DriveMecanum : DriveBase {
+class DriveMecanum : public DriveBase {
 public:
     //pass motor controlers
     DriveMecanum(frc::SpeedController* m0, frc::SpeedController* m1, frc::SpeedController* m2, frc::SpeedController* m3) : DriveBase(m0, m1, m2, m3) {
