@@ -37,8 +37,8 @@ public:
     bool GetStickButtonPressed(JoystickHand hand);
     bool GetStickButtonReleased(JoystickHand hand);
 
-    void updatePressed() {} //updates all pressed states internally
-    void updateReleased() {} //updates all released states internally
+    void updatePressed(); //updates all pressed states internally
+    void updateReleased();  //updates all released states internally
 
     void updateBoth() { //run the 2 above functions at once
         updatePressed();
