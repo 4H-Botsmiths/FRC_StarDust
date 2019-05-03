@@ -13,4 +13,4 @@ public:
 
 private:
     frc::PWMSpeedController* mMotor;
-}
+};

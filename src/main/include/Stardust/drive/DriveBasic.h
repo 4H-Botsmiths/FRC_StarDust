@@ -26,4 +26,4 @@ private:
     frc::SpeedController* mMotor3;
 
     frc::DifferentialDrive* mDifferential;
-}
+};

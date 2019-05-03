@@ -24,4 +24,4 @@ private:
     frc::SpeedController* mMotor1;
     frc::SpeedController* mMotor2;
     frc::SpeedController* mMotor3;
-}
+};
