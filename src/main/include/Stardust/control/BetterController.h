@@ -51,8 +51,6 @@ public:
     }
 
 private:
-    frc::XboxController* mXbox;
-
     /* flag states are as followed:
     1<<0 A button
     1<<1 B button
@@ -67,4 +65,4 @@ private:
     */
     int released;
     int pressed;
-}
+};
