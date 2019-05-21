@@ -12,6 +12,24 @@
 class BetterController : public frc::XboxController {
 public:
     BetterController(int n) : frc::XboxController(n) {}
+    BetterController(int n, double s) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(s) {}
+    BetterController(int n, double s, double t) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(t) {}
+
+    //Get() without needing to type out joystick hand, and auto deadzones
+    double GetXLeft();
+    double GetXLeftDeadzone();
+    double GetXRight();
+    double GetXRightDeadzone();
+
+    double GetYLeft();
+    double GetYLeftDeadzone();
+    double GetYRight();
+    double GetYRightDeadzone();
+
+    double GetTriggerLeft();
+    double GetTriggerLeftDeadzone();
+    double GetTriggerRight();
+    double GetTriggerRightDeadzone();
 
     bool GetAButtonPressed();
     bool GetAButtonReleased();
@@ -65,4 +83,9 @@ private:
     */
     int released;
     int pressed;
+
+    double stickDeadzone=0;
+    double triggerDeadzone=0;
+
+    double deadzone(double v, double r);
 };
