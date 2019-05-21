@@ -1,38 +1,38 @@
 #include "StarDust/control/BetterController.h"
 
-bool GetAButtonPressed() { return pressed & 1<<0; }
-bool GetAButtonReleased() { return released & 1<<0; }
+bool BetterController::GetAButtonPressed() { return pressed & 1<<0; }
+bool BetterController::GetAButtonReleased() { return released & 1<<0; }
 
-bool GetBButtonPressed() { return pressed & 1<<1; }
-bool GetBButtonReleased() { return released & 1<<1; }
+bool BetterController::GetBButtonPressed() { return pressed & 1<<1; }
+bool BetterController::GetBButtonReleased() { return released & 1<<1; }
 
-bool GetXButtonPressed() { return pressed & 1<<2; }
-bool GetXButtonReleased() { return released & 1<<2; }
+bool BetterController::GetXButtonPressed() { return pressed & 1<<2; }
+bool BetterController::GetXButtonReleased() { return released & 1<<2; }
 
-bool GetYButtonPressed() { return pressed & 1<<3; }
-bool GetYButtonReleased() { return released & 1<<3; }
+bool BetterController::GetYButtonPressed() { return pressed & 1<<3; }
+bool BetterController::GetYButtonReleased() { return released & 1<<3; }
 
-bool GetStartButtonPressed() { return pressed & 1<<4; }
-bool GetStartButtonReleased() { return released & 1<<4; }
+bool BetterController::GetStartButtonPressed() { return pressed & 1<<4; }
+bool BetterController::GetStartButtonReleased() { return released & 1<<4; }
 
-bool GetBackButtonPressed() { return pressed & 1<<5; }
-bool GetBackButtonReleased() { return released & 1<<5; }
+bool BetterController::GetBackButtonPressed() { return pressed & 1<<5; }
+bool BetterController::GetBackButtonReleased() { return released & 1<<5; }
 
-bool GetBumperPressed(frc::GenericHID::JoystickHand hand) {
+bool BetterController::GetBumperPressed(frc::GenericHID::JoystickHand hand) {
     return pressed & 1 << (6 + (hand == frc::GenericHID::JoystickHand::kLeftHand));
 }
-bool GetBumperReleased(frc::GenericHID::JoystickHand hand) {
+bool BetterController::GetBumperReleased(frc::GenericHID::JoystickHand hand) {
     return released & 1 << (6 + (hand == frc::GenericHID::JoystickHand::kLeftHand));
 }
 
-bool GetStickButtonPressed(JoystickHand hand) {
+bool BetterController::GetStickButtonPressed(JoystickHand hand) {
     return pressed & 1 << (8 + (hand == frc::GenericHID::JoystickHand::kLeftHand));
 }
-bool GetStickButtonReleased(JoystickHand hand) {
+bool BetterController::GetStickButtonReleased(JoystickHand hand) {
     return released & 1 << (8 + (hand == frc::GenericHID::JoystickHand::kLeftHand));
 }
 
-void updatePressed() {
+void BetterController::updatePressed() {
     pressed=(
         XboxController::GetAButtonPressed()<<0 |
         XboxController::GetBButtonPressed()<<1 |
