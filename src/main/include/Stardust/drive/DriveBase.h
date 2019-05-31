@@ -1,3 +1,5 @@
+#pragma once
+
 #include <frc/SpeedController.h>
 
 class DriveBase {
@@ -9,10 +11,11 @@ public:
         mMotor3=m3;
     }
 
-    void drive(float y) {}
-    void drive(float x, float r) {}
-    void drive(float x, float y, float r) {}
-private:
+    virtual void drive(float y) {}
+    virtual void drive(float x, float r) {}
+    virtual void drive(float x, float y, float r) {}
+
+   private:
     //multipliers
     float mXSpeed=0; //parallel to front face of bot
     float mYSpeed=0; //perpendicular to front face of bot

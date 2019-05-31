@@ -1,7 +1,9 @@
-#include "DriveBase.h"
+#pragma once
 
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/SpeedController.h>
+
+#include "DriveBase.h"
 
 class DriveBasic : public DriveBase {
 public:
