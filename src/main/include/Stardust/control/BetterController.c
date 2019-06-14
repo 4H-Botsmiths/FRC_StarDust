@@ -57,10 +57,10 @@ void BetterController::updatePressed() {
         XboxController::GetYButtonPressed()<<3 |
         XboxController::GetStartButtonPressed()<<4 |
         XboxController::GetBackButtonPressed()<<5 |
-        XboxController::GetBumperPressed(frc::GenericHID::JoystickHand::kLeftHand)()<<6 |
-        XboxController::GetBumperPressed(frc::GenericHID::JoystickHand::kRightHand)()<<7 |
-        XboxController::GetStickButtonPressed(frc::GenericHID::JoystickHand::kLeftHand)()<<8 |
-        XboxController::GetStickButtonPressed(frc::GenericHID::JoystickHand::kRightHand)()<<9 |
+        XboxController::GetBumperPressed(frc::GenericHID::JoystickHand::kLeftHand)<<6 |
+        XboxController::GetBumperPressed(frc::GenericHID::JoystickHand::kRightHand)<<7 |
+        XboxController::GetStickButtonPressed(frc::GenericHID::JoystickHand::kLeftHand)<<8 |
+        XboxController::GetStickButtonPressed(frc::GenericHID::JoystickHand::kRightHand)<<9
     );
 }
 
@@ -72,14 +72,14 @@ void BetterController::updateReleased() {
         XboxController::GetYButtonReleased()<<3 |
         XboxController::GetStartButtonReleased()<<4 |
         XboxController::GetBackButtonReleased()<<5 |
-        XboxController::GetBumperReleased(frc::GenericHID::JoystickHand::kLeftHand)()<<6 |
-        XboxController::GetBumperReleased(frc::GenericHID::JoystickHand::kRightHand)()<<7 |
-        XboxController::GetStickButtonReleased(frc::GenericHID::JoystickHand::kLeftHand)()<<8 |
-        XboxController::GetStickButtonReleased(frc::GenericHID::JoystickHand::kRightHand)()<<9 |
+        XboxController::GetBumperReleased(frc::GenericHID::JoystickHand::kLeftHand)<<6 |
+        XboxController::GetBumperReleased(frc::GenericHID::JoystickHand::kRightHand)<<7 |
+        XboxController::GetStickButtonReleased(frc::GenericHID::JoystickHand::kLeftHand)<<8 |
+        XboxController::GetStickButtonReleased(frc::GenericHID::JoystickHand::kRightHand)<<9
     );
 }
 
-double BetterController::Deadzone(double v, double r) {
+double BetterController::deadzone(double v, double r) {
 	double old=v;
 	v=abs(v);
 	return copysign(v<r?0:(v-r)/(1-r), old);

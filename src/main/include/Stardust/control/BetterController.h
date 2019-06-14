@@ -1,3 +1,6 @@
+#ifndef __BETTERCONTROLLER_H__
+#define __BETTERCONTROLLER_H__
+
 #include <frc/XboxController.h>
 
 //Xbox controller that uses seperate internal caching and clears pressed states for reliability
@@ -89,3 +92,5 @@ private:
 
     double deadzone(double v, double r);
 };
+
+#endif
