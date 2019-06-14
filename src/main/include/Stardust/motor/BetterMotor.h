@@ -1,3 +1,6 @@
+#ifndef __BETTERMOTOR_H__
+#define __BETTERMOTOR_H__
+
 #include "PWMSpeedController.h"
 
 //wrapper class for inverting motors upon construction (if needed)
@@ -14,3 +17,5 @@ public:
 private:
     frc::PWMSpeedController* mMotor;
 };
+
+#endif
