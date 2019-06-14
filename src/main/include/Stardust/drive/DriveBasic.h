@@ -21,6 +21,13 @@ public:
         mDifferential->ArcadeDrive(y, r);
     }
 
+    void drive(BetterController* x) {
+        drive(
+            x->GetYLeftDeadzone(),
+            x->GetXRightDeadzone()
+        );
+    }
+
 private:
     frc::SpeedController* mMotor0;
     frc::SpeedController* mMotor1;

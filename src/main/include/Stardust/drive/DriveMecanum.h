@@ -23,6 +23,14 @@ public:
         mMecanum->DriveCartesian(y, x, r);
     }
 
+    void drive(BetterController* x) {
+        drive(
+            x->GetXLeftDeadzone(),
+            x->GetYLeftDeadzone(),
+            x->GetXRightDeadzone()
+        );
+    }
+
 private:
     frc::SpeedController* mMotor0;
     frc::SpeedController* mMotor1;

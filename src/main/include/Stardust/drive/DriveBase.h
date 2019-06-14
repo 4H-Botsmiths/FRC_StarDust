@@ -2,6 +2,8 @@
 
 #include <frc/SpeedController.h>
 
+#include "Stardust/control/BetterController.h"
+
 class DriveBase {
 public:
     DriveBase(frc::SpeedController* m0, frc::SpeedController* m1, frc::SpeedController* m2, frc::SpeedController* m3) {
@@ -14,6 +16,8 @@ public:
     virtual void drive(float y) {}
     virtual void drive(float x, float r) {}
     virtual void drive(float x, float y, float r) {}
+
+    virtual void drive(BetterController* x) {}
 
    private:
     //multipliers
