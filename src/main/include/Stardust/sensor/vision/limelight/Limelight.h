@@ -12,10 +12,11 @@ public:
     void setLights(bool on) { mLimelight->PutNumber("ledMode", (on?3:1)); }
 
     double get(std::string key) { return mLimelight->GetNumber(key, 0); }
-    double getTX() { return get("tx"); }
-    double getTY() { return get("ty"); }
-    double getTA() { return get("ta"); }
-    double getTS() {
+    double getTV() { return get("tv"); } //get valid status
+    double getTX() { return get("tx"); } //get x offset
+    double getTY() { return get("ty"); } //get y offset
+    double getTA() { return get("ta"); } //get area
+    double getTS() { //get (useful) skew
         double tmp=get("ts");
 
         //make skew usable
