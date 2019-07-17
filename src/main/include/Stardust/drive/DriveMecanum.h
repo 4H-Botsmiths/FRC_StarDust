@@ -8,7 +8,7 @@ public:
     //pass motor controlers
     DriveMecanum(frc::SpeedController* m0, frc::SpeedController* m1, frc::SpeedController* m2, frc::SpeedController* m3) : DriveBase(m0, m1, m2, m3) {
         //make a new mecanum drive reference
-        mMecanum=new frc::MecanumDrive(*m0, *m2, *m1, *m3);
+        mMecanum=new frc::MecanumDrive(*m0, *m3, *m1, *m2);
     }
 
     void drive(float y) {
@@ -20,7 +20,7 @@ public:
     }
 
     void drive(float x, float y, float r) {
-        mMecanum->DriveCartesian(y, x, r);
+        mMecanum->DriveCartesian(-x, y, r);
     }
 
     void drive(BetterController* x) {
