@@ -1,4 +1,4 @@
-#include "StarDust/control/BetterController.h"
+#include "StarDust/control/BetterController.hpp"
 #include <stdlib.h>
 #include <math.h>
 

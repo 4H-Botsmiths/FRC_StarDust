@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Stardust/sensor/motion/BetterGyro.h"
-#include "Stardust/drive/DriveBase.h"
+#include "Stardust/sensor/motion/BetterGyro.hpp"
+#include "Stardust/drive/DriveBase.hpp"
 
 class DriveAUX {
 public:

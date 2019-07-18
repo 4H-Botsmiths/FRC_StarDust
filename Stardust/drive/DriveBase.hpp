@@ -2,7 +2,7 @@
 
 #include <frc/SpeedController.h>
 
-#include "Stardust/control/BetterController.h"
+#include "Stardust/control/BetterController.hpp"
 
 class DriveBase {
 public:

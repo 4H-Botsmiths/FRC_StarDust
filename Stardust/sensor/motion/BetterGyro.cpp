@@ -1,4 +1,4 @@
-#include "Stardust/sensor/motion/BetterGyro.h"
+#include "Stardust/sensor/motion/BetterGyro.hpp"
 
 //given a degree offset, calculate what angle is fastest to turn to
 double BetterGyro::FastestTo(double deg) {
