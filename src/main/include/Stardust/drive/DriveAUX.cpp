@@ -1,4 +1,5 @@
 #include "Stardust/drive/DriveAUX.h"
+#include "Stardust/sensor/motion/BetterGyro.c"
 
 void DriveAUX::GyroRotate(double r) {
     GyroRotateTo(0, r);
