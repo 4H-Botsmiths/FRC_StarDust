@@ -1,7 +1,7 @@
 #ifndef __BETTERMOTOR_H__
 #define __BETTERMOTOR_H__
 
-#include <PWMSpeedController.h>
+#include <frc/PWMSpeedController.h>
 
 //wrapper class for inverting motors upon construction (if needed)
 class BetterMotor : public frc::PWMSpeedController {
