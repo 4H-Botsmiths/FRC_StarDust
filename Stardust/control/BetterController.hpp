@@ -3,6 +3,8 @@
 
 #include <frc/XboxController.h>
 
+#include "Stardust/core/StarDustComponent.hpp"
+
 //Xbox controller that uses seperate internal caching and clears pressed states for reliability
 
 //issues with original xboxcontroller class:
@@ -12,11 +14,19 @@
 //fix:
 //  now after calling updateBoth() each frame, the get functions will return fresh button states
 //  doing clearCache() while the robot is in idle will ensure that the buttons remain cleared
-class BetterController : public frc::XboxController {
+class BetterController : public StarDustComponent, public frc::XboxController {
 public:
-    BetterController(int n) : frc::XboxController(n) {}
-    BetterController(int n, double s) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(s) {}
-    BetterController(int n, double s, double t) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(t) {}
+    BetterController(int n) : StarDustComponent(), frc::XboxController(n) {}
+    BetterController(int n, double s) : StarDustComponent(), frc::XboxController(n), stickDeadzone(s), triggerDeadzone(s) {}
+    BetterController(int n, double s, double t) : StarDustComponent(), frc::XboxController(n), stickDeadzone(s), triggerDeadzone(t) {}
+
+    void __RobotInit__() override;
+    void __RobotPeriodic__() override;
+    void __AutonomousInit__() override;
+    void __AutonomousPeriodic__() override;
+    void __TeleopInit__() override;
+    void __TeleopPeriodic__() override;
+    void __TestPeriodic__() override;
 
     //Get() without needing to type out joystick hand, and auto deadzones
     double GetXLeft();
