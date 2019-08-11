@@ -14,6 +14,14 @@ public:
         mMotor->SetInverted(invert);
     }
 
+    void __RobotInit__() {};
+    void __RobotPeriodic__() {};
+    void __AutonomousInit__() {};
+    void __AutonomousPeriodic__() {};
+    void __TeleopInit__() {};
+    void __TeleopPeriodic__() {};
+    void __TestPeriodic__() {};
+
 private:
     frc::PWMSpeedController* mMotor;
 };
