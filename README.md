@@ -27,3 +27,34 @@ Then
 `git submodule init`
 
 To pull new changes from StarDust later, run `git pull --recurse-submodules`
+
+## Adding source folder to Gradle (required)
+
+Gradle is very specific about what files make it into the final linking and compiling of your code
+
+Since this project has both header and source (.hpp and .cpp) files, the `Stardust` directory must also be added into the source
+
+In `build.gradle` (will be at or near the root of your project) find the following section:
+
+```
+sources.cpp {
+    source {
+        srcDir 'src/main/cpp'
+        include '**/*.cpp', '**/*.cc'
+    }
+...
+```
+
+Here, the only soure folders are `src/main/cpp`, but we need to add the `src/main/include/Stardust` folder:
+
+```
+sources.cpp {
+    source {
+        srcDir 'src/main/cpp'
+        srcDir 'src/main/include/Stardust' // <-- Add this line here
+        include '**/*.cpp', '**/*.cc'
+    }
+...
+```
+
+Now, you can use and compile StarDust code

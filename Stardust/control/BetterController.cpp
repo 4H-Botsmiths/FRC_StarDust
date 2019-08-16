@@ -2,6 +2,25 @@
 #include <stdlib.h>
 #include <math.h>
 
+void BetterController::__RobotPeriodic__() {
+    //Clear button cache while waiting for autonomous to start
+    clearCache();
+}
+//for all the other overriden functions, update the controller buttons
+void BetterController::__AutonomousPeriodic__() {
+    updateBoth();
+}
+void BetterController::__TeleopPeriodic__() {
+    updateBoth();
+}
+void BetterController::__TestPeriodic__() {
+    updateBoth();
+}
+//these functions have no implementation but are required to be overriden
+void BetterController::__RobotInit__() {}
+void BetterController::__AutonomousInit__() {}
+void BetterController::__TeleopInit__() {}
+
 double BetterController::GetXLeft() { return XboxController::GetX(frc::GenericHID::JoystickHand::kLeftHand); }
 double BetterController::GetXLeftDeadzone() { deadzone(GetXLeft(), stickDeadzone); }
 double BetterController::GetXRight() { return XboxController::GetX(frc::GenericHID::JoystickHand::kRightHand); }

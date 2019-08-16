@@ -1,9 +1,10 @@
 #pragma once
 
 #include "Stardust/sensor/motion/BetterGyro.hpp"
+#include "Stardust/core/StarDustComponent.hpp"
 #include "Stardust/drive/DriveBase.hpp"
 
-class DriveAUX {
+class DriveAUX : public StarDustComponent {
 public:
     DriveAUX(DriveBase* db, double t) {
         base=db;
@@ -14,6 +15,14 @@ public:
         gyro=bg;
         threshold=t;
     }
+
+    void __RobotInit__() override;
+    void __RobotPeriodic__() override;
+    void __AutonomousInit__() override;
+    void __AutonomousPeriodic__() override;
+    void __TeleopInit__() override;
+    void __TeleopPeriodic__() override;
+    void __TestPeriodic__() override;
 
     void GyroRotate(double r);
     void GyroRotateTo(double g, double r);

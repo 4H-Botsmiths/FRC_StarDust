@@ -3,8 +3,9 @@
 #include <frc/SpeedController.h>
 
 #include "Stardust/control/BetterController.hpp"
+#include "Stardust/core/StarDustComponent.hpp"
 
-class DriveBase {
+class DriveBase : public StarDustComponent {
 public:
     DriveBase(frc::SpeedController* m0, frc::SpeedController* m1, frc::SpeedController* m2, frc::SpeedController* m3) {
         mMotor0=m0;
