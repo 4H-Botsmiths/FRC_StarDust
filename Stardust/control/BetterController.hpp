@@ -30,18 +30,27 @@ public:
     //Get() without needing to type out joystick hand, and auto deadzones
     double GetXLeft();
     double GetXLeftDeadzone();
+    double GetXLeftDeadzone(double r);
+
     double GetXRight();
     double GetXRightDeadzone();
+    double GetXRightDeadzone(double r);
 
     double GetYLeft();
     double GetYLeftDeadzone();
+    double GetYLeftDeadzone(double r);
+
     double GetYRight();
     double GetYRightDeadzone();
+    double GetYRightDeadzone(double r);
 
     double GetTriggerLeft();
     double GetTriggerLeftDeadzone();
+    double GetTriggerLeftDeadzone(double r);
+
     double GetTriggerRight();
     double GetTriggerRightDeadzone();
+    double GetTriggerRightDeadzone(double r);
 
     bool GetAButtonPressed();
     bool GetAButtonReleased();

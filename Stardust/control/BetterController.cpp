@@ -23,18 +23,27 @@ void BetterController::__TeleopInit__() {}
 
 double BetterController::GetXLeft() { return XboxController::GetX(frc::GenericHID::JoystickHand::kLeftHand); }
 double BetterController::GetXLeftDeadzone() { deadzone(GetXLeft(), stickDeadzone); }
+double BetterController::GetXLeftDeadzone(double r) { deadzone(GetXLeft(), r); }
+
 double BetterController::GetXRight() { return XboxController::GetX(frc::GenericHID::JoystickHand::kRightHand); }
 double BetterController::GetXRightDeadzone() { deadzone(GetXRight(), stickDeadzone); }
+double BetterController::GetXRightDeadzone(double r) { deadzone(GetXRight(), r); }
 
 double BetterController::GetYLeft() { return XboxController::GetY(frc::GenericHID::JoystickHand::kLeftHand); }
 double BetterController::GetYLeftDeadzone() { deadzone(GetYLeft(), stickDeadzone); }
+double BetterController::GetYLeftDeadzone(double r) { deadzone(GetYLeft(), r); }
+
 double BetterController::GetYRight() { return XboxController::GetY(frc::GenericHID::JoystickHand::kRightHand); }
 double BetterController::GetYRightDeadzone() { deadzone(GetYRight(), stickDeadzone); }
+double BetterController::GetYRightDeadzone(double r) { deadzone(GetYRight(), r); }
 
 double BetterController::GetTriggerLeft() { return XboxController::GetTriggerAxis(frc::GenericHID::JoystickHand::kLeftHand); }
 double BetterController::GetTriggerLeftDeadzone() { deadzone(GetTriggerLeft(), triggerDeadzone); }
+double BetterController::GetTriggerLeftDeadzone(double r) { deadzone(GetTriggerLeft(), r); }
+
 double BetterController::GetTriggerRight() { return XboxController::GetTriggerAxis(frc::GenericHID::JoystickHand::kRightHand); }
 double BetterController::GetTriggerRightDeadzone() { deadzone(GetTriggerRight(), triggerDeadzone); }
+double BetterController::GetTriggerRightDeadzone(double r) { deadzone(GetTriggerRight(), r); }
 
 bool BetterController::GetAButtonPressed() { return pressed & 1<<0; }
 bool BetterController::GetAButtonReleased() { return released & 1<<0; }
