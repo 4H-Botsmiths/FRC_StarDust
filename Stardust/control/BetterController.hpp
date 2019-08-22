@@ -1,5 +1,4 @@
-#ifndef __BETTERCONTROLLER_H__
-#define __BETTERCONTROLLER_H__
+#pragma once
 
 #include <frc/XboxController.h>
 
@@ -102,5 +101,3 @@ private:
 
     double deadzone(double v, double r);
 };
-
-#endif
