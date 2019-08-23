@@ -3,6 +3,7 @@
 #include <frc/PWMSpeedController.h>
 
 #include "Stardust/core/StarDustComponent.hpp"
+#include "Stardust/util/BetterTimer.hpp"
 
 //wrapper class for inverting motors upon construction (if needed)
 class BetterMotor : public StarDustComponent, public frc::PWMSpeedController {
@@ -24,16 +25,46 @@ public:
         PWMSpeedController::Set(input*dampen);
     }
 
-    //required to be implemented by the drivebase to be considered a stardust component
+    //call Set(s) for "t" seconds
+    //this is blocking code, use AsyncSet to keep other robot code running
+    void Set(double s, double t) {
+        BetterTimer bt { true, [=]{
+            BetterMotor::Set(s);
+        }, t };
+    }
+
+    void AsyncSet(double s, double t) {
+        asynctimer=new BetterTimer(t);
+        asynctimer->Start();
+    }
+
     void __RobotInit__() {}
     void __RobotPeriodic__() {}
-    void __AutonomousInit__() {}
-    void __AutonomousPeriodic__() {}
-    void __TeleopInit__() {}
-    void __TeleopPeriodic__() {}
-    void __TestPeriodic__() {}
+    void __AutonomousInit__() { update(); }
+    void __AutonomousPeriodic__() { update(); }
+    void __TeleopInit__() { update(); }
+    void __TeleopPeriodic__() { update(); }
+    void __TestPeriodic__() { update(); }
 
 private:
+    void update() {
+        //check if asynctimer is activated before calling it
+        if (asynctimer!=nullptr) {
+            //check if it is still valid
+            if (!asynctimer->HasPeriodPassed(asynctimer->Get())) {
+                Set(asyncspeed);
+            }
+            else {
+                //unset the timer
+                asynctimer=nullptr;
+            }
+        }
+    }
+
     //multiplier to dampen the input to the motor controller
     double dampen=0;
+
+    //only used by the SetAsync function, not needed to be set in the constructor
+    BetterTimer* asynctimer;
+    double asyncspeed=0; //timer cannot asynchronously set motor speed
 };
