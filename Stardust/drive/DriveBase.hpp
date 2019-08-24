@@ -1,18 +1,11 @@
 #pragma once
 
-#include <frc/SpeedController.h>
-
 #include "Stardust/control/BetterController.hpp"
 #include "Stardust/core/StarDustComponent.hpp"
 
 class DriveBase : public StarDustComponent {
 public:
-    DriveBase(frc::SpeedController* m0, frc::SpeedController* m1, frc::SpeedController* m2, frc::SpeedController* m3) {
-        mMotor0=m0;
-        mMotor1=m1;
-        mMotor2=m2;
-        mMotor3=m3;
-    }
+    DriveBase() {}
 
     virtual void drive(float y) {}
     virtual void drive(float x, float r) {}
@@ -20,15 +13,10 @@ public:
 
     virtual void drive(BetterController* x) {}
 
-   private:
+private:
     //multipliers
-    float mXSpeed=0; //parallel to front face of bot
-    float mYSpeed=0; //perpendicular to front face of bot
-    float mRotation=0;
-    float mGyro=0;
-
-    frc::SpeedController* mMotor0;
-    frc::SpeedController* mMotor1;
-    frc::SpeedController* mMotor2;
-    frc::SpeedController* mMotor3;
+    float xspeed=0; //parallel to front face of bot
+    float yspeed=0; //perpendicular to front face of bot
+    float rotation=0;
+    float gyro=0;
 };
