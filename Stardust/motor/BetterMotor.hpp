@@ -34,6 +34,8 @@ public:
     }
 
     void AsyncSet(double s, double t) {
+        asyncspeed=s;
+        asyncwait=t;
         asynctimer=new BetterTimer(t);
         asynctimer->Start();
     }
@@ -51,11 +53,12 @@ private:
         //check if asynctimer is activated before calling it
         if (asynctimer!=nullptr) {
             //check if it is still valid
-            if (!asynctimer->HasPeriodPassed(asynctimer->Get())) {
+            if (!asynctimer->HasPeriodPassed(asyncwait)) {
                 Set(asyncspeed);
             }
             else {
-                //unset the timer
+                //unset the timer, stop motor
+                Set(0);
                 asynctimer=nullptr;
             }
         }
@@ -67,4 +70,5 @@ private:
     //only used by the SetAsync function, not needed to be set in the constructor
     BetterTimer* asynctimer;
     double asyncspeed=0; //timer cannot asynchronously set motor speed
+    double asyncwait=0;
 };

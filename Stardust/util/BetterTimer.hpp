@@ -38,9 +38,9 @@ public:
 
         frc::Timer::Start(); //run timer for actual timer
 
-        while(!HasPeriodPassed(time)) {
-            //if function is defined, run it
-            if (func) {
+        if (func) {
+            //if function is defined, run it untill timer is done
+            while(!HasPeriodPassed(time)) {
                 func();
             }
         }
