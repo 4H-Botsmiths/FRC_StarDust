@@ -15,9 +15,9 @@
 //  doing clearCache() while the robot is in idle will ensure that the buttons remain cleared
 class BetterController : public StarDustComponent, public frc::XboxController {
 public:
-    BetterController(int n) : StarDustComponent(), frc::XboxController(n) {}
-    BetterController(int n, double s) : StarDustComponent(), frc::XboxController(n), stickDeadzone(s), triggerDeadzone(s) {}
-    BetterController(int n, double s, double t) : StarDustComponent(), frc::XboxController(n), stickDeadzone(s), triggerDeadzone(t) {}
+    BetterController(int n) : frc::XboxController(n) {}
+    BetterController(int n, double s) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(s) {}
+    BetterController(int n, double s, double t) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(t) {}
 
     void __RobotInit__() override;
     void __RobotPeriodic__() override;

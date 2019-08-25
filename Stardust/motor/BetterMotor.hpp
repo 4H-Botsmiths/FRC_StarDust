@@ -21,6 +21,14 @@ public:
         SetInverted(invert);
     }
 
+    void __RobotInit__() {}
+    void __RobotPeriodic__() {}
+    void __AutonomousInit__() { update(); }
+    void __AutonomousPeriodic__() { update(); }
+    void __TeleopInit__() { update(); }
+    void __TeleopPeriodic__() { update(); }
+    void __TestPeriodic__() { update(); }
+
     void Set(double input) {
         PWMSpeedController::Set(input*dampen);
     }
@@ -39,14 +47,6 @@ public:
         asynctimer=new BetterTimer(t);
         asynctimer->Start();
     }
-
-    void __RobotInit__() {}
-    void __RobotPeriodic__() {}
-    void __AutonomousInit__() { update(); }
-    void __AutonomousPeriodic__() { update(); }
-    void __TeleopInit__() { update(); }
-    void __TeleopPeriodic__() { update(); }
-    void __TestPeriodic__() { update(); }
 
 private:
     void update() {

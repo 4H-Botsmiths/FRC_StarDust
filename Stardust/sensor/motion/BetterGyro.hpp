@@ -17,15 +17,6 @@ public:
     //there will probably be only one gyro anyways, only use default (SPI 0)
     BetterGyro() : frc::ADXRS450_Gyro() {}
 
-    //override original function to return cached degree not base class's degree
-    double GetAngle() { return degree; }
-
-    double GetAngleMod() { return GetAngleMod(360); }
-    double GetAngleMod(double deg) { return fmod(GetAngle(), deg); }
-
-    double FastestTo(double deg);
-    double FastestToZero();
-
     //overriden in the cpp file
     void __RobotInit__() override;
     void __RobotPeriodic__() override;
@@ -34,6 +25,15 @@ public:
     void __TeleopInit__() override;
     void __TeleopPeriodic__() override;
     void __TestPeriodic__() override;
+
+    //override original function to return cached degree not base class's degree
+    double GetAngle() { return degree; }
+
+    double GetAngleMod() { return GetAngleMod(360); }
+    double GetAngleMod(double deg) { return fmod(GetAngle(), deg); }
+
+    double FastestTo(double deg);
+    double FastestToZero();
 
 private:
 

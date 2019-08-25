@@ -13,6 +13,15 @@ public:
         mecanum=new frc::MecanumDrive(*m0, *m3, *m1, *m2);
     }
 
+    //required to be implemented by the drivebase to be considered a stardust component
+    void __RobotInit__() {}
+    void __RobotPeriodic__() {}
+    void __AutonomousInit__() {}
+    void __AutonomousPeriodic__() {}
+    void __TeleopInit__() {}
+    void __TeleopPeriodic__() {}
+    void __TestPeriodic__() {}
+
     void drive(float y) {
         mecanum->DriveCartesian(y, 0, 0);
     }
@@ -32,15 +41,6 @@ public:
             x->GetXRightDeadzone()
         );
     }
-
-    //required to be implemented by the drivebase to be considered a stardust component
-    void __RobotInit__() {}
-    void __RobotPeriodic__() {}
-    void __AutonomousInit__() {}
-    void __AutonomousPeriodic__() {}
-    void __TeleopInit__() {}
-    void __TeleopPeriodic__() {}
-    void __TestPeriodic__() {}
 
 private:
     frc::MecanumDrive* mecanum;

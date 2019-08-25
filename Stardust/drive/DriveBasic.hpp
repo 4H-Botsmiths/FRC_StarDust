@@ -13,6 +13,15 @@ public:
         differential=new frc::DifferentialDrive(*m0, *m1);
     }
 
+    //required to be implemented by the drivebase to be considered a stardust component
+    void __RobotInit__() {}
+    void __RobotPeriodic__() {}
+    void __AutonomousInit__() {}
+    void __AutonomousPeriodic__() {}
+    void __TeleopInit__() {}
+    void __TeleopPeriodic__() {}
+    void __TestPeriodic__() {}
+
     void drive(float y) {
         differential->ArcadeDrive(y, 0);
     }
@@ -39,15 +48,6 @@ public:
             );
         }
     }
-
-    //required to be implemented by the drivebase to be considered a stardust component
-    void __RobotInit__() {}
-    void __RobotPeriodic__() {}
-    void __AutonomousInit__() {}
-    void __AutonomousPeriodic__() {}
-    void __TeleopInit__() {}
-    void __TeleopPeriodic__() {}
-    void __TestPeriodic__() {}
 
 private:
     frc::DifferentialDrive* differential;
