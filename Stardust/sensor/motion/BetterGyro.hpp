@@ -38,6 +38,11 @@ public:
 private:
 
     //only called by this class, all other getangle methods will pull from internal "degree"
-    void update() { degree=ADXRS450_Gyro::GetAngle(); }
+    void update() {
+        degree=ADXRS450_Gyro::GetAngle();
+    }
     double degree=0; //cache the degree the gyro is at so that it is consistent when called
+
+    //flag is set when teleop/auto is ran
+    bool started=false;
 };
