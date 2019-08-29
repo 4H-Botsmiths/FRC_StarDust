@@ -7,8 +7,11 @@
 
 class DriveMecanum : public DriveBase {
 public:
-    //pass motor controlers
     DriveMecanum(frc::SpeedController* m0, frc::SpeedController* m1, frc::SpeedController* m2, frc::SpeedController* m3) : DriveBase() {
+        //make a new mecanum drive reference
+        mecanum=new frc::MecanumDrive(*m0, *m3, *m1, *m2);
+    }
+    DriveMecanum(frc::SpeedController* m0, frc::SpeedController* m1, frc::SpeedController* m2, frc::SpeedController* m3, float x, float y, float r) : DriveBase(x, y, r) {
         //make a new mecanum drive reference
         mecanum=new frc::MecanumDrive(*m0, *m3, *m1, *m2);
     }
@@ -23,22 +26,22 @@ public:
     void __TestPeriodic__() {}
 
     void drive(float y) {
-        mecanum->DriveCartesian(y, 0, 0);
+        mecanum->DriveCartesian(y*gety(), 0, 0);
     }
 
     void drive(float y, float r) {
-        mecanum->DriveCartesian(y, 0, r);
+        mecanum->DriveCartesian(y*gety(), 0, r*getr());
     }
 
     void drive(float x, float y, float r) {
-        mecanum->DriveCartesian(-x, y, r);
+        mecanum->DriveCartesian(-x*getx(), y*gety(), r*getr());
     }
 
     void drive(BetterController* x) {
         drive(
-            x->GetXLeftDeadzone(),
-            x->GetYLeftDeadzone(),
-            x->GetXRightDeadzone()
+            getx()*x->GetXLeftDeadzone(),
+            gety()*x->GetYLeftDeadzone(),
+            getr()*x->GetXRightDeadzone()
         );
     }
 
