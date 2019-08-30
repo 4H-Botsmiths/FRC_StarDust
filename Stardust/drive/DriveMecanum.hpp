@@ -37,6 +37,12 @@ public:
         mecanum->DriveCartesian(-x*getx(), y*gety(), r*getr());
     }
 
+    void drive(float x, float y, float r, float t) {
+        BetterTimer{true, [=]{
+            drive(x, y, r);
+        }, t};
+    }
+
     void drive(BetterController* x) {
         drive(
             getx()*x->GetXLeftDeadzone(),

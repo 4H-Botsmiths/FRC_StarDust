@@ -35,6 +35,12 @@ public:
         differential->ArcadeDrive(y*gety(), r*getr());
     }
 
+    void drive(float y, float r, float t) {
+        BetterTimer{true, [=]{
+            drive(y, r);
+        }, t};
+    }
+
     void drive(BetterController* x) {
         drive(x, 0);
     }
