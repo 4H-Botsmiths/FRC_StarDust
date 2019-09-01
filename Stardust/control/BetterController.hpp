@@ -28,6 +28,34 @@ public:
     void __TeleopPeriodic__() override;
     void __TestPeriodic__() override;
 
+	//provides syntax similar to JS .onclick() e.g; on::GetAbuttonPressed
+	enum on {
+		GetAButton,
+		GetAButtonPressed,
+		GetAButtonReleased,
+		GetBButton,
+		GetBButtonPressed,
+		GetBButtonReleased,
+		GetXButton,
+		GetXButtonPressed,
+		GetXButtonReleased,
+		GetYButton,
+		GetYButtonPressed,
+		GetYButtonReleased,
+		GetStartButton,
+		GetStartButtonPressed,
+		GetStartButtonReleased,
+		GetBackButton,
+		GetBackButtonPressed,
+		GetBackButtonReleased
+	};
+
+	//take the passed map and set the internal map
+	void autobind(std::map<int, std::function<void()>>* b);
+
+	//take in a map of {int, function} and check of the current cached values match any functions
+	void autorun();
+
     //Get() without needing to type out joystick hand, and auto deadzones
     double GetXLeft();
     double GetXLeftDeadzone();
@@ -82,6 +110,8 @@ public:
     }
 
 private:
+	std::map<int, std::function<void()>>* binds; //stores a map of binds
+
     /* flag states are as followed:
     1<<0 A button
     1<<1 B button

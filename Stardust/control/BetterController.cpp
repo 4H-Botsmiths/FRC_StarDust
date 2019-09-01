@@ -6,20 +6,64 @@ void BetterController::__RobotPeriodic__() {
     //Clear button cache while waiting for autonomous to start
     clearCache();
 }
-//for all the other overriden functions, update the controller buttons
+//for all the other overriden functions, update the controller buttons, then run the autorun function
 void BetterController::__AutonomousPeriodic__() {
     updateBoth();
+	autorun();
 }
 void BetterController::__TeleopPeriodic__() {
     updateBoth();
+	autorun();
 }
 void BetterController::__TestPeriodic__() {
     updateBoth();
+	autorun();
 }
-//these functions have no implementation but are required to be overriden
-void BetterController::__RobotInit__() {}
-void BetterController::__AutonomousInit__() {}
-void BetterController::__TeleopInit__() {}
+void BetterController::__RobotInit__() {
+	updateBoth();
+	autorun();
+}
+void BetterController::__AutonomousInit__() {
+	updateBoth();
+	autorun();
+}
+void BetterController::__TeleopInit__() {
+	updateBoth();
+	autorun();
+}
+
+//take the passed map and set the internal map
+void BetterController::autobind(std::map<int, std::function<void()>>* b) {
+	binds=b;
+}
+
+//take in a map of {int, function} and check of the current cached values match any functions
+void BetterController::autorun() {
+	//only run if binds where created
+	if (binds!=nullptr) {
+		for (auto i : binds) {
+			//check if passed enum value matches a on:: call, if so check function output and run lambda if true
+			if (i.first==on::GetAButton&&GetAButton()) i.second();
+			else if (i.first==on::GetAButtonPressed&&GetAButtonPressed()) i.second();
+			else if (i.first==on::GetAButtonReleased&&GetAButtonReleased()) i.second();
+			else if (i.first==on::GetBButton&&GetBButton()) i.second();
+			else if (i.first==on::GetBButtonPressed&&GetBButtonPressed()) i.second();
+			else if (i.first==on::GetBButtonReleased&&GetBButtonReleased()) i.second();
+			else if (i.first==on::GetXButton&&GetXButton()) i.second();
+			else if (i.first==on::GetXButtonPressed&&GetXButtonPressed()) i.second();
+			else if (i.first==on::GetXButtonReleased&&GetXButtonReleased()) i.second();
+			else if (i.first==on::GetYButton&&GetYButton()) i.second();
+			else if (i.first==on::GetYButtonPressed&&GetYButtonPressed()) i.second();
+			else if (i.first==on::GetYButtonReleased&&GetYButtonReleased()) i.second();
+			else if (i.first==on::GetStartButton&&GetStartButton()) i.second();
+			else if (i.first==on::GetStartButtonPressed&&GetStartButtonPressed()) i.second();
+			else if (i.first==on::GetStartButtonReleased&&GetStartButtonReleased()) i.second();
+			else if (i.first==on::GetBackButton&&GetBackButton()) i.second();
+			else if (i.first==on::GetBackButtonPressed&&GetBackButtonPressed()) i.second();
+			else if (i.first==on::GetBackButtonReleased&&GetBackButtonReleased()) i.second();
+		}
+	}
+}
 
 double BetterController::GetXLeft() { return XboxController::GetX(frc::GenericHID::JoystickHand::kLeftHand); }
 double BetterController::GetXLeftDeadzone() { deadzone(GetXLeft(), stickDeadzone); }
