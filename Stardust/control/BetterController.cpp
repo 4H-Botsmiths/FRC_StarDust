@@ -32,35 +32,29 @@ void BetterController::__TeleopInit__() {
 	autorun();
 }
 
-//take the passed map and set the internal map
-void BetterController::autobind(std::map<int, std::function<void()>>* b) {
-	binds=b;
-}
-
 //take in a map of {int, function} and check of the current cached values match any functions
 void BetterController::autorun() {
-	//only run if binds where created
-	if (binds!=nullptr) {
-		for (auto i : binds) {
+	if (!binds.empty()) {
+		for (const auto& i : binds) {
 			//check if passed enum value matches a on:: call, if so check function output and run lambda if true
-			if (i.first==on::GetAButton&&GetAButton()) i.second();
-			else if (i.first==on::GetAButtonPressed&&GetAButtonPressed()) i.second();
-			else if (i.first==on::GetAButtonReleased&&GetAButtonReleased()) i.second();
-			else if (i.first==on::GetBButton&&GetBButton()) i.second();
-			else if (i.first==on::GetBButtonPressed&&GetBButtonPressed()) i.second();
-			else if (i.first==on::GetBButtonReleased&&GetBButtonReleased()) i.second();
-			else if (i.first==on::GetXButton&&GetXButton()) i.second();
-			else if (i.first==on::GetXButtonPressed&&GetXButtonPressed()) i.second();
-			else if (i.first==on::GetXButtonReleased&&GetXButtonReleased()) i.second();
-			else if (i.first==on::GetYButton&&GetYButton()) i.second();
-			else if (i.first==on::GetYButtonPressed&&GetYButtonPressed()) i.second();
-			else if (i.first==on::GetYButtonReleased&&GetYButtonReleased()) i.second();
-			else if (i.first==on::GetStartButton&&GetStartButton()) i.second();
-			else if (i.first==on::GetStartButtonPressed&&GetStartButtonPressed()) i.second();
-			else if (i.first==on::GetStartButtonReleased&&GetStartButtonReleased()) i.second();
-			else if (i.first==on::GetBackButton&&GetBackButton()) i.second();
-			else if (i.first==on::GetBackButtonPressed&&GetBackButtonPressed()) i.second();
-			else if (i.first==on::GetBackButtonReleased&&GetBackButtonReleased()) i.second();
+			if (i.first==on::AButton&&GetAButton()) i.second();
+			else if (i.first==on::AButtonPressed&&GetAButtonPressed()) i.second();
+			else if (i.first==on::AButtonReleased&&GetAButtonReleased()) i.second();
+			else if (i.first==on::BButton&&GetBButton()) i.second();
+			else if (i.first==on::BButtonPressed&&GetBButtonPressed()) i.second();
+			else if (i.first==on::BButtonReleased&&GetBButtonReleased()) i.second();
+			else if (i.first==on::XButton&&GetXButton()) i.second();
+			else if (i.first==on::XButtonPressed&&GetXButtonPressed()) i.second();
+			else if (i.first==on::XButtonReleased&&GetXButtonReleased()) i.second();
+			else if (i.first==on::YButton&&GetYButton()) i.second();
+			else if (i.first==on::YButtonPressed&&GetYButtonPressed()) i.second();
+			else if (i.first==on::YButtonReleased&&GetYButtonReleased()) i.second();
+			else if (i.first==on::StartButton&&GetStartButton()) i.second();
+			else if (i.first==on::StartButtonPressed&&GetStartButtonPressed()) i.second();
+			else if (i.first==on::StartButtonReleased&&GetStartButtonReleased()) i.second();
+			else if (i.first==on::BackButton&&GetBackButton()) i.second();
+			else if (i.first==on::BackButtonPressed&&GetBackButtonPressed()) i.second();
+			else if (i.first==on::BackButtonReleased&&GetBackButtonReleased()) i.second();
 		}
 	}
 }

@@ -1,7 +1,7 @@
-#ifndef __BETTERCONTROLLER_H__
-#define __BETTERCONTROLLER_H__
+#pragma once
 
 #include <frc/XboxController.h>
+#include <map>
 
 #include "Stardust/core/StarDustComponent.hpp"
 
@@ -19,6 +19,7 @@ public:
     BetterController(int n) : StarDustComponent(), frc::XboxController(n) {}
     BetterController(int n, double s) : StarDustComponent(), frc::XboxController(n), stickDeadzone(s), triggerDeadzone(s) {}
     BetterController(int n, double s, double t) : StarDustComponent(), frc::XboxController(n), stickDeadzone(s), triggerDeadzone(t) {}
+    BetterController(int n, double s, double t, std::map<int, std::function<void()>> b) : StarDustComponent(), frc::XboxController(n), stickDeadzone(s), triggerDeadzone(t), binds(b) {}
 
     void __RobotInit__() override;
     void __RobotPeriodic__() override;
@@ -30,28 +31,25 @@ public:
 
 	//provides syntax similar to JS .onclick() e.g; on::GetAbuttonPressed
 	enum on {
-		GetAButton,
-		GetAButtonPressed,
-		GetAButtonReleased,
-		GetBButton,
-		GetBButtonPressed,
-		GetBButtonReleased,
-		GetXButton,
-		GetXButtonPressed,
-		GetXButtonReleased,
-		GetYButton,
-		GetYButtonPressed,
-		GetYButtonReleased,
-		GetStartButton,
-		GetStartButtonPressed,
-		GetStartButtonReleased,
-		GetBackButton,
-		GetBackButtonPressed,
-		GetBackButtonReleased
+		AButton,
+		AButtonPressed,
+		AButtonReleased,
+		BButton,
+		BButtonPressed,
+		BButtonReleased,
+		XButton,
+		XButtonPressed,
+		XButtonReleased,
+		YButton,
+		YButtonPressed,
+		YButtonReleased,
+		StartButton,
+		StartButtonPressed,
+		StartButtonReleased,
+		BackButton,
+		BackButtonPressed,
+		BackButtonReleased
 	};
-
-	//take the passed map and set the internal map
-	void autobind(std::map<int, std::function<void()>>* b);
 
 	//take in a map of {int, function} and check of the current cached values match any functions
 	void autorun();
@@ -110,7 +108,7 @@ public:
     }
 
 private:
-	std::map<int, std::function<void()>>* binds; //stores a map of binds
+	std::map<int, std::function<void()>> binds; //stores a map of binds
 
     /* flag states are as followed:
     1<<0 A button
@@ -132,5 +130,3 @@ private:
 
     double deadzone(double v, double r);
 };
-
-#endif
