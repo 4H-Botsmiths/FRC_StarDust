@@ -20,4 +20,4 @@ public:
 private:
 	//put the values you want to update here
 	int somevalue=-1;
-}
+};
