@@ -1,6 +1,7 @@
 #pragma once
 
 #include <frc/XboxController.h>
+#include <map>
 
 #include "Stardust/core/StarDustComponent.hpp"
 
@@ -18,6 +19,7 @@ public:
     BetterController(int n) : frc::XboxController(n) {}
     BetterController(int n, double s) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(s) {}
     BetterController(int n, double s, double t) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(t) {}
+    BetterController(int n, double s, double t, std::map<int, std::function<void()>> b) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(t), binds(b) {}
 
     void __RobotInit__() override;
     void __RobotPeriodic__() override;
@@ -26,6 +28,31 @@ public:
     void __TeleopInit__() override;
     void __TeleopPeriodic__() override;
     void __TestPeriodic__() override;
+
+	//provides syntax similar to JS .onclick() e.g; on::GetAbuttonPressed
+	enum on {
+		AButton,
+		AButtonPressed,
+		AButtonReleased,
+		BButton,
+		BButtonPressed,
+		BButtonReleased,
+		XButton,
+		XButtonPressed,
+		XButtonReleased,
+		YButton,
+		YButtonPressed,
+		YButtonReleased,
+		StartButton,
+		StartButtonPressed,
+		StartButtonReleased,
+		BackButton,
+		BackButtonPressed,
+		BackButtonReleased
+	};
+
+	//take in a map of {int, function} and check of the current cached values match any functions
+	void autorun();
 
     //Get() without needing to type out joystick hand, and auto deadzones
     double GetXLeft();
@@ -90,6 +117,8 @@ public:
     }
 
 private:
+	std::map<int, std::function<void()>> binds; //stores a map of binds
+
     /* flag states are as followed:
     1<<0 A button
     1<<1 B button
