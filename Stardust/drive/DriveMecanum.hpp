@@ -1,3 +1,5 @@
+#pragma once
+
 #include "DriveBase.hpp"
 
 #include <frc/drive/MecanumDrive.h>
@@ -5,30 +7,13 @@
 
 class DriveMecanum : public DriveBase {
 public:
-    //pass motor controlers
-    DriveMecanum(frc::SpeedController* m0, frc::SpeedController* m1, frc::SpeedController* m2, frc::SpeedController* m3) : DriveBase(m0, m1, m2, m3) {
+    DriveMecanum(frc::SpeedController* m0, frc::SpeedController* m1, frc::SpeedController* m2, frc::SpeedController* m3) : DriveBase() {
         //make a new mecanum drive reference
-        mMecanum=new frc::MecanumDrive(*m0, *m3, *m1, *m2);
+        mecanum=new frc::MecanumDrive(*m0, *m3, *m1, *m2);
     }
-
-    void drive(float y) {
-        mMecanum->DriveCartesian(y, 0, 0);
-    }
-
-    void drive(float y, float r) {
-        mMecanum->DriveCartesian(y, 0, r);
-    }
-
-    void drive(float x, float y, float r) {
-        mMecanum->DriveCartesian(-x, y, r);
-    }
-
-    void drive(BetterController* x) {
-        drive(
-            x->GetXLeftDeadzone(),
-            x->GetYLeftDeadzone(),
-            x->GetXRightDeadzone()
-        );
+    DriveMecanum(frc::SpeedController* m0, frc::SpeedController* m1, frc::SpeedController* m2, frc::SpeedController* m3, float x, float y, float r) : DriveBase(x, y, r) {
+        //make a new mecanum drive reference
+        mecanum=new frc::MecanumDrive(*m0, *m3, *m1, *m2);
     }
 
     //required to be implemented by the drivebase to be considered a stardust component
@@ -40,11 +25,32 @@ public:
     void __TeleopPeriodic__() {}
     void __TestPeriodic__() {}
 
-private:
-    frc::SpeedController* mMotor0;
-    frc::SpeedController* mMotor1;
-    frc::SpeedController* mMotor2;
-    frc::SpeedController* mMotor3;
+    void drive(float y) {
+        mecanum->DriveCartesian(y*gety(), 0, 0);
+    }
 
-    frc::MecanumDrive* mMecanum;
+    void drive(float y, float r) {
+        mecanum->DriveCartesian(y*gety(), 0, r*getr());
+    }
+
+    void drive(float x, float y, float r) {
+        mecanum->DriveCartesian(-x*getx(), y*gety(), r*getr());
+    }
+
+    void drive(float x, float y, float r, float t) {
+        BetterTimer{true, [=]{
+            drive(x, y, r);
+        }, t};
+    }
+
+    void drive(BetterController* x) {
+        drive(
+            getx()*x->GetXLeftDeadzone(),
+            gety()*x->GetYLeftDeadzone(),
+            getr()*x->GetXRightDeadzone()
+        );
+    }
+
+private:
+    frc::MecanumDrive* mecanum;
 };

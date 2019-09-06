@@ -20,10 +20,10 @@ public:
     void __TestPeriodic__() { update(); };
 
     //true turns lights on, false turns off
-    void setLights(bool on) { mLimelight->PutNumber("ledMode", (on?3:1)); }
+    void setLights(bool on) { limelight->PutNumber("ledMode", (on?3:1)); }
 
     //grabs a value by key "key" from local network table
-    double get(std::string key) { return mLimelight->GetNumber(key, 0); }
+    double get(std::string key) { return limelight->GetNumber(key, 0); }
 
     //commonly used values
     //to get uncommon values (contours, debugging, etc), use get(keyname) or add a custom get function (recommended)
@@ -47,7 +47,7 @@ public:
     }
 
 private:
-    std::shared_ptr<NetworkTable> mLimelight=nt::NetworkTableInstance::GetDefault().GetTable("limelight");
+    std::shared_ptr<NetworkTable> limelight=nt::NetworkTableInstance::GetDefault().GetTable("limelight");
 
     bool TV=false;
     double TX=0;

@@ -26,6 +26,7 @@ public:
 
     void GyroRotate(double r);
     void GyroRotateTo(double g, double r);
+    void GyroRotateTo(double g, double r, double y);
 
 private:
     DriveBase* base;

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <frc/AnalogInput.h>
 
 #include "Stardust/core/StarDustComponent.hpp"
