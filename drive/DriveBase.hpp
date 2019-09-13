@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Stardust/control/BetterController.hpp"
-#include "Stardust/core/StarDustComponent.hpp"
+#include "StarDust/control/BetterController.hpp"
+#include "StarDust/core/StarDustComponent.hpp"
 
 class DriveBase : public StarDustComponent {
 public:

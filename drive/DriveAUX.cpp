@@ -1,4 +1,4 @@
-#include "Stardust/drive/DriveAUX.hpp"
+#include "StarDust/drive/DriveAUX.hpp"
 
 //unused, but allows for updating in the future
 void DriveAUX::__RobotInit__() {}

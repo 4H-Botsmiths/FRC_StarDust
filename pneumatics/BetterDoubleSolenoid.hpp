@@ -1,6 +1,6 @@
 #include <frc/DoubleSolenoid.h>
 
-#include "Stardust/core/StarDustComponent.hpp"
+#include "StarDust/core/StarDustComponent.hpp"
 
 class BetterDoubleSolenoid : public StarDustComponent, public frc::DoubleSolenoid {
 public:

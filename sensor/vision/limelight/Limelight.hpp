@@ -4,7 +4,7 @@
 #include <networktables/NetworkTable.h>
 #include <string.h>
 
-#include "Stardust/core/StarDustComponent.hpp"
+#include "StarDust/core/StarDustComponent.hpp"
 
 class Limelight : public StarDustComponent {
 public:

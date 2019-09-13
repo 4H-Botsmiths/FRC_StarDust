@@ -10,7 +10,7 @@ Say good bye to hard-coding the same drive train year after year, and hello to f
 
 Download, extract and copy the `StarDust` folder into the `src/main/include` folder of your project
 
-Now, include files with `#include "Stardust/path/to/file"` Where needed
+Now, include files with `#include "StarDust/path/to/file"` Where needed
 
 ## Installing (git based teams)
 

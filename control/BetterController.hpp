@@ -3,7 +3,7 @@
 #include <frc/XboxController.h>
 #include <map>
 
-#include "Stardust/core/StarDustComponent.hpp"
+#include "StarDust/core/StarDustComponent.hpp"
 
 //Xbox controller that uses seperate internal caching and clears pressed states for reliability
 

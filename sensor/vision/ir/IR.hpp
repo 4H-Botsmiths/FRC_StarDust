@@ -2,7 +2,7 @@
 
 #include <frc/AnalogInput.h>
 
-#include "Stardust/core/StarDustComponent.hpp"
+#include "StarDust/core/StarDustComponent.hpp"
 
 //wrapper class for using an infa-red sensor
 class IR : public StarDustComponent {

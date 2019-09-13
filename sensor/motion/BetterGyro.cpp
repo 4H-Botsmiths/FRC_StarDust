@@ -1,4 +1,4 @@
-#include "Stardust/sensor/motion/BetterGyro.hpp"
+#include "StarDust/sensor/motion/BetterGyro.hpp"
 
 //always get the most recent of the robot where it makes sense
 void BetterGyro::__RobotInit__() {}

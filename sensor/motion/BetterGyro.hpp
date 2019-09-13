@@ -3,7 +3,7 @@
 #include <frc/ADXRS450_Gyro.h>
 #include <math.h>
 
-#include "Stardust/core/StarDustComponent.hpp"
+#include "StarDust/core/StarDustComponent.hpp"
 
 /*
 Wrapper class for gyro

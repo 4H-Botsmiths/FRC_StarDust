@@ -1,4 +1,4 @@
-#include "Stardust/example/example.hpp"
+#include "StarDust/example/example.hpp"
 
 //in each of the below functions, the update function is called
 void Example::__RobotInit__() {

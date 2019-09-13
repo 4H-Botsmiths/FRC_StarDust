@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Stardust/sensor/motion/BetterGyro.hpp"
-#include "Stardust/core/StarDustComponent.hpp"
-#include "Stardust/drive/DriveBase.hpp"
+#include "StarDust/sensor/motion/BetterGyro.hpp"
+#include "StarDust/core/StarDustComponent.hpp"
+#include "StarDust/drive/DriveBase.hpp"
 
 class DriveAUX : public StarDustComponent {
 public:

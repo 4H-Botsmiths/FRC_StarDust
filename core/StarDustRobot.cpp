@@ -1,5 +1,5 @@
-#include "Stardust/core/StarDustComponent.hpp"
-#include "Stardust/core/StarDustRobot.hpp"
+#include "StarDust/core/StarDustComponent.hpp"
+#include "StarDust/core/StarDustRobot.hpp"
 
 //Each of these functions when called will call the internal function of each component
 //For example, running AutoInit() will run all the components __AutoInit__() function

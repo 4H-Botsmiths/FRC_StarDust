@@ -2,8 +2,8 @@
 
 #include <frc/PWMSpeedController.h>
 
-#include "Stardust/core/StarDustComponent.hpp"
-#include "Stardust/util/BetterTimer.hpp"
+#include "StarDust/core/StarDustComponent.hpp"
+#include "StarDust/util/BetterTimer.hpp"
 
 //wrapper class for inverting motors upon construction (if needed)
 class BetterMotor : public StarDustComponent, public frc::PWMSpeedController {
