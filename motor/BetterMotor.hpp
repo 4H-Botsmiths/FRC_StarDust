@@ -33,12 +33,20 @@ public:
         PWMSpeedController::Set(input*dampen);
     }
 
-    //call Set(s) for "t" seconds
+    //call Set(s) for "t" seconds (will stop when done automatically)
     //this is blocking code, use AsyncSet to keep other robot code running
     void Set(double s, double t) {
+        Set(s, t, true);
+    }
+
+    //call Set(s) for "t" seconds (will stop if p is set)
+    //this is blocking code, use AsyncSet to keep other robot code running
+    void Set(double s, double t, bool p) {
         BetterTimer bt { true, [=]{
             BetterMotor::Set(s);
         }, t };
+
+        if (p) BetterMotor::Set(0);
     }
 
     void AsyncSet(double s, double t) {

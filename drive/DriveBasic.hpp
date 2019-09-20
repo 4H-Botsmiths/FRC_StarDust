@@ -3,6 +3,7 @@
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/SpeedController.h>
 
+#include "StarDust/util/BetterTimer.hpp"
 #include "DriveBase.hpp"
 
 class DriveBasic : public DriveBase {
