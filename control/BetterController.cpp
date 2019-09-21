@@ -55,6 +55,16 @@ void BetterController::autorun() {
 			else if (i.first==on::BackButton&&GetBackButton()) i.second();
 			else if (i.first==on::BackButtonPressed&&GetBackButtonPressed()) i.second();
 			else if (i.first==on::BackButtonReleased&&GetBackButtonReleased()) i.second();
+
+			else if (i.first==on::LeftBumper&&GetLeftBumper()) i.second();
+			else if (i.first==on::LeftBumperPressed&&GetLeftBumperPressed()) i.second();
+			else if (i.first==on::RightBumperPressed&&GetRightBumperPressed()) i.second();
+			else if (i.first==on::LeftBumperReleased&&GetLeftBumperReleased()) i.second();
+			else if (i.first==on::RightBumperReleased&&GetRightBumperReleased()) i.second();
+			else if (i.first==on::LeftStickButtonPressed&&GetLeftStickButtonPressed()) i.second();
+			else if (i.first==on::RightStickButtonPressed&&GetRightStickButtonPressed()) i.second();
+			else if (i.first==on::LeftStickButtonReleased&&GetLeftStickButtonReleased()) i.second();
+			else if (i.first==on::RightStickButtonReleased&&GetRightStickButtonReleased()) i.second();
 		}
 	}
 }
@@ -101,18 +111,43 @@ bool BetterController::GetStartButtonReleased() { return released & 1<<4; }
 bool BetterController::GetBackButtonPressed() { return pressed & 1<<5; }
 bool BetterController::GetBackButtonReleased() { return released & 1<<5; }
 
-bool BetterController::GetBumperPressed(frc::GenericHID::JoystickHand hand) {
-    return pressed & 1 << (6 + (hand == frc::GenericHID::JoystickHand::kLeftHand));
+bool BetterController::GetLeftBumper() {
+    return frc::XboxController::GetBumper(frc::GenericHID::kLeftHand);
 }
-bool BetterController::GetBumperReleased(frc::GenericHID::JoystickHand hand) {
-    return released & 1 << (6 + (hand == frc::GenericHID::JoystickHand::kLeftHand));
+bool BetterController::GetRightBumper() {
+    return frc::XboxController::GetBumper(frc::GenericHID::kLeftHand);
+}
+bool BetterController::GetLeftStickButton() {
+    return frc::XboxController::GetStickButton(frc::GenericHID::kLeftHand);
+}
+bool BetterController::GetRightStickButton() {
+    return frc::XboxController::GetStickButton(frc::GenericHID::kLeftHand);
 }
 
-bool BetterController::GetStickButtonPressed(JoystickHand hand) {
-    return pressed & 1 << (8 + (hand == frc::GenericHID::JoystickHand::kLeftHand));
+bool BetterController::GetLeftBumperPressed() {
+    return pressed & 1 << 6;
 }
-bool BetterController::GetStickButtonReleased(JoystickHand hand) {
-    return released & 1 << (8 + (hand == frc::GenericHID::JoystickHand::kLeftHand));
+bool BetterController::GetRightBumperPressed() {
+    return pressed & 1 << 7;
+}
+bool BetterController::GetLeftBumperReleased() {
+    return released & 1 << 6;
+}
+bool BetterController::GetRightBumperReleased() {
+    return released & 1 << 7;
+}
+
+bool BetterController::GetLeftStickButtonPressed() {
+    return pressed & 1 << 8;
+}
+bool BetterController::GetRightStickButtonPressed() {
+    return pressed & 1 << 9;
+}
+bool BetterController::GetLeftStickButtonReleased() {
+    return released & 1 << 8;
+}
+bool BetterController::GetRightStickButtonReleased() {
+    return released & 1 << 9;
 }
 
 void BetterController::updatePressed() {

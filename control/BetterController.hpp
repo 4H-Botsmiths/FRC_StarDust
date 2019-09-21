@@ -48,7 +48,16 @@ public:
 		StartButtonReleased,
 		BackButton,
 		BackButtonPressed,
-		BackButtonReleased
+		BackButtonReleased,
+        LeftBumper,
+        LeftBumperPressed,
+        RightBumperPressed,
+        LeftBumperReleased,
+        RightBumperReleased,
+        LeftStickButtonPressed,
+        RightStickButtonPressed,
+        LeftStickButtonReleased,
+        RightStickButtonReleased
 	};
 
 	//take in a map of {int, function} and check of the current cached values match any functions
@@ -97,11 +106,22 @@ public:
     bool GetBackButtonPressed();
     bool GetBackButtonReleased();
 
-    bool GetBumperPressed(frc::GenericHID::JoystickHand hand);
-    bool GetBumperReleased(frc::GenericHID::JoystickHand hand);
+    bool GetLeftBumper();
+    bool GetRightBumper();
+    bool GetLeftStickButton();
+    bool GetRightStickButton();
 
-    bool GetStickButtonPressed(JoystickHand hand);
-    bool GetStickButtonReleased(JoystickHand hand);
+    bool GetLeftBumperPressed();
+    bool GetRightBumperPressed();
+
+    bool GetLeftBumperReleased();
+    bool GetRightBumperReleased();
+
+    bool GetLeftStickButtonPressed();
+    bool GetRightStickButtonPressed();
+
+    bool GetLeftStickButtonReleased();
+    bool GetRightStickButtonReleased();
 
     void updatePressed(); //updates all pressed states internally
     void updateReleased();  //updates all released states internally
