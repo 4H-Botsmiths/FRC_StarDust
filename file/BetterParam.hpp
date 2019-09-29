@@ -17,7 +17,13 @@ public:
     void parse(std::string data, T* input, T fail);
 
     //automatically checks and parses, returns true if matched and should move to next param (else keep checking)
-    bool convert(std::string name, std::string data);
+    bool convert(std::string name, std::string data) {
+        if (param==name) {
+            parse(data, variable, fail);
+            return true;
+        }
+        return false;
+    }
 
 private:
     std::string param; //name of variable as a string in config file

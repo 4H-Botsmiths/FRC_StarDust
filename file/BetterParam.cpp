@@ -1,14 +1,5 @@
 #include "StarDust/file/BetterParam.hpp"
 
-template<typename T>
-bool BetterParam<T>::convert(std::string name, std::string data) {
-    if (param==name) {
-        parse(data, variable, fail);
-        return true;
-    }
-    return false;
-}
-
 //special templates do a specific string-to-variable conversion for its type
 template<>
 void BetterParam<int>::parse(std::string data, int* input, int fail) {
