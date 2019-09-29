@@ -26,6 +26,14 @@ void __parse__<float>(std::string data, float* input, float fail) {
     try { *input=std::stof(data); }
     catch (...) { *input=fail; }
 }
+template<>
+void __parse__<bool>(std::string data, bool* input, bool fail) {
+    try {
+        if (data=="true") { *input=true; }
+        else { *input=false; }
+    }
+    catch (...) { *input=fail; }
+}
 
 template<>
 void __parse__<std::string>(std::string data, std::string* input, std::string fail) {
