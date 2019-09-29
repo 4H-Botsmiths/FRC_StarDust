@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "StarDust/core/StarDustComponent.hpp"
+#include "StarDust/file/BetterParamBase.hpp"
 
 //do NOT use __parse__ functions, these should only be used by the BetterParam class
 template<typename T>
@@ -42,21 +42,13 @@ void __parse__<std::string>(std::string data, std::string* input, std::string fa
 }
 
 template<class T>
-class BetterParam : StarDustComponent {
+class BetterParam : BetterParamBase {
 public:
     //takes in name for parameter in config file, and pointer to variable to update
     BetterParam(std::string name, T* var) : param(name), variable(var), fail(T {}) {}
 
     //same as above but takes in a default value to use if try conversion fails
     BetterParam(std::string name, T* var, T iffail) : param(name), variable(var), fail(iffail) {}
-
-    void __RobotInit__() {};
-    void __RobotPeriodic__() {};
-    void __AutonomousInit__() {};
-    void __AutonomousPeriodic__() {};
-    void __TeleopInit__() {};
-    void __TeleopPeriodic__() {};
-    void __TestPeriodic__() {};
 
     //automatically checks and parses, returns true if matched and should move to next param (else keep checking)
     bool convert(std::string name, std::string data) {
