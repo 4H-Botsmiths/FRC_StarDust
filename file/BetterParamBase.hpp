@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 
 //This class is NOT a stardust component, it is a helper class for the betterparam class
@@ -7,4 +9,4 @@ public:
     BetterParamBase() {}
 
     virtual bool convert(std::string name, std::string data)=0;
-}
+};
