@@ -9,7 +9,7 @@ public:
     //pass all available StarDust components to the robot
     StarDustRobot(std::vector<StarDustComponent*> cs) : components(cs) {
         for (auto component : components) {
-            component->__robot__=this;
+            component->provideContext(this);
         }
     }
 

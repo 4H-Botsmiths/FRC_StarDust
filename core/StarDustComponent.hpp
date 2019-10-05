@@ -24,6 +24,10 @@ public:
     //optional status msg for modules
     std::string __status__="";
 
+    //pass current robot to the module
+    void provideContext(StarDustRobot* r) { __robot__=r; }
+
+protected:
     //stores a reference to the current robot
     StarDustRobot* __robot__;
 };
