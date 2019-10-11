@@ -1,34 +1,63 @@
 #include "StarDust/file/BetterParam.hpp"
 
+//_parse() is the basic parser, it does not directly parse the data
+template<typename T>
+T _parse(std::string* data, T* fail) { return *fail; }
+
+template<>
+int _parse<int>(std::string* data, int* fail) {
+    try { return std::stoi(*data); }
+    catch (...) { return *fail; }
+}
+
+template<>
+double _parse<double>(std::string* data, double* fail) {
+    try { return std::stod(*data); }
+    catch (...) { return *fail; }
+}
+
+template<>
+float _parse<float>(std::string* data, float* fail) {
+    try { return std::stof(*data); }
+    catch (...) { return *fail; }
+}
+template<>
+bool _parse<bool>(std::string* data, bool* fail) {
+    try {
+        if (*data=="true") { return true; }
+        else { return false; }
+    }
+    catch (...) { return *fail; }
+}
+
+template<>
+std::string _parse<std::string>(std::string* data, std::string* fail) {
+    try { return *data; }
+    catch (...) { return *fail; }
+}
+
 //special templates do a specific string-to-variable conversion for its type
+//this is what actually parses and sets the input
 template<>
 void BetterParam<int>::parse(std::string data, int* input, int fail) {
-    try { *input=std::stoi(data); }
-    catch (...) { *input=fail; }
+    *input=_parse<int>(&data, &fail);
 }
 
 template<>
 void BetterParam<double>::parse(std::string data, double* input, double fail) {
-    try { *input=std::stod(data); }
-    catch (...) { *input=fail; }
+    *input=_parse<double>(&data, &fail);
 }
 
 template<>
 void BetterParam<float>::parse(std::string data, float* input, float fail) {
-    try { *input=std::stof(data); }
-    catch (...) { *input=fail; }
+    *input=_parse<float>(&data, &fail);
 }
 template<>
 void BetterParam<bool>::parse(std::string data, bool* input, bool fail) {
-    try {
-        if (data=="true") { *input=true; }
-        else { *input=false; }
-    }
-    catch (...) { *input=fail; }
+    *input=_parse<bool>(&data, &fail);
 }
 
 template<>
 void BetterParam<std::string>::parse(std::string data, std::string* input, std::string fail) {
-    try { *input=data; }
-    catch (...) { *input=fail; }
+    *input=_parse<std::string>(&data, &fail);
 }

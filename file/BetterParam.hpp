@@ -13,7 +13,7 @@ public:
     //same as above but takes in a default value to use if the conversion fails
     BetterParam(std::string name, T* var, T iffail) : param(name), variable(var), fail(iffail) {}
 
-    //generic parse function, overriden for certain types
+    //callable parser, interperets and parses type automatically.
     void parse(std::string data, T* input, T fail);
 
     //automatically checks and parses, returns true if matched and should move to next param (else keep checking)
