@@ -1,5 +1,9 @@
 # StarDustComponent
 
+```cpp
+#include "StarDust/core/StarDustRobot.hpp"
+```
+
 StarDust components are the building blocks of the StarDust framework. They allow for an easy to use and debug environment.
 
 ## Initialization
