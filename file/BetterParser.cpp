@@ -17,6 +17,9 @@ void BetterParser::autorun() {
 
     if (stream.is_open()) {
         while (std::getline(stream, line)) { //loop through each line in the file
+            //dont allow '\r' or '\n' at ELO
+            if (line[line.length()-1]==13||line[line.length()-1]==10) line.pop_back();
+
             int pos=line.find("="); //split each line on the first = sign
             bool semi=line.find(";")==(line.length()-1); //true if a semi-colon is at the end of the line
 
