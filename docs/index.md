@@ -11,4 +11,12 @@ For basic setup, look at the [quickstart](/docs/quickstart.md) guide.
 Below is all of the documented categories and their related classes
 
 Control:
-* (BetterController)[/docs/control/controller.md]
+* [BetterController](/docs/control/BetterController.md)
+
+Core:
+* [StarDustComponent](/docs/core/StarDustComponent.md)
+* [StarDustRobot](/docs/core/StarDustRobot.md)
+
+File:
+* [BetterParser](/docs/file/BetterParser.md)
+* [BetterParam](/docs/file/BetterParam.md)
