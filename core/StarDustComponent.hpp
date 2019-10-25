@@ -27,6 +27,15 @@ public:
     //pass current robot to the module
     void provideContext(StarDustRobot* r) { __robot__=r; }
 
+    //flags can be set to disbale a module from running certain code
+    bool disableRobotInit=false;
+    bool disableRobotPeriodic=false;
+    bool disableAutonomousInit=false;
+    bool disableAutonomousPeriodic=false;
+    bool disableTeleopInit=false;
+    bool disableTeleopPeriodic=false;
+    bool disableTestPeriodic=false;
+
 protected:
     //stores a reference to the current robot
     StarDustRobot* __robot__;
