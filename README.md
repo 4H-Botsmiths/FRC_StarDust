@@ -4,31 +4,11 @@ StarDust is a modular robot framework for C++ FRC teams
 
 StarDust eliminates boilerplate code, fixes sneaky bugs, and wraps existing FRC libraries to squeeze in even more functionality. All of this is to direct attention to the real task at hand: Building seamless and optimized robots.
 
-Say good bye to hard-coding the same drive train year after year, and hello to fine tuning your controller inputs for the perfect drive
+Say good bye to hard-coding the same drive train year after year, and hello to fine tuning your controller inputs for the perfect drive.
 
-## Installing (non git based teams)
+# Installing
 
-Download, extract and copy the `StarDust` folder into the `src/main/include` folder of your project
-
-Now, include files with `#include "StarDust/path/to/file"` Where needed
-
-## Installing (git based teams)
-
-To be able to add another git repo into your existing git repo, a `submodule` should be made. 
-
-First, create a full backup of your git repo
-
-Then, inside of `src/main/include` in your project, run:
-
-`git submodule add -b master https://github.com/FRC-4309/StarDust.git`
-
-Then
-
-`git submodule init`
-
-To pull new changes from StarDust later, run `git pull --recurse-submodules`
-
-## Adding source folder to Gradle (required)
+## Pre-installation (Adding source folder to Gradle, required)
 
 Gradle is very specific about what files make it into the final linking and compiling of your code
 
@@ -57,4 +37,55 @@ sources.cpp {
 ...
 ```
 
-Now, you can use and compile StarDust code
+Now, you can use and compile StarDust code!
+
+## Git-based installation (recommended)
+
+This assumes that you have Git installed on your system.
+
+If you do not have Git installed, 
+
+To be able to add another git repo into your existing git repo, a `submodule` will need to be made.
+
+First, create a full backup of your git repo.
+
+Then, inside of `src/main/include` in your project, run:
+
+`git submodule add -b master https://github.com/FRC-4309/StarDust.git`
+
+Then
+
+`git submodule init`
+
+To pull new changes from StarDust later, run `git pull --recurse-submodules`
+
+## Non Git-based installation (not-recommended)
+
+Click the green `Clone or download` button, and click `Download ZIP`.
+
+Extract the newly downloaded file (`StarDust-master`).
+
+You should have the following file tree:
+
+```
+/Downloads
+    StarDust-master.zip
+    StarDust-master/
+        StarDust-master/
+            ...
+```
+
+Copy the second folder (`StarDust-master/StarDust-master`) into `C:/path/to/robotcode/src/main/include/`
+
+Your robot project should look like this:
+
+```
+/src
+    /main
+        /include
+            StarDust/   <-- This folder should have the same content as StarDust-master/StarDust-master/
+                ...
+            Robot.h
+```
+
+Now, include files with `#include "StarDust/filename"` Where needed.
