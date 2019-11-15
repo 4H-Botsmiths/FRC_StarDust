@@ -44,11 +44,11 @@ public:
         }, t};
     }
 
-    void drive(BetterController* x) {
+    void drive(BetterController* controller) {
         drive(
-            getx()*x->GetXLeftDeadzone(),
-            gety()*x->GetYLeftDeadzone(),
-            getr()*x->GetXRightDeadzone()
+            getx()*controller->GetXLeftDeadzone(),
+            gety()*controller->GetYLeftDeadzone(),
+            getr()*controller->GetXRightDeadzone()
         );
     }
 

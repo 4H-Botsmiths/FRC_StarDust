@@ -14,7 +14,7 @@ public:
     virtual void drive(float x, float r) {}
     virtual void drive(float x, float y, float r) {}
 
-    virtual void drive(BetterController* x) {}
+    virtual void drive(BetterController* controller) {}
 
     float gety() { return yspeed; }
     float getx() { return xspeed; }

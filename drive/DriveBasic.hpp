@@ -42,27 +42,27 @@ public:
         }, t};
     }
 
-    void drive(BetterController* x) {
-        drive(x, 0);
+    void drive(BetterController* controller) {
+        drive(controller, 0);
     }
 
-    void drive(BetterController* x, int mode) {
+    void drive(BetterController* controller, int mode) {
         if (mode==0) { //default mode
             drive(
-                x->GetYLeftDeadzone()*gety(), //Y on left stick controls Y direction
-                x->GetXRightDeadzone()*getr() //X on right stick controls turning
+                controller->GetYLeftDeadzone()*gety(), //Y on left stick controls Y direction
+                controller->GetXRightDeadzone()*getr() //X on right stick controls turning
             );
         }
         else if (mode==1) {
             drive(
-                x->GetYLeftDeadzone()*gety(), //Y on left stick controls Y direction
-                x->GetXLeftDeadzone()*getr() //X on left stick controls turning
+                controller->GetYLeftDeadzone()*gety(), //Y on left stick controls Y direction
+                controller->GetXLeftDeadzone()*getr() //X on left stick controls turning
             );
         }
         else if (mode==2) {
             differential->TankDrive(
-                x->GetYRightDeadzone()*gety(), //Y on right controlls right motor speed
-                x->GetYLeftDeadzone()*gety() //Y on left controlls left motor speed
+                controller->GetYRightDeadzone()*gety(), //Y on right controlls right motor speed
+                controller->GetYLeftDeadzone()*gety() //Y on left controlls left motor speed
             );
         }
     }
