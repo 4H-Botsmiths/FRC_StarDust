@@ -2,17 +2,16 @@
 
 #include <string>
 
-class StarDustRobot; //forward declaration of required StarDustRobot, ignore
+//forward declaration of required StarDustRobot, ignore
+class StarDustRobot;
 
-//This class contains the core functions which all StarDust components will be based off of
-
-//This includes things such as automatic setup, cleanup, and updating
+//StarDustComponent's contains the core functions which all StarDust components will be based off of
 
 class StarDustComponent {
 public:
     StarDustComponent() {}
 
-    //These functions can be overriden by a component thats wants certain actions to be called automatically
+    //These functions must be overriden by components that derive this class
     virtual void __RobotInit__()=0;
     virtual void __RobotPeriodic__()=0;
     virtual void __AutonomousInit__()=0;
@@ -25,16 +24,18 @@ public:
     std::string __status__="";
 
     //pass current robot to the module
-    void provideContext(StarDustRobot* r) { __robot__=r; }
+    void provideContext(StarDustRobot* robot) {
+        __robot__=robot;
+    }
 
     //flags can be set to disbale a module from running certain code
-    bool disableRobotInit=false;
-    bool disableRobotPeriodic=false;
-    bool disableAutonomousInit=false;
-    bool disableAutonomousPeriodic=false;
-    bool disableTeleopInit=false;
-    bool disableTeleopPeriodic=false;
-    bool disableTestPeriodic=false;
+    bool disabledRobotInit=false;
+    bool disabledRobotPeriodic=false;
+    bool disabledAutonomousInit=false;
+    bool disabledAutonomousPeriodic=false;
+    bool disabledTeleopInit=false;
+    bool disabledTeleopPeriodic=false;
+    bool disabledTestPeriodic=false;
 
 protected:
     //stores a reference to the current robot

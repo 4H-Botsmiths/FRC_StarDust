@@ -6,14 +6,14 @@
 
 class DriveAUX : public StarDustComponent {
 public:
-    DriveAUX(DriveBase* db, double t) {
-        base=db;
-        threshold=t;
+    DriveAUX(DriveBase* driveBase, double threshold) {
+        this->driveBase=driveBase;
+        this->threshold=threshold;
     }
-    DriveAUX(DriveBase* db, BetterGyro* bg, double t) {
-        base=db;
-        gyro=bg;
-        threshold=t;
+    DriveAUX(DriveBase* driveBase, BetterGyro* gyro, double threshold) {
+        this->driveBase=driveBase;
+        this->gyro=gyro;
+        this->threshold=threshold;
     }
 
     void __RobotInit__() override;
@@ -24,13 +24,14 @@ public:
     void __TeleopPeriodic__() override;
     void __TestPeriodic__() override;
 
-    void GyroRotate(double r);
-    void GyroRotateTo(double g, double r);
-    void GyroRotateTo(double g, double r, double y);
+    void GyroRotate(double range);
+    void GyroRotateTo(double degree, double range);
+    void GyroRotateTo(double degree, double range, double y_mult);
 
 private:
-    DriveBase* base;
+    DriveBase* driveBase;
     BetterGyro* gyro;
 
-    double threshold; //minimum amount needed to move drivetrain
+    //minimum amount needed to move drivetrain
+    double threshold;
 };

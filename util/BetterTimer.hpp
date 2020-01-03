@@ -3,50 +3,52 @@
 #include <frc/Timer.h>
 #include <functional>
 
-//this class is not a stardust component, it does not need to be ran over time
+//this class is not a stardust component, it does not need to be updated over time
 //timers are started, they run their function, then expire and quit. calling .Start() again will rerun the timer
 
 class BetterTimer : public frc::Timer {
 public:
-    //normal timer, doesnt run a function, just counts
-    BetterTimer(double t) : frc::Timer(), time(t) {}
+    //dummy timer, must be ran manually
+    BetterTimer(double _time)
+        : frc::Timer(), time(_time) {}
 
-    //this is the base timer, it takes a function and must be manually called with .Start()
-    BetterTimer(std::function<void()> f, double t) : frc::Timer(), func(f), time(t) {}
+    //this timer takes a function and must be manually called with .Start()
+    BetterTimer(std::function<void()> func, double _time)
+        : frc::Timer(), function(func), time(_time) {}
 
-    //this is a basic timer, it immediately runs the function "f" and quits after "t" seconds
-    BetterTimer(bool s, std::function<void()> f, double t) : frc::Timer(), func(f), time(t) {
-        //only auto-run if "s" is set
-        if (s) {
+    //this is a timer that immediately runs the function "func" and quits after "_time" seconds
+    BetterTimer(bool autoRun, std::function<void()> func, double _time)
+        : frc::Timer(), function(func), time(_time)
+    {
+        if (autoRun) {
             Start();
         }
     }
 
-    //when this returns true, timer is automatically stoped
-    bool HasPeriodPassed(double t) {
-        bool ret=frc::Timer::HasPeriodPassed(t);
+    bool HasPeriodPassed(double _time) {
+        bool done=frc::Timer::HasPeriodPassed(_time);
 
-        if (ret) Stop();
+        if (done) {
+            Stop();
+        }
 
-        return ret;
+        return done;
     }
 
     void Start() {
-        //when start is called, keep running function until time has passed
-
         Reset();
 
-        frc::Timer::Start(); //run timer for actual timer
+        //run the actual timer
+        frc::Timer::Start();
 
-        if (func) {
-            //if function is defined, run it untill timer is done
+        if (function) {
             while(!HasPeriodPassed(time)) {
-                func();
+                function();
             }
         }
     }
 
 private:
-    std::function<void()> func; //function to be ran when timer is running
-    double time; //timer exits after "time" seconds
+    std::function<void()> function;
+    double time;
 };

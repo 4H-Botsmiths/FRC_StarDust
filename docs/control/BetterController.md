@@ -51,12 +51,12 @@ This is a more complex yet great addition. This initialization requires the same
 
 ```cpp
 BetterController xbox_left { 0, 0.15, 0.05, {
-	{BetterController::on::AButtonPressed, [=](){
-		std::cout << "A Button Was Pressed!\n";
-	}},
-	{BetterController::on::XButton, [=](){
-		std::cout << "X Button Is Being Pressed!\n";
-	}}
+    {BetterController::on::AButtonPressed, [=](){
+        std::cout << "A Button Was Pressed!\n";
+    }},
+    {BetterController::on::XButton, [=](){
+        std::cout << "X Button Is Being Pressed!\n";
+    }}
 }};
 ```
 

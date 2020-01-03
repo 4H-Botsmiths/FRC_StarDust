@@ -5,25 +5,26 @@
 
 class DriveBase : public StarDustComponent {
 public:
-    //constructor with default (1.0x speed)
-    DriveBase() : xspeed(1), yspeed(1), rotation(1) {}
-    //constructor with custom speeds
-    DriveBase(float x, float y, float r) : xspeed(x), yspeed(y), rotation(r) {}
+    //constructor with default multipliers
+    DriveBase()
+        : x_mult(1), y_mult(1), rotation_mult(1) {}
+
+    //constructor with custom multipliers
+    DriveBase(float x, float y, float rot)
+        : x_mult(x), y_mult(y), rotation_mult(rot) {}
 
     virtual void drive(float y) {}
-    virtual void drive(float x, float r) {}
-    virtual void drive(float x, float y, float r) {}
+    virtual void drive(float x, float rot) {}
+    virtual void drive(float x, float y, float rot) {}
 
     virtual void drive(BetterController* controller) {}
 
-    float gety() { return yspeed; }
-    float getx() { return xspeed; }
-    float getr() { return rotation; }
+    float gety() { return y_mult; }
+    float getx() { return x_mult; }
+    float getr() { return rotation_mult; }
 
 private:
-    //multipliers
-    float xspeed=0; //parallel to front face of bot
-    float yspeed=0; //perpendicular to front face of bot
-    float rotation=0;
-    float gyro=0;
+    float x_mult=0; //parallel to front face of bot
+    float y_mult=0; //perpendicular to front face of bot
+    float rotation_mult=0;
 };

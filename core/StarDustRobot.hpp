@@ -6,8 +6,8 @@
 
 class StarDustRobot {
 public:
-    //pass all available StarDust components to the robot
-    StarDustRobot(std::vector<StarDustComponent*> cs) : components(cs) {
+    //setup each of the components
+    StarDustRobot(std::vector<StarDustComponent*> _components) : components(_components) {
         for (auto component : components) {
             component->provideContext(this);
         }

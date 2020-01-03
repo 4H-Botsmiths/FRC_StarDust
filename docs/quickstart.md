@@ -22,11 +22,11 @@ class Robot : public frc::TimedRobot { //generated when creating project
 // ...
 
 private:
-	
-	//add a StarDustRobot object
-	StarDustRobot NAME {{
-		// ... for later
-	}};
+    
+    //add a StarDustRobot object
+    StarDustRobot NAME {{
+        // ... for later
+    }};
 }
 ```
 
@@ -38,31 +38,31 @@ In your `Robot.cpp` File:
 //NAME.FunctionName() should be called at ONLY ONCE, and at the VERY TOP of the function
 
 void Robot::RobotInit() {
-	NAME.RobotInit();
+    NAME.RobotInit();
 }
 
 void Robot::RobotPeriodic() {
-	NAME.RobotPeriodic();
+    NAME.RobotPeriodic();
 }
 
 void Robot::AutonomousInit() {
-	NAME.AutonomousInit();
+    NAME.AutonomousInit();
 }
 
 void Robot::AutonomousPeriodic() {
-	NAME.AutonomousPeriodic();
+    NAME.AutonomousPeriodic();
 }
 
 void Robot::TeleopInit() {
-	NAME.TeleopInit();
+    NAME.TeleopInit();
 }
 
 void Robot::TeleopPeriodic() {
-	NAME.TeleopPeriodic();
+    NAME.TeleopPeriodic();
 }
 
 void Robot::TestPeriodic() {
-	NAME.TestPeriodic();
+    NAME.TestPeriodic();
 }
 ```
 
@@ -84,9 +84,9 @@ BetterMotor arm { 0 };
 
 //pass in all the components 
 StarDustRobot NAME {{
-	&left_controller,
-	&right_controller,
-	&arm
+    &left_controller,
+    &right_controller,
+    &arm
 }};
 ```
 

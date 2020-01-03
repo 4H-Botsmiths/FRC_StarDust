@@ -1,97 +1,94 @@
-#include "StarDust/control/BetterController.hpp"
 #include <stdlib.h>
 #include <math.h>
 
+#include "StarDust/control/BetterController.hpp"
+
 void BetterController::__RobotPeriodic__() {
-    //Clear button cache while waiting for autonomous to start
     clearCache();
 }
-//for all the other overriden functions, update the controller buttons, then run the autorun function
 void BetterController::__AutonomousPeriodic__() {
     updateBoth();
-	autorun();
+    autorun();
 }
 void BetterController::__TeleopPeriodic__() {
     updateBoth();
-	autorun();
+    autorun();
 }
 void BetterController::__TestPeriodic__() {
     updateBoth();
-	autorun();
+    autorun();
 }
 void BetterController::__RobotInit__() {
-	updateBoth();
-	autorun();
+    updateBoth();
+    autorun();
 }
 void BetterController::__AutonomousInit__() {
-	updateBoth();
-	autorun();
+    updateBoth();
+    autorun();
 }
 void BetterController::__TeleopInit__() {
-	updateBoth();
-	autorun();
+    updateBoth();
+    autorun();
 }
 
-//take in a map of {int, function} and check of the current cached values match any functions
+//go through all binds and check/dispatch functions if event handler conditions are met
 void BetterController::autorun() {
-	if (!binds.empty()) {
-		for (const auto& i : binds) {
-			//check if passed enum value matches a on:: call, if so check function output and run lambda if true
-			if (i.first==on::AButton&&GetAButton()) i.second();
-			else if (i.first==on::AButtonPressed&&GetAButtonPressed()) i.second();
-			else if (i.first==on::AButtonReleased&&GetAButtonReleased()) i.second();
-			else if (i.first==on::BButton&&GetBButton()) i.second();
-			else if (i.first==on::BButtonPressed&&GetBButtonPressed()) i.second();
-			else if (i.first==on::BButtonReleased&&GetBButtonReleased()) i.second();
-			else if (i.first==on::XButton&&GetXButton()) i.second();
-			else if (i.first==on::XButtonPressed&&GetXButtonPressed()) i.second();
-			else if (i.first==on::XButtonReleased&&GetXButtonReleased()) i.second();
-			else if (i.first==on::YButton&&GetYButton()) i.second();
-			else if (i.first==on::YButtonPressed&&GetYButtonPressed()) i.second();
-			else if (i.first==on::YButtonReleased&&GetYButtonReleased()) i.second();
-			else if (i.first==on::StartButton&&GetStartButton()) i.second();
-			else if (i.first==on::StartButtonPressed&&GetStartButtonPressed()) i.second();
-			else if (i.first==on::StartButtonReleased&&GetStartButtonReleased()) i.second();
-			else if (i.first==on::BackButton&&GetBackButton()) i.second();
-			else if (i.first==on::BackButtonPressed&&GetBackButtonPressed()) i.second();
-			else if (i.first==on::BackButtonReleased&&GetBackButtonReleased()) i.second();
-
-			else if (i.first==on::LeftBumper&&GetLeftBumper()) i.second();
-			else if (i.first==on::LeftBumperPressed&&GetLeftBumperPressed()) i.second();
-			else if (i.first==on::RightBumperPressed&&GetRightBumperPressed()) i.second();
-			else if (i.first==on::LeftBumperReleased&&GetLeftBumperReleased()) i.second();
-			else if (i.first==on::RightBumperReleased&&GetRightBumperReleased()) i.second();
-			else if (i.first==on::LeftStickButtonPressed&&GetLeftStickButtonPressed()) i.second();
-			else if (i.first==on::RightStickButtonPressed&&GetRightStickButtonPressed()) i.second();
-			else if (i.first==on::LeftStickButtonReleased&&GetLeftStickButtonReleased()) i.second();
-			else if (i.first==on::RightStickButtonReleased&&GetRightStickButtonReleased()) i.second();
-		}
-	}
+    if (!binds.empty()) {
+        for (const auto& i : binds) {
+            if (i.first==on::AButton&&GetAButton()) i.second();
+            else if (i.first==on::AButtonPressed&&GetAButtonPressed()) i.second();
+            else if (i.first==on::AButtonReleased&&GetAButtonReleased()) i.second();
+            else if (i.first==on::BButton&&GetBButton()) i.second();
+            else if (i.first==on::BButtonPressed&&GetBButtonPressed()) i.second();
+            else if (i.first==on::BButtonReleased&&GetBButtonReleased()) i.second();
+            else if (i.first==on::XButton&&GetXButton()) i.second();
+            else if (i.first==on::XButtonPressed&&GetXButtonPressed()) i.second();
+            else if (i.first==on::XButtonReleased&&GetXButtonReleased()) i.second();
+            else if (i.first==on::YButton&&GetYButton()) i.second();
+            else if (i.first==on::YButtonPressed&&GetYButtonPressed()) i.second();
+            else if (i.first==on::YButtonReleased&&GetYButtonReleased()) i.second();
+            else if (i.first==on::StartButton&&GetStartButton()) i.second();
+            else if (i.first==on::StartButtonPressed&&GetStartButtonPressed()) i.second();
+            else if (i.first==on::StartButtonReleased&&GetStartButtonReleased()) i.second();
+            else if (i.first==on::BackButton&&GetBackButton()) i.second();
+            else if (i.first==on::BackButtonPressed&&GetBackButtonPressed()) i.second();
+            else if (i.first==on::BackButtonReleased&&GetBackButtonReleased()) i.second();
+            else if (i.first==on::LeftBumper&&GetLeftBumper()) i.second();
+            else if (i.first==on::LeftBumperPressed&&GetLeftBumperPressed()) i.second();
+            else if (i.first==on::RightBumperPressed&&GetRightBumperPressed()) i.second();
+            else if (i.first==on::LeftBumperReleased&&GetLeftBumperReleased()) i.second();
+            else if (i.first==on::RightBumperReleased&&GetRightBumperReleased()) i.second();
+            else if (i.first==on::LeftStickButtonPressed&&GetLeftStickButtonPressed()) i.second();
+            else if (i.first==on::RightStickButtonPressed&&GetRightStickButtonPressed()) i.second();
+            else if (i.first==on::LeftStickButtonReleased&&GetLeftStickButtonReleased()) i.second();
+            else if (i.first==on::RightStickButtonReleased&&GetRightStickButtonReleased()) i.second();
+        }
+    }
 }
 
 double BetterController::GetXLeft() { return XboxController::GetX(frc::GenericHID::JoystickHand::kLeftHand); }
 double BetterController::GetXLeftDeadzone() { deadzone(GetXLeft(), stickDeadzone); }
-double BetterController::GetXLeftDeadzone(double r) { deadzone(GetXLeft(), r); }
+double BetterController::GetXLeftDeadzone(double range) { deadzone(GetXLeft(), range); }
 
 double BetterController::GetXRight() { return XboxController::GetX(frc::GenericHID::JoystickHand::kRightHand); }
 double BetterController::GetXRightDeadzone() { deadzone(GetXRight(), stickDeadzone); }
-double BetterController::GetXRightDeadzone(double r) { deadzone(GetXRight(), r); }
+double BetterController::GetXRightDeadzone(double range) { deadzone(GetXRight(), range); }
 
 double BetterController::GetYLeft() { return XboxController::GetY(frc::GenericHID::JoystickHand::kLeftHand); }
 double BetterController::GetYLeftDeadzone() { deadzone(GetYLeft(), stickDeadzone); }
-double BetterController::GetYLeftDeadzone(double r) { deadzone(GetYLeft(), r); }
+double BetterController::GetYLeftDeadzone(double range) { deadzone(GetYLeft(), range); }
 
 double BetterController::GetYRight() { return XboxController::GetY(frc::GenericHID::JoystickHand::kRightHand); }
 double BetterController::GetYRightDeadzone() { deadzone(GetYRight(), stickDeadzone); }
-double BetterController::GetYRightDeadzone(double r) { deadzone(GetYRight(), r); }
+double BetterController::GetYRightDeadzone(double range) { deadzone(GetYRight(), range); }
 
 double BetterController::GetTriggerLeft() { return XboxController::GetTriggerAxis(frc::GenericHID::JoystickHand::kLeftHand); }
 double BetterController::GetTriggerLeftDeadzone() { deadzone(GetTriggerLeft(), triggerDeadzone); }
-double BetterController::GetTriggerLeftDeadzone(double r) { deadzone(GetTriggerLeft(), r); }
+double BetterController::GetTriggerLeftDeadzone(double range) { deadzone(GetTriggerLeft(), range); }
 
 double BetterController::GetTriggerRight() { return XboxController::GetTriggerAxis(frc::GenericHID::JoystickHand::kRightHand); }
 double BetterController::GetTriggerRightDeadzone() { deadzone(GetTriggerRight(), triggerDeadzone); }
-double BetterController::GetTriggerRightDeadzone(double r) { deadzone(GetTriggerRight(), r); }
+double BetterController::GetTriggerRightDeadzone(double range) { deadzone(GetTriggerRight(), range); }
 
 bool BetterController::GetAButtonPressed() { return pressed & 1<<0; }
 bool BetterController::GetAButtonReleased() { return released & 1<<0; }
@@ -180,8 +177,14 @@ void BetterController::updateReleased() {
     );
 }
 
-double BetterController::deadzone(double v, double r) {
-	double old=v;
-	v=abs(v);
-	return copysign(v<r?0:(v-r)/(1-r), old);
+double BetterController::deadzone(double value, double range) {
+    double old=value;
+    value=abs(value);
+
+    return copysign(
+        value<range?
+            0:
+            (value-range)/(1-range),
+        old
+    );
 }

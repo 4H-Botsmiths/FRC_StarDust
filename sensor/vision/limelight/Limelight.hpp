@@ -11,6 +11,7 @@ public:
     Limelight() {}
 
     void __RobotInit__() {};
+
     //update whenever possible
     void __RobotPeriodic__() { update(); };
     void __AutonomousInit__() { update(); };
@@ -19,31 +20,33 @@ public:
     void __TeleopPeriodic__() { update(); };
     void __TestPeriodic__() { update(); };
 
-    //true turns lights on, false turns off
-    void setLights(bool on) { limelight->PutNumber("ledMode", (on?3:1)); }
+    void setLights(bool on) { limelight->PutNumber("ledMode", (on ? 3 : 1)); }
 
-    //grabs a value by key "key" from local network table
+    //grabs value "key" from local network table
     double get(std::string key) { return limelight->GetNumber(key, 0); }
 
-    //commonly used values
-    //to get uncommon values (contours, debugging, etc), use get(keyname) or add a custom get function (recommended)
-    double getTV() { return TV; } //get valid status
-    double getTX() { return TX; } //get x offset
-    double getTY() { return TY; } //get y offset
-    double getTA() { return TA; } //get area
-    double getTS() { return TS; }
+    //wrappers for commonly used values
+    //use get(keyname) or add a custom get function (recommended) to get uncommon variables
+
+    double getTV() { return TV; } //target valid
+    double getTX() { return TX; } //target x offset
+    double getTY() { return TY; } //target y offset
+    double getTA() { return TA; } //target area
+    double getTS() { return TS; } //target skew
 
     void update() {
-        TV=(get("tv")==1); //TV is a bool, convert double output to bool
-        TX=get("tx"); //update the doubles
-        TY=get("ty"); //
-        TA=get("ta"); //
+        //convert double to bool
+        TV=(get("tv")==1);
 
-        double tmp=get("ts");
+        TX=get("tx");
+        TY=get("ty");
+        TA=get("ta");
+
+        double skew=get("ts");
 
         //make skew usable
-        if (tmp<-45) tmp+=90;
-        TS=tmp*-1;
+        if (skew<-45) skew+=90;
+        TS=skew*-1;
     }
 
 private:

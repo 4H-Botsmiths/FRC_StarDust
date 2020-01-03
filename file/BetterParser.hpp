@@ -10,9 +10,11 @@
 class BetterParser : public StarDustComponent {
 public:
     //takes in a vector of BetterParams to be parsed
-    BetterParser(std::vector<BetterParamBase*> params) : parameters(params) {}
+    BetterParser(std::vector<BetterParamBase*> params)
+        : parameters(params) {}
     //same as above but overrides default filename with a diffent one
-    BetterParser(std::vector<BetterParamBase*> params, std::string name) : parameters(params), filename(name) {}
+    BetterParser(std::vector<BetterParamBase*> params, std::string name)
+        : parameters(params), filename(name) {}
 
     void __RobotInit__() override;
     void __RobotPeriodic__() override;

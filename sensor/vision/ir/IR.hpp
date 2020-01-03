@@ -5,6 +5,7 @@
 #include "StarDust/core/StarDustComponent.hpp"
 
 //wrapper class for using an infa-red sensor
+
 class IR : public StarDustComponent {
 public:
     IR(int port) {
@@ -26,5 +27,5 @@ public:
     double getAVV() { return sensor->GetAverageValue(); }
 
 private:
-    frc::AnalogInput* sensor; //cannot use "ir" here
+    frc::AnalogInput* sensor;
 };

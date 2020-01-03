@@ -16,10 +16,24 @@
 //  doing clearCache() while the robot is in idle will ensure that the buttons remain cleared
 class BetterController : public StarDustComponent, public frc::XboxController {
 public:
-    BetterController(int n) : frc::XboxController(n) {}
-    BetterController(int n, double s) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(s) {}
-    BetterController(int n, double s, double t) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(t) {}
-    BetterController(int n, double s, double t, std::map<int, std::function<void()>> b) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(t), binds(b) {}
+    BetterController(int port)
+        : frc::XboxController(port) {}
+
+    BetterController(int port, double stick_deadzone)
+        : frc::XboxController(port),
+          stickDeadzone(stick_deadzone),
+          triggerDeadzone(stick_deadzone) {}
+
+    BetterController(int port, double stick_deadzone, double trigger_deadzone)
+        : frc::XboxController(port),
+          stickDeadzone(stick_deadzone),
+          triggerDeadzone(trigger_deadzone) {}
+
+    BetterController(int port, double stick_deadzone, double trigger_deadzone, std::map<int, std::function<void()>> _binds)
+        : frc::XboxController(port),
+          stickDeadzone(stick_deadzone),
+          triggerDeadzone(trigger_deadzone),
+          binds(_binds) {}
 
     void __RobotInit__() override;
     void __RobotPeriodic__() override;
@@ -29,26 +43,26 @@ public:
     void __TeleopPeriodic__() override;
     void __TestPeriodic__() override;
 
-	//provides syntax similar to JS .onclick() e.g; on::GetAbuttonPressed
-	enum on {
-		AButton,
-		AButtonPressed,
-		AButtonReleased,
-		BButton,
-		BButtonPressed,
-		BButtonReleased,
-		XButton,
-		XButtonPressed,
-		XButtonReleased,
-		YButton,
-		YButtonPressed,
-		YButtonReleased,
-		StartButton,
-		StartButtonPressed,
-		StartButtonReleased,
-		BackButton,
-		BackButtonPressed,
-		BackButtonReleased,
+    //custom event handlers
+    enum on {
+        AButton,
+        AButtonPressed,
+        AButtonReleased,
+        BButton,
+        BButtonPressed,
+        BButtonReleased,
+        XButton,
+        XButtonPressed,
+        XButtonReleased,
+        YButton,
+        YButtonPressed,
+        YButtonReleased,
+        StartButton,
+        StartButtonPressed,
+        StartButtonReleased,
+        BackButton,
+        BackButtonPressed,
+        BackButtonReleased,
         LeftBumper,
         LeftBumperPressed,
         RightBumperPressed,
@@ -58,10 +72,10 @@ public:
         RightStickButtonPressed,
         LeftStickButtonReleased,
         RightStickButtonReleased
-	};
+    };
 
-	//take in a map of {int, function} and check of the current cached values match any functions
-	void autorun();
+    //take in a map of {int, function} and check of the current cached values match any functions
+    void autorun();
 
     //Get() without needing to type out joystick hand, and auto deadzones
     double GetXLeft();
@@ -123,21 +137,22 @@ public:
     bool GetLeftStickButtonReleased();
     bool GetRightStickButtonReleased();
 
-    void updatePressed(); //updates all pressed states internally
-    void updateReleased();  //updates all released states internally
+    void updatePressed();
+    void updateReleased();
 
-    void updateBoth() { //run the 2 above functions at once
+    void updateBoth() {
         updatePressed();
         updateReleased();
     }
 
-    void clearCache() { //clears internal state of xbox object
+    void clearCache() {
+        //updating twice clears the xbox internal cache
         updateBoth();
-        updateBoth(); //run twice so that the pressed/released state for buttons will always be false
+        updateBoth();
     }
 
 private:
-	std::map<int, std::function<void()>> binds; //stores a map of binds
+    std::map<int, std::function<void()>> binds; //stores a map of binds
 
     /* flag states are as followed:
     1<<0 A button

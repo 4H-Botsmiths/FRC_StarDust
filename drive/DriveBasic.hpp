@@ -9,14 +9,14 @@
 class DriveBasic : public DriveBase {
 public:
     //create drivetrain with default multipliers
-    DriveBasic(frc::SpeedController* m0, frc::SpeedController* m1) : DriveBase() {
-        //make a new basic drivetrain
-        differential=new frc::DifferentialDrive(*m0, *m1);
+    DriveBasic(frc::SpeedController* motor_0, frc::SpeedController* motor_1) : DriveBase() {
+        differential=new frc::DifferentialDrive(*motor_0, *motor_1);
     }
     //create drivetrain with custom multipliers (basic drive has no X movement)
-    DriveBasic(frc::SpeedController* m0, frc::SpeedController* m1, float y, float r) : DriveBase(1, y, r) {
-        //make a new basic drivetrain
-        differential=new frc::DifferentialDrive(*m0, *m1);
+    DriveBasic(frc::SpeedController* motor_0, frc::SpeedController* motor_1, float y_mult, float rotation_mult)
+            : DriveBase(1, y_mult, rotation_mult)
+    {
+        differential=new frc::DifferentialDrive(*motor_0, *motor_1);
     }
 
     //required to be implemented by the drivebase to be considered a stardust component
@@ -29,17 +29,23 @@ public:
     void __TestPeriodic__() {}
 
     void drive(float y) {
-        differential->ArcadeDrive(y*gety(), 0);
+        differential->ArcadeDrive(
+            y * gety(),
+            0
+        );
     }
 
-    void drive(float y, float r) {
-        differential->ArcadeDrive(y*gety(), r*getr());
+    void drive(float y, float rot) {
+        differential->ArcadeDrive(
+            y * gety(),
+            rot * getr()
+        );
     }
 
-    void drive(float y, float r, float t) {
+    void drive(float y, float rot, float time) {
         BetterTimer{true, [=]{
-            drive(y, r);
-        }, t};
+            drive(y, rot);
+        }, time};
     }
 
     void drive(BetterController* controller) {
@@ -47,22 +53,23 @@ public:
     }
 
     void drive(BetterController* controller, int mode) {
-        if (mode==0) { //default mode
+        //0 is default mode
+        if (mode==0) {
             drive(
-                controller->GetYLeftDeadzone()*gety(), //Y on left stick controls Y direction
-                controller->GetXRightDeadzone()*getr() //X on right stick controls turning
+                controller->GetYLeftDeadzone() * gety(),
+                controller->GetXRightDeadzone() * getr()
             );
         }
         else if (mode==1) {
             drive(
-                controller->GetYLeftDeadzone()*gety(), //Y on left stick controls Y direction
-                controller->GetXLeftDeadzone()*getr() //X on left stick controls turning
+                controller->GetYLeftDeadzone() * gety(),
+                controller->GetXLeftDeadzone() * getr()
             );
         }
         else if (mode==2) {
             differential->TankDrive(
-                controller->GetYRightDeadzone()*gety(), //Y on right controlls right motor speed
-                controller->GetYLeftDeadzone()*gety() //Y on left controlls left motor speed
+                controller->GetYRightDeadzone() * gety(),
+                controller->GetYLeftDeadzone() * gety()
             );
         }
     }
