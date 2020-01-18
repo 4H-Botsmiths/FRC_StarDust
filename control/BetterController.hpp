@@ -152,6 +152,9 @@ public:
     }
 
 private:
+    double stickDeadzone=0;
+    double triggerDeadzone=0;
+
     std::map<int, std::function<void()>> binds; //stores a map of binds
 
     /* flag states are as followed:
@@ -168,9 +171,6 @@ private:
     */
     int released;
     int pressed;
-
-    double stickDeadzone=0;
-    double triggerDeadzone=0;
 
     double deadzone(double v, double r);
 };
