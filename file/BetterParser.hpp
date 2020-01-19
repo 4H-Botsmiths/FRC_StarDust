@@ -27,6 +27,6 @@ public:
 private:
     void autorun();
 
-    std::string filename="/home/lvuser/config.dat";
     std::vector<BetterParamBase*> parameters;
+    std::string filename="/home/lvuser/config.dat";
 };
