@@ -6,10 +6,6 @@
 
 class DriveAUX : public StarDustComponent {
 public:
-    DriveAUX(DriveBase* driveBase, double threshold) {
-        this->driveBase=driveBase;
-        this->threshold=threshold;
-    }
     DriveAUX(DriveBase* driveBase, BetterGyro* gyro, double threshold) {
         this->driveBase=driveBase;
         this->gyro=gyro;
@@ -24,9 +20,11 @@ public:
     void __TeleopPeriodic__() override;
     void __TestPeriodic__() override;
 
-    void GyroRotate(double range);
+    void GyroRotateToZero(double range);
     void GyroRotateTo(double degree, double range);
     void GyroRotateTo(double degree, double range, double y_mult);
+
+    void drive(double x, double y, double z, double deg);
 
 private:
     DriveBase* driveBase;

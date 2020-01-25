@@ -1,7 +1,8 @@
 #include "StarDust/sensor/motion/BetterGyro.hpp"
 
-//update gyro when needed
-void BetterGyro::__RobotInit__() {}
+void BetterGyro::__RobotInit__() {
+    Reset();
+}
 void BetterGyro::__RobotPeriodic__() {
     if (!started) {
         //only calibrate if the robot is in pre-match state
