@@ -14,13 +14,13 @@ public:
         : x_mult(x), y_mult(y), rotation_mult(rot) {}
 
     virtual void drive(float y) {}
-    virtual void drive(float x, float rot) {}
+    virtual void drive(float y, float rot) {}
     virtual void drive(float x, float y, float rot) {}
 
     virtual void drive(BetterController* controller) {}
 
-    float gety() { return y_mult; }
     float getx() { return x_mult; }
+    float gety() { return y_mult; }
     float getr() { return rotation_mult; }
 
 private:
