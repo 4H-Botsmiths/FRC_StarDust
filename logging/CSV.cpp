@@ -14,12 +14,6 @@ CSVLogger::CSVLogger(std::string filename, std::string header)
     start();
 }
 
-//template<typename T>
-//void CSVLogger::push(T data) //
-
-//template<typename T, typename... Ts>
-//void CSVLogger::push(T data, Ts... args) //
-
 void CSVLogger::start() {
     file.open(filename);
 
