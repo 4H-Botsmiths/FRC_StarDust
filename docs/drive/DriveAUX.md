@@ -8,11 +8,7 @@
 
 ## Initialization
 
-All `DriveAux` objects need a threshold (minimum amount to move the drivetrain):
-
-#### `DriveAUX(DriveBase* driveBase, double threshold)`
-
-Creates a `DriveAUX` object with no gyro, and a threshold.
+All `DriveAux` objects need a threshold (minimum amount to move the drivetrain) and a gyro:
 
 #### `DriveAUX(DriveBase* driveBase, BetterGyro* gyro, double threshold)`
 
@@ -24,7 +20,7 @@ Currently there is no interaction with `DriveAUX` and robot functions.
 
 ## Functions
 
-#### `void GyroRotate(double range)`
+#### `void GyroRotateToZero(double range)`
 
 Rotate the robot towards 0 degrees +/- `range` degrees.
 
@@ -35,3 +31,9 @@ Rotoate the robot towards `degree` degrees +/- `range` degrees.
 #### `void GyroRotateTo(double degree, double range, double y_mult)`
 
 Rotoate the robot towards `degree` degrees +/- `range` degrees while moving at `y_mult` speed forward.
+
+#### `void DriveAUX::drive(double x, double y, double z, double deg)`
+
+Drive the robot with given `x`, `y`, `z` multipliers relative to the driver.
+
+This requires the degree of the gyro to be fed in as the `deg` parameter.
