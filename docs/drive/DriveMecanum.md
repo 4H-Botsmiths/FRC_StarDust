@@ -24,7 +24,7 @@ LEFT  |       | RIGHT
 
 Creates a `DriveMecanum` object with default (1.0x) multipliers.
 
-#### `DriveMecanum(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, float x_mult, float y_mult, float rotation_mult)`
+#### `DriveMecanum(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, double x_mult, double y_mult, double rotation_mult)`
 
 Creates a `DriveMecanum` object with custom multipliers.
 
@@ -34,19 +34,19 @@ Currently there is no interaction with robot functions.
 
 ## Functions
 
-#### `void drive(float y)`
+#### `void drive(double y)`
 
 Drive forwards at `y` speed.
 
-#### `void drive(float y, float rot)`
+#### `void drive(double y, double rot)`
 
 Drive forwards at `y` speed while turning at `rot` speed.
 
-#### `void drive(float x, float y, float rot)`
+#### `void drive(double x, double y, double rot)`
 
 Drive forwards at `y` speed while turning at `rot` speed and strafing at `x` speed.
 
-#### `void drive(float x, float y, float rot, float time)`
+#### `void drive(double x, double y, double rot, double time)`
 
 Drive forwards at `y` speed while turning at `rot` speed and strafing at `x` speed for `time` seconds.
 

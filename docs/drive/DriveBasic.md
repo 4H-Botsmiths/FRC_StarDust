@@ -14,7 +14,7 @@ All `DriveBasic` constructors takes 2 motors, `0` being left and `1` being right
 
 Creates a `DriveBasic` drivetrain with default (1.0x) multipliers.
 
-#### `DriveBasic(frc::SpeedController* motor_0, frc::SpeedController* motor_1, float y_mult, float rotation_mult)`
+#### `DriveBasic(frc::SpeedController* motor_0, frc::SpeedController* motor_1, double y_mult, double rotation_mult)`
 
 Creates a `DriveBasic` drivetrain with custom multipliers.
 
@@ -24,15 +24,15 @@ Currently there is no interaction with robot functions.
 
 ## Functions
 
-#### `void drive(float y)`
+#### `void drive(double y)`
 
 Drive forwards at `y` speed.
 
-#### `void drive(float y, float rot)`
+#### `void drive(double y, double rot)`
 
 Drive fowrards at `y` speed while rotating at `rot` speed.
 
-#### `void drive(float y, float rot, float timer)`
+#### `void drive(double y, double rot, double timer)`
 
 Drive fowrards at `y` speed while rotating at `rot` speed for `time` seconds.
 

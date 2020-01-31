@@ -13,7 +13,7 @@ public:
         differential=new frc::DifferentialDrive(*motor_0, *motor_1);
     }
     //create drivetrain with custom multipliers (basic drive has no X movement)
-    DriveBasic(frc::SpeedController* motor_0, frc::SpeedController* motor_1, float y_mult, float rotation_mult)
+    DriveBasic(frc::SpeedController* motor_0, frc::SpeedController* motor_1, double y_mult, double rotation_mult)
             : DriveBase(1, y_mult, rotation_mult)
     {
         differential=new frc::DifferentialDrive(*motor_0, *motor_1);
@@ -28,42 +28,39 @@ public:
     void __TeleopPeriodic__() {}
     void __TestPeriodic__() {}
 
-    void drive(float y) {
-        differential->ArcadeDrive(
-            y * gety(),
-            0
-        );
+    void drive(double y) {
+        DriveBasic::drive(y, 0);
     }
 
-    void drive(float y, float rot) {
+    void drive(double y, double rot) {
         differential->ArcadeDrive(
             y * gety(),
             rot * getr()
         );
     }
 
-    void drive(float y, float rot, float time) {
+    void drive(double y, double rot, double time) {
         BetterTimer{true, [=]{
-            drive(y, rot);
+            DriveBasic::drive(y, rot);
         }, time};
     }
 
     void drive(BetterController* controller) {
-        drive(controller, 0);
+        DriveBasic::drive(controller, 0);
     }
 
     void drive(BetterController* controller, int mode) {
         //0 is default mode
         if (mode==0) {
-            drive(
-                controller->GetYLeftDeadzone() * gety(),
-                controller->GetXRightDeadzone() * getr()
+            DriveBasic::drive(
+                controller->GetYLeftDeadzone(),
+                controller->GetXRightDeadzone()
             );
         }
         else if (mode==1) {
-            drive(
-                controller->GetYLeftDeadzone() * gety(),
-                controller->GetXLeftDeadzone() * getr()
+            DriveBasic::drive(
+                controller->GetYLeftDeadzone(),
+                controller->GetXLeftDeadzone()
             );
         }
         else if (mode==2) {

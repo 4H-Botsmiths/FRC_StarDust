@@ -14,7 +14,7 @@ On its own, a `DriveBase` object does not drive.
 
 Construct a `DriveBase` with default (1.0x) multipliers in the `x`, `y`, and `z` direction.
 
-#### `DriveBase(float x, float y, float rot)`
+#### `DriveBase(double x, double y, double rot)`
 
 Construct a `DriveBase` with custom multipliers in the `x`, `y`, and `z` direction.
 
@@ -24,15 +24,15 @@ Since `DriveBase` is a base class, it does not implement any robot functions.
 
 ## Functions
 
-#### `void Drive(float y)`
+#### `void Drive(double y)`
 
 Drive forwards at `y` speed.
 
-#### `void Drive(float y, float rot)`
+#### `void Drive(double y, double rot)`
 
 Drive forwards at `y` speed while rotating at `rot` speed.
 
-#### `void Drive(float x, float y, float rot)`
+#### `void Drive(double x, double y, double rot)`
 
 Drive forwards at `y` speed while rotating at `rot` speed and strafing at `x` speed.
 
@@ -40,14 +40,14 @@ Drive forwards at `y` speed while rotating at `rot` speed and strafing at `x` sp
 
 Drive based off input from controller.
 
-#### `float getx()`
+#### `double getx()`
 
 Return `x` multiplier.
 
-#### `float gety()`
+#### `double gety()`
 
 Return `y` multiplier.
 
-#### `float getr()`
+#### `double getr()`
 
 Return `rot` multiplier.

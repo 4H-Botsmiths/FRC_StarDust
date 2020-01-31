@@ -16,7 +16,7 @@ Refer to the [DriveMecanum](/docs/drive/DriveMecanum.md) docs for wiring instruc
 
 Creates a `DriveSpider` object with default (1.0x) multipliers.
 
-#### `DriveSpider(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, BetterDoubleSolenoid* solenoid, float x_mult, float y_mult, float rotation_mult)`
+#### `DriveSpider(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, BetterDoubleSolenoid* solenoid, double x_mult, double y_mult, double rotation_mult)`
 
 Creates a `DriveSpider` object with custom multipliers.
 
@@ -34,11 +34,11 @@ When not in mecanum drive, the `x` axis is set to `0` as normal wheels cannot st
 
 Drive with inputs from controller.
 
-#### `void drive(float x, float y, float rot)`
+#### `void drive(double x, double y, double rot)`
 
 Drive forwards at `y` speed while turning at `rot` speed and strafing at `x` speed.
 
-#### `void drive(float x, float y, float rot, float time)`
+#### `void drive(double x, double y, double rot, double time)`
 
 Drive forwards at `y` speed while turning at `rot` speed and strafing at `x` speed for `time` seconds.
 

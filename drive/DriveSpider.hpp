@@ -16,7 +16,7 @@ public:
         : DriveSpider(motor_0, motor_1, motor_2, motor_3, solenoid, 1, 1, 1) {}
 
     //creates spider drive with the 4 speed controllers, but uses custom multipliers
-    DriveSpider(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, BetterDoubleSolenoid* solenoid, float x_mult, float y_mult, float rotation_mult)
+    DriveSpider(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, BetterDoubleSolenoid* solenoid, double x_mult, double y_mult, double rotation_mult)
         : DriveMecanum(
             motor_0,
             motor_1,
@@ -39,13 +39,21 @@ public:
 
     void drive(BetterController* controller) {
         DriveSpider::drive(
-            getx() * controller->GetXLeftDeadzone(),
-            gety() * controller->GetYLeftDeadzone(),
-            getr() * controller->GetXRightDeadzone()
+            controller->GetXLeftDeadzone(),
+            controller->GetYLeftDeadzone(),
+            controller->GetXRightDeadzone()
         );
     }
 
-    void drive(float x, float y, float rot) {
+    void drive(double y) {
+        DriveSpider::drive(0, y, 0);
+    }
+
+    void drive(double y, double rot) {
+        DriveSpider::drive(0, y, rot);
+    }
+
+    void drive(double x, double y, double rot) {
         if (usingMec) {
             DriveMecanum::drive(x, y, rot);
         }
@@ -54,7 +62,7 @@ public:
         }
     }
 
-    void drive(float x, float y, float rot, float time) {
+    void drive(double x, double y, double rot, double time) {
         BetterTimer{true, [=] {
             DriveSpider::drive(x, y, rot);
         }, time};
