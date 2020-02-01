@@ -24,6 +24,7 @@ public:
     void GyroRotateTo(double degree, double range);
     void GyroRotateTo(double degree, double range, double y_mult);
 
+    void drive(double x, double y, double z);
     void drive(double x, double y, double z, double deg);
 
 private:

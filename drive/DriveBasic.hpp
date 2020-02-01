@@ -64,9 +64,9 @@ public:
             );
         }
         else if (mode==2) {
-            differential->TankDrive(
-                controller->GetYRightDeadzone() * gety(),
-                controller->GetYLeftDeadzone() * gety()
+            DriveBasic::drive(
+                controller->GetYRightDeadzone(),
+                controller->GetYLeftDeadzone()
             );
         }
     }

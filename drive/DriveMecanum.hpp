@@ -41,7 +41,7 @@ public:
 
     void drive(double x, double y, double rot) {
         mecanum->DriveCartesian(
-            -x * getx(),
+            x * getx(),
             y * gety(),
             rot * getr()
         );

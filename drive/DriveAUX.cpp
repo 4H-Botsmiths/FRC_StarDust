@@ -48,6 +48,15 @@ void DriveAUX::GyroRotateTo(double degree, double range, double y_mult) {
     }
 }
 
+void DriveAUX::drive(double x, double y, double rot) {
+    DriveAUX::drive(
+        x,
+        y,
+        rot,
+        gyro->GetAngleMod()
+    );
+}
+
 void DriveAUX::drive(double x, double y, double z, double deg) {
     double hyp=sqrt( x*x + y*y );
 
