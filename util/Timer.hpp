@@ -6,18 +6,18 @@
 //this class is not a stardust component, it does not need to be updated over time
 //timers are started, they run their function, then expire and quit. calling .Start() again will rerun the timer
 
-class BetterTimer : public frc::Timer {
+class Timer : public frc::Timer {
 public:
     //dummy timer, must be ran manually
-    BetterTimer(double time)
+    Timer(double time)
         : frc::Timer(), time(time) {}
 
     //this timer takes a function and must be manually called with .Start()
-    BetterTimer(std::function<void()> func, double time)
+    Timer(std::function<void()> func, double time)
         : frc::Timer(), function(func), time(time) {}
 
     //this is a timer that immediately runs the function "func" and quits after "time" seconds
-    BetterTimer(bool autoRun, std::function<void()> func, double time)
+    Timer(bool autoRun, std::function<void()> func, double time)
         : frc::Timer(), function(func), time(time)
     {
         if (autoRun) {

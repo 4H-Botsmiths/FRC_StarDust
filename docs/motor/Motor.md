@@ -1,24 +1,24 @@
-# BetterMotor
+# Motor
 
 ```cpp
-#include "StarDust/motor/BetterMotor.hpp"
+#include "StarDust/motor/Motor.hpp"
 ```
 
-`BetterMotor` is a wrapper class for `PWMSpeedController`.
+`Motor` is a wrapper class for `PWMSpeedController`.
 
 It allows for easy dampening and inversion of motor controllers.
 
 ## Initialization
 
-#### `BetterMotor(int port)`
+#### `Motor(int port)`
 
 Creates a motor attached to PWM port `port`
 
-#### `BetterMotor(int port, bool invert)`
+#### `Motor(int port, bool invert)`
 
 Creates a motor attached to PWM port `port`, invert based on `invert`.
 
-#### `BetterMotor(int port, double dampen, bool invert)`
+#### `Motor(int port, double dampen, bool invert)`
 
 Creates a motor attached to PWM port `port`, invert based on `invert`. Dampen imputs by `damp` amount.
 

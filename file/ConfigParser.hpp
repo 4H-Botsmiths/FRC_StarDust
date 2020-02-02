@@ -4,16 +4,16 @@
 #include <string>
 
 #include "StarDust\core\StarDustComponent.hpp"
-#include "StarDust\file\BetterParamBase.hpp"
-#include "StarDust\file\BetterParam.hpp"
+#include "StarDust\file\ParserParamBase.hpp"
+#include "StarDust\file\ParserParam.hpp"
 
-class BetterParser : public StarDustComponent {
+class ConfigParser : public StarDustComponent {
 public:
-    //takes in a vector of BetterParams to be parsed
-    BetterParser(std::vector<BetterParamBase*> params)
+    //takes in a vector of ParserParams to be parsed
+    ConfigParser(std::vector<ParserParamBase*> params)
         : parameters(params) {}
     //same as above but overrides default filename with a diffent one
-    BetterParser(std::vector<BetterParamBase*> params, std::string name)
+    ConfigParser(std::vector<ParserParamBase*> params, std::string name)
         : parameters(params), filename(name) {}
 
     void __RobotInit__() override;
@@ -27,6 +27,6 @@ public:
 private:
     void autorun();
 
-    std::vector<BetterParamBase*> parameters;
+    std::vector<ParserParamBase*> parameters;
     std::string filename="/home/lvuser/config.dat";
 };

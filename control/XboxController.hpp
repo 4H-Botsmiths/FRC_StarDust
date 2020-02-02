@@ -14,22 +14,22 @@
 //fix:
 //  now after calling updateBoth() each frame, the get functions will return fresh button states
 //  doing clearCache() while the robot is in idle will ensure that the buttons remain cleared
-class BetterController : public StarDustComponent, public frc::XboxController {
+class XboxController : public StarDustComponent, public frc::XboxController {
 public:
-    BetterController(int port)
+    XboxController(int port)
         : frc::XboxController(port) {}
 
-    BetterController(int port, double stick_deadzone)
+    XboxController(int port, double stick_deadzone)
         : frc::XboxController(port),
           stickDeadzone(stick_deadzone),
           triggerDeadzone(stick_deadzone) {}
 
-    BetterController(int port, double stick_deadzone, double trigger_deadzone)
+    XboxController(int port, double stick_deadzone, double trigger_deadzone)
         : frc::XboxController(port),
           stickDeadzone(stick_deadzone),
           triggerDeadzone(trigger_deadzone) {}
 
-    BetterController(int port, double stick_deadzone, double trigger_deadzone, std::map<int, std::function<void()>> _binds)
+    XboxController(int port, double stick_deadzone, double trigger_deadzone, std::map<int, std::function<void()>> _binds)
         : frc::XboxController(port),
           stickDeadzone(stick_deadzone),
           triggerDeadzone(trigger_deadzone),

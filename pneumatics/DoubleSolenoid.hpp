@@ -4,13 +4,13 @@
 
 #include "StarDust/core/StarDustComponent.hpp"
 
-class BetterDoubleSolenoid : public StarDustComponent, public frc::DoubleSolenoid {
+class DoubleSolenoid : public StarDustComponent, public frc::DoubleSolenoid {
 public:
-    BetterDoubleSolenoid(int port1, int port2)
-        : DoubleSolenoid(port1, port2), inverted(false) {}
+    DoubleSolenoid(int port1, int port2)
+        : frc::DoubleSolenoid(port1, port2), inverted(false) {}
 
-    BetterDoubleSolenoid(int port1, int port2, bool invert)
-        : DoubleSolenoid(port1, port2), inverted(invert) {}
+    DoubleSolenoid(int port1, int port2, bool invert)
+        : frc::DoubleSolenoid(port1, port2), inverted(invert) {}
 
     void __RobotInit__() {}
     void __RobotPeriodic__() {}

@@ -18,8 +18,8 @@ This step is pretty easy. Simply create a new robot, passing in all known `StarD
 
 ```cpp
 //example includes
-BetterController xbox_left { 0 };
-BetterController xbox_right { 1 };
+XboxController xbox_left { 0 };
+XboxController xbox_right { 1 };
 
 StarDustRobot NAME {{
     &xbox_left,
@@ -27,7 +27,7 @@ StarDustRobot NAME {{
 }}
 ```
 
-Here, a new `StarDustRobot` named NAME is created, which contains 2 `BetterController` compoents.
+Here, a new `StarDustRobot` named NAME is created, which contains 2 `XboxController` compoents.
 
 ## Functions
 

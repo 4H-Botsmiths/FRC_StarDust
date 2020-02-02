@@ -2,12 +2,12 @@
 
 #include <string>
 
-//This class is NOT a StarDust component, it is a helper class for the BetterParam class
+//This class is NOT a StarDust component, it is a helper class for the ParserParam class
 //Do NOT include this class unless you know what youre doing
 
-class BetterParamBase {
+class ParserParamBase {
 public:
-    BetterParamBase() {}
+    ParserParamBase() {}
 
     virtual bool convert(std::string name, std::string data)=0;
 };

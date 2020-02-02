@@ -1,21 +1,21 @@
 #include <fstream>
 
-#include "StarDust/file/BetterParser.hpp"
+#include "StarDust/file/ConfigParser.hpp"
 
 //only parse and update the config file when the robot boots and when autonomous starts
-void BetterParser::__RobotInit__() {
+void ConfigParser::__RobotInit__() {
     autorun();
 }
-void BetterParser::__AutonomousInit__() {
+void ConfigParser::__AutonomousInit__() {
     autorun();
 }
-void BetterParser::__RobotPeriodic__() {}
-void BetterParser::__AutonomousPeriodic__() {}
-void BetterParser::__TeleopInit__() {}
-void BetterParser::__TeleopPeriodic__() {}
-void BetterParser::__TestPeriodic__() {}
+void ConfigParser::__RobotPeriodic__() {}
+void ConfigParser::__AutonomousPeriodic__() {}
+void ConfigParser::__TeleopInit__() {}
+void ConfigParser::__TeleopPeriodic__() {}
+void ConfigParser::__TestPeriodic__() {}
 
-void BetterParser::autorun() {
+void ConfigParser::autorun() {
     //creates file stream
     std::ifstream stream(filename);
     std::string line="";

@@ -3,7 +3,7 @@
 #include <frc/drive/MecanumDrive.h>
 #include <frc/SpeedController.h>
 
-#include "StarDust/util/BetterTimer.hpp"
+#include "StarDust/util/Timer.hpp"
 #include "DriveBase.hpp"
 
 class DriveMecanum : public DriveBase {
@@ -48,12 +48,12 @@ public:
     }
 
     void drive(double x, double y, double rot, double time) {
-        BetterTimer{true, [=]{
+        Timer{true, [=]{
             DriveMecanum::drive(x, y, rot);
         }, time};
     }
 
-    void drive(BetterController* controller) {
+    void drive(XboxController* controller) {
         DriveMecanum::drive(
             controller->GetXLeftDeadzone(),
             controller->GetYLeftDeadzone(),

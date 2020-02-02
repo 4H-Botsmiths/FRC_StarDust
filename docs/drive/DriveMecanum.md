@@ -50,6 +50,6 @@ Drive forwards at `y` speed while turning at `rot` speed and strafing at `x` spe
 
 Drive forwards at `y` speed while turning at `rot` speed and strafing at `x` speed for `time` seconds.
 
-#### `void drive(BetterController* controller)`
+#### `void drive(XboxController* controller)`
 
 Drive with inputs from controller.

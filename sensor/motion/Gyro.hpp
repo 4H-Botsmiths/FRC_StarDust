@@ -12,10 +12,10 @@ Original class has no built-in rotation mod functions, or closest path functions
 This class basically adds some more usefull functions
 */
 
-class BetterGyro : public StarDustComponent, public frc::ADXRS450_Gyro {
+class Gyro : public StarDustComponent, public frc::ADXRS450_Gyro {
 public:
     //there will probably be only one gyro anyways, only use default (SPI 0)
-    BetterGyro() : frc::ADXRS450_Gyro() {}
+    Gyro() : frc::ADXRS450_Gyro() {}
 
     void __RobotInit__() override;
     void __RobotPeriodic__() override;

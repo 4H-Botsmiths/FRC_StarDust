@@ -12,11 +12,11 @@ Refer to the [DriveMecanum](/docs/drive/DriveMecanum.md) docs for wiring instruc
 
 ## Initialization
 
-#### `DriveSpider(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, BetterDoubleSolenoid* solenoid)`
+#### `DriveSpider(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, DoubleSolenoid* solenoid)`
 
 Creates a `DriveSpider` object with default (1.0x) multipliers.
 
-#### `DriveSpider(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, BetterDoubleSolenoid* solenoid, double x_mult, double y_mult, double rotation_mult)`
+#### `DriveSpider(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, DoubleSolenoid* solenoid, double x_mult, double y_mult, double rotation_mult)`
 
 Creates a `DriveSpider` object with custom multipliers.
 
@@ -30,7 +30,7 @@ In each of the drive functions, the robot may drive differently when in differen
 
 When not in mecanum drive, the `x` axis is set to `0` as normal wheels cannot strafe.
 
-#### `void drive(BetterController* controller)`
+#### `void drive(XboxController* controller)`
 
 Drive with inputs from controller.
 

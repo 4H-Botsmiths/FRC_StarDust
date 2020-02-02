@@ -1,18 +1,18 @@
-# BetterDoubleSolenoid
+# DoubleSolenoid
 
 ```cpp
-#include "StarDust/pneumatics/BetterDoubleSolenoid.hpp"
+#include "StarDust/pneumatics/DoubleSolenoid.hpp"
 ```
 
-`BetterDoubleSolenoid` is a wrapper class that provides more expressive commands and built-in functions.
+`DoubleSolenoid` is a wrapper class that provides more expressive commands and built-in functions.
 
 # Initialization
 
-#### `BetterDoubleSolenoid(int port1, int port2)`
+#### `DoubleSolenoid(int port1, int port2)`
 
 Setup a solenoid wired to ports `port1` and `port2` on the PCM.
 
-#### `BetterDoubleSolenoid(int port1, int port2, bool invert)`
+#### `DoubleSolenoid(int port1, int port2, bool invert)`
 
 Setup a solenoid wired to ports `port1` and `port2` on the PCM. Invert based on if `invert` is true.
 

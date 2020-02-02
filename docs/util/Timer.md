@@ -1,28 +1,28 @@
-# BetterTimer
+# Timer
 
 ```cpp
-#include "StarDust/util/BetterTimer.hpp"
+#include "StarDust/util/Timer.hpp"
 ```
 
-`BetterTimer` is a timer class to reduce boiler-plate timer code.
+`Timer` is a timer class to reduce boiler-plate timer code.
 
-`BetterTimer` is not a `StarDustComponent`, it does not have any robot functions.
+`Timer` is not a `StarDustComponent`, it does not have any robot functions.
 
 ## Initialization
 
-#### `BetterTimer(double time)`
+#### `Timer(double time)`
 
 Creates a timer that just counts time.
 
 Must manually start/stop.
 
-#### `BetterTimer(std::function<void()> func, double time)`
+#### `Timer(std::function<void()> func, double time)`
 
 Make a timer that runs a function `func` for `time` seconds.
 
 Must manually call start/stop.
 
-#### `BetterTimer(bool autoRun, std::function<void()> func, double time)`
+#### `Timer(bool autoRun, std::function<void()> func, double time)`
 
 Make a timer that runs a function `func` for `time` seconds.
 

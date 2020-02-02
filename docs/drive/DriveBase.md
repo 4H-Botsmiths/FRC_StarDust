@@ -36,7 +36,7 @@ Drive forwards at `y` speed while rotating at `rot` speed.
 
 Drive forwards at `y` speed while rotating at `rot` speed and strafing at `x` speed.
 
-#### `void Drive(BetterController* controller)`
+#### `void Drive(XboxController* controller)`
 
 Drive based off input from controller.
 

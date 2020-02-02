@@ -1,4 +1,4 @@
-#include "StarDust/file/BetterParam.hpp"
+#include "StarDust/file/ParserParam.hpp"
 
 //templated code for primative parser
 template<typename T>
@@ -34,24 +34,24 @@ std::string _parse<std::string>(std::string* data, std::string* fail) {
     catch (...) { return *fail; }
 }
 
-//templated code for BetterParam::parse parser
+//templated code for ParserParam::parse parser
 template<>
-void BetterParam<int>::parse(std::string data, int* input, int fail) {
+void ParserParam<int>::parse(std::string data, int* input, int fail) {
     *input=_parse<int>(&data, &fail);
 }
 template<>
-void BetterParam<double>::parse(std::string data, double* input, double fail) {
+void ParserParam<double>::parse(std::string data, double* input, double fail) {
     *input=_parse<double>(&data, &fail);
 }
 template<>
-void BetterParam<float>::parse(std::string data, float* input, float fail) {
+void ParserParam<float>::parse(std::string data, float* input, float fail) {
     *input=_parse<float>(&data, &fail);
 }
 template<>
-void BetterParam<bool>::parse(std::string data, bool* input, bool fail) {
+void ParserParam<bool>::parse(std::string data, bool* input, bool fail) {
     *input=_parse<bool>(&data, &fail);
 }
 template<>
-void BetterParam<std::string>::parse(std::string data, std::string* input, std::string fail) {
+void ParserParam<std::string>::parse(std::string data, std::string* input, std::string fail) {
     *input=_parse<std::string>(&data, &fail);
 }

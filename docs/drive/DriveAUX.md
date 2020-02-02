@@ -4,13 +4,13 @@
 #include "StarDust/drive/DriveAUX.hpp"
 ```
 
-`DriveAUX` is an auxiliary class that combines a `BetterGyro` with a `DriveBase`.
+`DriveAUX` is an auxiliary class that combines a `Gyro` with a `DriveBase`.
 
 ## Initialization
 
 All `DriveAux` objects need a threshold (minimum amount to move the drivetrain) and a gyro:
 
-#### `DriveAUX(DriveBase* driveBase, BetterGyro* gyro, double threshold)`
+#### `DriveAUX(DriveBase* driveBase, Gyro* gyro, double threshold)`
 
 Creates a `DriveAUX` object with a gyro and a threshold.
 

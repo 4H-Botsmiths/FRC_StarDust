@@ -3,7 +3,7 @@
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/SpeedController.h>
 
-#include "StarDust/util/BetterTimer.hpp"
+#include "StarDust/util/Timer.hpp"
 #include "DriveBase.hpp"
 
 class DriveBasic : public DriveBase {
@@ -40,16 +40,16 @@ public:
     }
 
     void drive(double y, double rot, double time) {
-        BetterTimer{true, [=]{
+        Timer{true, [=]{
             DriveBasic::drive(y, rot);
         }, time};
     }
 
-    void drive(BetterController* controller) {
+    void drive(XboxController* controller) {
         DriveBasic::drive(controller, 0);
     }
 
-    void drive(BetterController* controller, int mode) {
+    void drive(XboxController* controller, int mode) {
         //0 is default mode
         if (mode==0) {
             DriveBasic::drive(

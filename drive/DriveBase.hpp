@@ -1,6 +1,6 @@
 #pragma once
 
-#include "StarDust/control/BetterController.hpp"
+#include "StarDust/control/XboxController.hpp"
 #include "StarDust/core/StarDustComponent.hpp"
 
 class DriveBase : public StarDustComponent {
@@ -17,7 +17,7 @@ public:
     virtual void drive(double y, double rot) {}
     virtual void drive(double x, double y, double rot) {}
 
-    virtual void drive(BetterController* controller) {}
+    virtual void drive(XboxController* controller) {}
 
     double getx() { return x_mult; }
     double gety() { return y_mult; }

@@ -1,40 +1,40 @@
-#include "StarDust/sensor/motion/BetterGyro.hpp"
+#include "StarDust/sensor/motion/Gyro.hpp"
 
-void BetterGyro::__RobotInit__() {
+void Gyro::__RobotInit__() {
     Reset();
 }
-void BetterGyro::__RobotPeriodic__() {
+void Gyro::__RobotPeriodic__() {
     if (!started) {
         //only calibrate if the robot is in pre-match state
         Calibrate();
     }
     update();
 }
-void BetterGyro::__AutonomousInit__() {
+void Gyro::__AutonomousInit__() {
     started=true;
     update();
 }
-void BetterGyro::__AutonomousPeriodic__() {
+void Gyro::__AutonomousPeriodic__() {
     update();
 }
-void BetterGyro::__TeleopInit__() {
+void Gyro::__TeleopInit__() {
     started=true;
     update();
 }
-void BetterGyro::__TeleopPeriodic__() {
+void Gyro::__TeleopPeriodic__() {
     update();
 }
-void BetterGyro::__TestPeriodic__() {
+void Gyro::__TestPeriodic__() {
     update();
 }
 
-double BetterGyro::FastestToZero() {
+double Gyro::FastestToZero() {
     return FastestTo(0.0);
 }
 
 //given a degree offset, calculate what angle is fastest to turn to
-double BetterGyro::FastestTo(double desired) {
-    double fastest=BetterGyro::GetAngleMod()-desired;
+double Gyro::FastestTo(double desired) {
+    double fastest=Gyro::GetAngleMod()-desired;
 
     if (fastest<=180&&fastest>=-180) {
         return fastest;

@@ -76,11 +76,11 @@ To add a component, in your `Robot.h` file, simply declare it and pass it into t
 
 ```cpp
 //setup the left and right controllers on USB port 0 and 1
-BetterController left_controller { 0 };
-BetterController right_controller { 1 };
+XboxController left_controller { 0 };
+XboxController right_controller { 1 };
 
 //setup the arm motor on PWM port 0
-BetterMotor arm { 0 };
+Motor arm { 0 };
 
 //pass in all the components 
 StarDustRobot NAME {{
@@ -92,6 +92,4 @@ StarDustRobot NAME {{
 
 Only `StarDustComponent` class objects can be added into the `StarDustRobot` object.
 
-`StarDustComponents` Usually are prefixed with `Better`, although this is not always the case (ie, `DriveMecanum`)
-
-On top of this, components must be passed via reference, that is using the `&` symbol
+On top of this, components must be passed via reference, that is using the `&` symbol.

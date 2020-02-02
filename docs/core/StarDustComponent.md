@@ -10,13 +10,13 @@ StarDust components are the building blocks of the StarDust framework. They allo
 
 This class cannot be initialized, it must be extended. For example:
 
-In the `control/BetterController.hpp` file, the `BetterController` class extends `StarDustComponent`:
+In the `control/XboxController.hpp` file, the `XboxController` class extends `StarDustComponent`:
 
 ```cpp
-class BetterController : public StarDustComponent, public frc::XboxController { //...
+class XboxController : public StarDustComponent, public frc::XboxController { //...
 ```
 
-This means that the `BetterController` class is a `StarDustComponent`, and can be passed into a `StarDustRobot`.
+This means that the `XboxController` class is a `StarDustComponent`, and can be passed into a `StarDustRobot`.
 
 ## Functions
 

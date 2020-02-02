@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-#include "StarDust/file/BetterParamBase.hpp"
+#include "StarDust/file/ParserParamBase.hpp"
 
 //_parse() is the generic parser, it does not directly parse the data
 template<typename T> extern T _parse(std::string* data, T* fail);
@@ -14,14 +14,14 @@ template<class T> struct __is_vector { static const bool value=false; };
 template<class T> struct __is_vector<std::vector<T>> { static const bool value=true; };
 
 template<class T>
-class BetterParam : public BetterParamBase {
+class ParserParam : public ParserParamBase {
 public:
     //takes in name for parameter/variable in config file, and pointer to variable to update
-    BetterParam(std::string name, T* var)
+    ParserParam(std::string name, T* var)
         : param(name), variable(var), fail(T {}) {}
 
     //same as above but takes in a default value to use if the conversion fails
-    BetterParam(std::string name, T* var, T ifFail)
+    ParserParam(std::string name, T* var, T ifFail)
         : param(name), variable(var), fail(ifFail) {}
 
     //specialized templates do a specific string-to-variable conversion for its type

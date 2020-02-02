@@ -1,25 +1,25 @@
-# BetterParser
+# ConfigParser
 
 ```cpp
-#include "StarDust/file/BetterParser.hpp"
+#include "StarDust/file/ConfigParser.hpp"
 ```
 
-`BetterParser` is a flexible config file parser.
+`ConfigParser` is a flexible config file parser.
 
 ## Initialization
 
-#### `BetterParser(std::vector<BetterParamBase*> params) : parameters(params);`
+#### `ConfigParser(std::vector<ParserParamBase*> params) : parameters(params);`
 
-Ceation of a `BetterParser` requires passing in many `BetterParam`s:
+Ceation of a `ConfigParser` requires passing in many `ParserParam`s:
 
 ```cpp
 //example variables
 double multiplier=0;
 std::string name="";
 
-BetterParser parser {{
-    new BetterParam { "multiplier", &multiplier },
-    new BetterParam { "name", &name }
+ConfigParser parser {{
+    new ParserParam { "multiplier", &multiplier },
+    new ParserParam { "name", &name }
 }};
 ```
 
@@ -27,23 +27,23 @@ Now, the parser will be able to parse and override the `name` and `multiplier` v
 
 By default, the config file will live at `"/home/lvuser/config.dat"` on the robo-rio.
 
-#### `BetterParser(std::vector<BetterParamBase*> params, std::string name) : parameters(params), filename(name);`
+#### `ConfigParser(std::vector<ParserParamBase*> params, std::string name) : parameters(params), filename(name);`
 
 Same as before, but a different filename can be passed in:
 
 ```cpp
-BetterParser parser {{
+ConfigParser parser {{
     //...
 }, "/path/to/file/on/robo-rio"};
 ```
 
-`BetterParser` will now look for a file at `name` instead.
+`ConfigParser` will now look for a file at `name` instead.
 
 ## Usage
 
 One of the reasons to use a config file parser is to reduce the time you spend re-compiling code.
 
-With `BetterParser`, you can parse all of the following variables:
+With `ConfigParser`, you can parse all of the following variables:
 
 ```
 int
@@ -128,6 +128,6 @@ This function will automatically find and parse the config file.
 
 Stores the path of the config file to be parsed.
 
-#### `std::vector<BetterParamBase*> parameters;`
+#### `std::vector<ParserParamBase*> parameters;`
 
-Stores the parameters passed in from the construction of the `BetterParser`.
+Stores the parameters passed in from the construction of the `ConfigParser`.

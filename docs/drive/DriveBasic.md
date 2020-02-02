@@ -36,11 +36,11 @@ Drive fowrards at `y` speed while rotating at `rot` speed.
 
 Drive fowrards at `y` speed while rotating at `rot` speed for `time` seconds.
 
-#### `void drive(BetterController* controller)`
+#### `void drive(XboxController* controller)`
 
 Drive using inputs from controller directly, uses default mode (`0`).
 
-#### `void drive(BetterController* controller, int mode)`
+#### `void drive(XboxController* controller, int mode)`
 
 Drive using inputs from controller directly, use differnet mode.
 
