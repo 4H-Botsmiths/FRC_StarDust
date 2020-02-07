@@ -6,11 +6,9 @@
 
 //wrapper class for using an infa-red sensor
 
-class IR : public StarDustComponent {
+class IR : public StarDustComponent, frc::AnalogInput {
 public:
-    IR(int port) {
-        sensor=new frc::AnalogInput(port);
-    }
+    IR(int port) : frc::AnalogInput(port) {}
 
     //in the future, these functions will cache all the data from the sensor each frame
     void __RobotInit__() {};
@@ -21,11 +19,7 @@ public:
     void __TeleopPeriodic__() {};
     void __TestPeriodic__() {};
 
-    double getV() { return sensor->GetVoltage(); }
-    double getVV() { return sensor->GetValue(); }
-    double getAV() { return sensor->GetAverageVoltage(); }
-    double getAVV() { return sensor->GetAverageValue(); }
-
-private:
-    frc::AnalogInput* sensor;
+    double getV() { return GetVoltage(); }
+    double getVV() { return GetValue(); }
+    double getAV() { return GetAverageVoltage(); }
 };

@@ -28,12 +28,13 @@ public:
     //wrappers for commonly used values
     //use get(keyname) or add a custom get function (recommended) to get uncommon variables
 
-    double getTV() { return TV; } //target valid
+    bool getTV() { return TV; } //target valid
     double getTX() { return TX; } //target x offset
     double getTY() { return TY; } //target y offset
     double getTA() { return TA; } //target area
     double getTS() { return TS; } //target skew
 
+private:
     void update() {
         //convert double to bool
         TV=(get("tv")==1);
@@ -49,7 +50,6 @@ public:
         TS=skew*-1;
     }
 
-private:
     std::shared_ptr<NetworkTable> limelight=nt::NetworkTableInstance::GetDefault().GetTable("limelight");
 
     bool TV=false;
