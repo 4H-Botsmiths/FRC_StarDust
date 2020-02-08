@@ -28,6 +28,8 @@ Make a timer that runs a function `func` for `time` seconds.
 
 Auto runs if `autoRun` is true.
 
+## Functions
+
 #### `bool HasPeriodPassed(double time)`
 
 Returns true if the timer has ran for longer then `time` seconds.
