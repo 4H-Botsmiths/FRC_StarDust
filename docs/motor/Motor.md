@@ -51,10 +51,6 @@ Set motor to speed `speed` for `time` seconds. Does not block execution.
 ## RobotFunctions
 
 ```
-//These functions do nothing.
-__RobotInit__
-__RobotPeriodic__
-
 //These functions will run update a motor that has been called with AsyncSet()
 __AutonomousInit__
 __AutonomousPeriodic__

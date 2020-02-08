@@ -6,15 +6,6 @@
 
 const double PI = 3.141592653589793;
 
-//unused, but allows for updating in the future
-void DriveAUX::__RobotInit__() {}
-void DriveAUX::__RobotPeriodic__() {}
-void DriveAUX::__AutonomousInit__() {}
-void DriveAUX::__AutonomousPeriodic__() {}
-void DriveAUX::__TeleopInit__() {}
-void DriveAUX::__TeleopPeriodic__() {}
-void DriveAUX::__TestPeriodic__() {}
-
 //go to zero (center) with "range" degrees +/- of accuracy
 void DriveAUX::GyroRotateToZero(double range) {
     GyroRotateTo(0, range);

@@ -27,8 +27,6 @@ public:
         SetInverted(invert);
     }
 
-    void __RobotInit__() {}
-    void __RobotPeriodic__() {}
     void __AutonomousInit__() { update(); }
     void __AutonomousPeriodic__() { update(); }
     void __TeleopInit__() { update(); }

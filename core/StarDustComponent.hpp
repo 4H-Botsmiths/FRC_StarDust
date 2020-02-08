@@ -2,23 +2,22 @@
 
 #include <string>
 
-//forward declaration of required StarDustRobot, ignore
 class StarDustRobot;
 
-//StarDustComponent's contains the core functions which all StarDust components will be based off of
+//A StarDustComponent is the base class for passing into a StarDustRobot.
 
 class StarDustComponent {
 public:
     StarDustComponent() {}
 
-    //These functions must be overriden by components that derive this class
-    virtual void __RobotInit__()=0;
-    virtual void __RobotPeriodic__()=0;
-    virtual void __AutonomousInit__()=0;
-    virtual void __AutonomousPeriodic__()=0;
-    virtual void __TeleopInit__()=0;
-    virtual void __TeleopPeriodic__()=0;
-    virtual void __TestPeriodic__()=0;
+    //These functions can optionally be ovveridden by components
+    virtual void __RobotInit__() {}
+    virtual void __RobotPeriodic__() {}
+    virtual void __AutonomousInit__() {}
+    virtual void __AutonomousPeriodic__() {}
+    virtual void __TeleopInit__() {}
+    virtual void __TeleopPeriodic__() {}
+    virtual void __TestPeriodic__() {}
 
     //optional status msg for modules
     std::string __status__="";

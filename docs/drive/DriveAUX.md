@@ -16,7 +16,7 @@ Creates a `DriveAUX` object with a gyro and a threshold.
 
 ## RobotFunctions
 
-Currently there is no interaction with `DriveAUX` and robot functions.
+None.
 
 ## Functions
 

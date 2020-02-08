@@ -101,19 +101,12 @@ strings=[ hello, world! ]
 
 ## RobotFunctions
 
-Below is a list of what this component does during each of the `__robot__` functions.
+Below is a list of what this component does during certain robot functions.
 
 ```
 //these run the autorun() function
 __RobotInit__()
 __AutonomousInit__()
-
-//these do nothing
-__RobotPeriodic__()
-__AutonomousPeriodic__()
-__TeleopInit__()
-__TeleopPeriodic__()
-__TestPeriodic__()
 ```
 
 ## Functions

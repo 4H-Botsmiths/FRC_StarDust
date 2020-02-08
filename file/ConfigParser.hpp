@@ -19,12 +19,7 @@ public:
         : parameters(params), filename(name) {}
 
     void __RobotInit__() override;
-    void __RobotPeriodic__() override;
     void __AutonomousInit__() override;
-    void __AutonomousPeriodic__() override;
-    void __TeleopInit__() override;
-    void __TeleopPeriodic__() override;
-    void __TestPeriodic__() override;
 
 private:
     void autorun();

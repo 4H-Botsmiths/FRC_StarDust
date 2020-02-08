@@ -30,7 +30,7 @@ Creates a `DriveMecanum` object with custom multipliers.
 
 ## RobotFunctions
 
-Currently there is no interaction with robot functions.
+None.
 
 ## Functions
 

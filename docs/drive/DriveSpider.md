@@ -22,7 +22,7 @@ Creates a `DriveSpider` object with custom multipliers.
 
 ## RobotFunctions
 
-Currently there is no interaction with robot functions.
+None.
 
 ## Functions
 

@@ -22,15 +22,7 @@ Creates a logger with custom header that writes to `filename`
 
 ## RobotFunctions
 
-#### `void RobotInit();`
-#### `void RobotPeriodic();`
-#### `void AutonomousInit();`
-#### `void AutonomousPeriodic();`
-#### `void TeleopInit();`
-#### `void TeleopPeriodic();`
-#### `void TestPeriodic();`
-
-Currently, `CSVLogger` does not interact with any robot functions.
+None.
 
 ## Functions
 

@@ -18,7 +18,7 @@ Setup a solenoid wired to ports `port1` and `port2` on the PCM. Invert based on 
 
 ## RobotFunctions
 
-Currently there are no interactions with robot functions.
+None.
 
 ## Functions
 

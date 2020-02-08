@@ -9,11 +9,6 @@ void ConfigParser::__RobotInit__() {
 void ConfigParser::__AutonomousInit__() {
     autorun();
 }
-void ConfigParser::__RobotPeriodic__() {}
-void ConfigParser::__AutonomousPeriodic__() {}
-void ConfigParser::__TeleopInit__() {}
-void ConfigParser::__TeleopPeriodic__() {}
-void ConfigParser::__TestPeriodic__() {}
 
 void ConfigParser::autorun() {
     //creates file stream

@@ -14,7 +14,7 @@ Creates an IR device on port `port`.
 
 ## RobotFunctions
 
-Currently there are no interactions with robot functions.
+None.
 
 ## Functions
 
