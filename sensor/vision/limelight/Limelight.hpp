@@ -10,45 +10,34 @@ class Limelight : public StarDustComponent {
 public:
     Limelight() {}
 
-    void __RobotInit__() {};
+    void __RobotPeriodic__() override;
+    void __AutonomousInit__() override;
+    void __AutonomousPeriodic__() override;
+    void __TeleopInit__() override;
+    void __TeleopPeriodic__() override;
+    void __TestPeriodic__() override;
 
-    //update whenever possible
-    void __RobotPeriodic__() { update(); };
-    void __AutonomousInit__() { update(); };
-    void __AutonomousPeriodic__() { update(); };
-    void __TeleopInit__() { update(); };
-    void __TeleopPeriodic__() { update(); };
-    void __TestPeriodic__() { update(); };
+    enum ledMode {
+        CURRENT_PIPE,
+        OFF,
+        BLINK,
+        ON
+    };
 
-    void setLights(bool on) { limelight->PutNumber("ledMode", (on ? 3 : 1)); }
+    void setLights(bool on);
 
     //grabs value "key" from local network table
-    double get(std::string key) { return limelight->GetNumber(key, 0); }
+    double get(std::string key);
 
     //wrappers for commonly used values
-    //use get(keyname) or add a custom get function (recommended) to get uncommon variables
-
-    bool getTV() { return TV; } //target valid
-    double getTX() { return TX; } //target x offset
-    double getTY() { return TY; } //target y offset
-    double getTA() { return TA; } //target area
-    double getTS() { return TS; } //target skew
+    bool getTV();
+    double getTX();
+    double getTY();
+    double getTA();
+    double getTS();
 
 private:
-    void update() {
-        //convert double to bool
-        TV=(get("tv")==1);
-
-        TX=get("tx");
-        TY=get("ty");
-        TA=get("ta");
-
-        double skew=get("ts");
-
-        //make skew usable
-        if (skew<-45) skew+=90;
-        TS=skew*-1;
-    }
+    void update();
 
     std::shared_ptr<NetworkTable> limelight=nt::NetworkTableInstance::GetDefault().GetTable("limelight");
 
