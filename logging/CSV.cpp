@@ -15,6 +15,8 @@ CSVLogger::CSVLogger(std::string filename, std::string header)
 }
 
 void CSVLogger::start() {
+    stop();
+
     file.open(filename);
 
     if (!header.empty()) {
