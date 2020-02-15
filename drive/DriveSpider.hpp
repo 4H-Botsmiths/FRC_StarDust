@@ -12,12 +12,13 @@
 class DriveSpider : public DriveMecanum {
 public:
     //creates spider drive with just 4 speed controllers, and 1x multipliers on all axis
-    DriveSpider(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, DoubleSolenoid* solenoid)
-        : DriveSpider(motor_0, motor_1, motor_2, motor_3, solenoid, 1, 1, 1) {}
+    DriveSpider(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, DoubleSolenoid* solenoid) :
+        DriveSpider(motor_0, motor_1, motor_2, motor_3, solenoid, 1, 1, 1)
+        {}
 
     //creates spider drive with the 4 speed controllers, but uses custom multipliers
-    DriveSpider(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, DoubleSolenoid* solenoid, double x_mult, double y_mult, double rotation_mult)
-        : DriveMecanum(
+    DriveSpider(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, DoubleSolenoid* solenoid, double x_mult, double y_mult, double rotation_mult) :
+        DriveMecanum(
             motor_0,
             motor_1,
             motor_2,
@@ -26,7 +27,8 @@ public:
             y_mult,
             rotation_mult
         ),
-        shifter(solenoid) {}
+        shifter(solenoid)
+        {}
 
     void drive(XboxController* controller) {
         DriveSpider::drive(

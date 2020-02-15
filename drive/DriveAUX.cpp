@@ -6,6 +6,12 @@
 
 const double PI = 3.141592653589793;
 
+DriveAUX::DriveAUX(DriveBase driveBase, ADXRS450_Gyro* gyro, double threshold) :
+    driveBase(driveBase),
+    gyro(gyro),
+    threshold(threshold)
+    {}
+
 //go to zero (center) with "range" degrees +/- of accuracy
 void DriveAUX::GyroRotateToZero(double range) {
     GyroRotateTo(0, range);
@@ -22,20 +28,20 @@ void DriveAUX::GyroRotateTo(double degree, double range, double y_mult) {
 
     if (!(-range<fastestTo && fastestTo<range)) {
         if (fastestTo<0) {
-            driveBase->drive(
+            driveBase.drive(
                 y_mult,
                 threshold+(-fastestTo * 0.0025)
             );
         }
         else {
-            driveBase->drive(
+            driveBase.drive(
                 y_mult,
                 -threshold-(fastestTo * 0.0025)
             );
         }
     }
     else {
-        driveBase->drive(y_mult, 0);
+        driveBase.drive(y_mult, 0);
     }
 }
 
@@ -59,7 +65,7 @@ void DriveAUX::drive(double x, double y, double z, double deg) {
         (deg * (PI/180)
     );
 
-    driveBase->drive(
+    driveBase.drive(
         hyp*cos(adjusted_rads),
         hyp*sin(adjusted_rads),
         z

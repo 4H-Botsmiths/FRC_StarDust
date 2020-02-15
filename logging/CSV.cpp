@@ -1,15 +1,16 @@
 #include "StarDust/logging/CSV.hpp"
 
-CSVLogger::CSVLogger() {
-    CSVLogger(filename, header);
-}
+CSVLogger::CSVLogger() :
+    CSVLogger("")
+    {}
 
-CSVLogger::CSVLogger(std::string header) {
-    CSVLogger(filename, header);
-}
+CSVLogger::CSVLogger(std::string header) :
+    CSVLogger(FILE_PATH, header)
+    {}
 
-CSVLogger::CSVLogger(std::string filename, std::string header)
-    : filename(filename), header(header)
+CSVLogger::CSVLogger(std::string filename, std::string header) :
+    filename(filename),
+    header(header)
 {
     start();
 }

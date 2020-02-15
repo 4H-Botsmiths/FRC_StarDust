@@ -10,19 +10,23 @@
 class Motor : public StarDustComponent, public frc::PWMSpeedController {
 public:
     //create PWM controler from port
-    Motor(int port)
-        : frc::PWMSpeedController(port), dampen(1) {}
+    Motor(int port) :
+        frc::PWMSpeedController(port),
+        dampen(1)
+        {}
 
     //create PWM controller from port and polarity
-    Motor(int port, bool invert)
-        : frc::PWMSpeedController(port), dampen(1)
+    Motor(int port, bool invert) :
+        frc::PWMSpeedController(port),
+        dampen(1)
     {
         SetInverted(invert);
     }
 
     //create a motor controller from port, polarity, and input dampening
-    Motor(int port, double damp, bool invert)
-        : frc::PWMSpeedController(port), dampen(damp)
+    Motor(int port, double damp, bool invert) :
+        frc::PWMSpeedController(port),
+        dampen(damp)
     {
         SetInverted(invert);
     }

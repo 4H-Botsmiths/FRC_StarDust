@@ -10,7 +10,7 @@ The `ParserParam` class is NOT a `StarDustComponent`, it should not be passed in
 
 ## Initialization
 
-#### `template<typename T> ParserParam(std::string name, T* var);`
+#### `template<typename T> ParserParam(std::string param, T* variable);`
 
 Creates a new parameter that parses variables named `name`, and references the variable to update via `var`.
 

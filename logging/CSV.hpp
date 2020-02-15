@@ -5,6 +5,8 @@
 
 #include "StarDust/core/StarDustComponent.hpp"
 
+#define FILE_PATH "home/lvuser/data.csv"
+
 class CSVLogger : public StarDustComponent {
 public:
     CSVLogger();
@@ -26,8 +28,8 @@ public:
     void stop();
 
 private:
-    std::string filename="/home/lvuser/data.csv";
-    std::string header="";
+    std::string filename;
+    std::string header;
 
     std::ofstream file;
 };

@@ -6,12 +6,18 @@
 class DriveBase : public StarDustComponent {
 public:
     //constructor with default multipliers
-    DriveBase()
-        : x_mult(1), y_mult(1), rotation_mult(1) {}
+    DriveBase() :
+        x_mult(1),
+        y_mult(1),
+        rotation_mult(1)
+        {}
 
     //constructor with custom multipliers
-    DriveBase(double x, double y, double rot)
-        : x_mult(x), y_mult(y), rotation_mult(rot) {}
+    DriveBase(double x, double y, double rot) :
+        x_mult(x),
+        y_mult(y),
+        rotation_mult(rot)
+        {}
 
     virtual void drive(double y) {}
     virtual void drive(double y, double rot) {}

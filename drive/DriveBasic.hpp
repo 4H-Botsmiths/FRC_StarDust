@@ -4,17 +4,20 @@
 #include <frc/SpeedController.h>
 
 #include "StarDust/util/Timer.hpp"
-#include "DriveBase.hpp"
+#include "StarDust/drive/DriveBase.hpp"
 
 class DriveBasic : public DriveBase {
 public:
     //create drivetrain with default multipliers
-    DriveBasic(frc::SpeedController* motor_0, frc::SpeedController* motor_1) : DriveBase() {
+    DriveBasic(frc::SpeedController* motor_0, frc::SpeedController* motor_1) :
+        DriveBase()
+    {
         differential=new frc::DifferentialDrive(*motor_0, *motor_1);
     }
+
     //create drivetrain with custom multipliers (basic drive has no X movement)
-    DriveBasic(frc::SpeedController* motor_0, frc::SpeedController* motor_1, double y_mult, double rotation_mult)
-            : DriveBase(1, y_mult, rotation_mult)
+    DriveBasic(frc::SpeedController* motor_0, frc::SpeedController* motor_1, double y_mult, double rotation_mult) :
+        DriveBase(1, y_mult, rotation_mult)
     {
         differential=new frc::DifferentialDrive(*motor_0, *motor_1);
     }

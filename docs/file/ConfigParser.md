@@ -8,7 +8,7 @@
 
 ## Initialization
 
-#### `ConfigParser(std::vector<ParserParamBase*> params) : parameters(params);`
+#### `ConfigParser(std::vector<ParserParamBase*> parameters)`
 
 Ceation of a `ConfigParser` requires passing in many `ParserParam`s:
 
@@ -27,7 +27,7 @@ Now, the parser will be able to parse and override the `name` and `multiplier` v
 
 By default, the config file will live at `"/home/lvuser/config.dat"` on the robo-rio.
 
-#### `ConfigParser(std::vector<ParserParamBase*> params, std::string name) : parameters(params), filename(name);`
+#### `ConfigParser(std::vector<ParserParamBase*> parameters, std::string filename)`
 
 Same as before, but a different filename can be passed in:
 

@@ -8,15 +8,15 @@
 
 class DriveMecanum : public DriveBase {
 public:
-    DriveMecanum(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3)
-        : DriveBase()
+    DriveMecanum(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3) :
+        DriveBase()
     {
         //make a new mecanum drive reference
         mecanum=new frc::MecanumDrive(*motor_0, *motor_3, *motor_1, *motor_2);
     }
 
-    DriveMecanum(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, double x_mult, double y_mult, double rotation_mult)
-        : DriveBase(x_mult, y_mult, rotation_mult)
+    DriveMecanum(frc::SpeedController* motor_0, frc::SpeedController* motor_1, frc::SpeedController* motor_2, frc::SpeedController* motor_3, double x_mult, double y_mult, double rotation_mult) :
+        DriveBase(x_mult, y_mult, rotation_mult)
     {
         //make a new mecanum drive reference
         mecanum=new frc::MecanumDrive(*motor_0, *motor_3, *motor_1, *motor_2);

@@ -1,5 +1,15 @@
 #include "StarDust/event/Event.hpp"
 
+Event::Event(std::function<bool()> conditional, std::function<void()> action) :
+    conditional(conditional),
+    actions({ action })
+    {}
+
+Event::Event(std::function<bool()> conditional, std::vector<std::function<void()>> actions) :
+    conditional(conditional),
+    actions(actions)
+    {}
+
 void Event::__RobotInit__() { fire(); }
 void Event::__RobotPeriodic__() { fire(); }
 void Event::__AutonomousInit__() { fire(); }

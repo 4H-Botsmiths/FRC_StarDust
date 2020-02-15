@@ -1,6 +1,14 @@
 #include "StarDust/core/StarDustComponent.hpp"
 #include "StarDust/core/StarDustRobot.hpp"
 
+StarDustRobot::StarDustRobot(std::vector<StarDustComponent*> components) :
+    components(components)
+{
+    for (auto component : components) {
+        component->provideContext(this);
+    }
+}
+
 //Each of these functions when called will call the internal function of each component
 //For example, running AutoInit() will run all the components __AutoInit__() function
 

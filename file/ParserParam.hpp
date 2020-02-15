@@ -17,12 +17,15 @@ template<class T>
 class ParserParam : public ParserParamBase {
 public:
     //takes in name for parameter/variable in config file, and pointer to variable to update
-    ParserParam(std::string name, T* var)
-        : param(name), variable(var), fail(T {}) {}
+    ParserParam(std::string param, T* variable) :
+        ParserParam(param, variable, T {} ) {}
 
     //same as above but takes in a default value to use if the conversion fails
-    ParserParam(std::string name, T* var, T ifFail)
-        : param(name), variable(var), fail(ifFail) {}
+    ParserParam(std::string param, T* variable, T fail) :
+        param(param),
+        variable(variable),
+        fail(fail)
+        {}
 
     //specialized templates do a specific string-to-variable conversion for its type
     //this is what actually parses and sets the input

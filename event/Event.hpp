@@ -7,15 +7,8 @@
 
 class Event : public StarDustComponent {
 public:
-    Event(std::function<bool()> conditional, std::function<void()> action) :
-        conditional(conditional),
-        actions({ action })
-        {}
-
-    Event(std::function<bool()> conditional, std::vector<std::function<void()>> actions) :
-        conditional(conditional),
-        actions(actions)
-        {}
+    Event(std::function<bool()> conditional, std::function<void()> action);
+    Event(std::function<bool()> conditional, std::vector<std::function<void()>> actions);
 
     void __RobotInit__() override;
     void __RobotPeriodic__() override;

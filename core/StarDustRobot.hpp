@@ -7,11 +7,7 @@
 class StarDustRobot {
 public:
     //setup each of the components
-    StarDustRobot(std::vector<StarDustComponent*> _components) : components(_components) {
-        for (auto component : components) {
-            component->provideContext(this);
-        }
-    }
+    StarDustRobot(std::vector<StarDustComponent*> components);
 
     //these functions DONT override the normal robot functions
     void RobotInit();

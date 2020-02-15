@@ -2,6 +2,15 @@
 
 #include "StarDust/file/ConfigParser.hpp"
 
+ConfigParser::ConfigParser(std::vector<ParserParamBase*> parameters) :
+    ConfigParser(parameters, FILE_PATH)
+    {}
+
+ConfigParser::ConfigParser(std::vector<ParserParamBase*> parameters, std::string filename) :
+    parameters(parameters),
+    filename(filename)
+    {}
+
 //only parse and update the config file when the robot boots and when autonomous starts
 void ConfigParser::__RobotInit__() {
     autorun();

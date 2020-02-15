@@ -20,7 +20,12 @@ On top of this, `XboxController` offers built-in lambda bindings to automaticall
 
 All parameters are set to `0` by default, and `binds` is `NULL`
 
-#### `XboxController(int n) : frc::XboxController(n) {}`
+XboxController(int port);
+XboxController(int port, double stick_deadzone);
+XboxController(int port, double stick_deadzone, double trigger_deadzone);
+XboxController(int port, double stick_deadzone, double trigger_deadzone, std::map<int, std::function<void()>> binds);
+
+#### `XboxController(int port)`
 
 Like the `XboxController` class, the most common use case is passing only the USB port number:
 
@@ -28,7 +33,7 @@ Like the `XboxController` class, the most common use case is passing only the US
 XboxController xbox_left { 0 };
 ```
 
-#### `XboxController(int n, double s) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(s) {}`
+#### `XboxController(int port, double stick_deadzone)`
 
 In addition, joystick deadzone can be specified upon creation:
 
@@ -36,7 +41,7 @@ In addition, joystick deadzone can be specified upon creation:
 XboxController xbox_left { 0, 0.15 };
 ```
 
-#### `XboxController(int n, double s, double t) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(t) {}`
+#### `XboxController(int port, double stick_deadzone, double trigger_deadzone)`
 
 Not only the joysticks, but the left and right triggers can get a deadzone as well:
 
@@ -45,7 +50,7 @@ Not only the joysticks, but the left and right triggers can get a deadzone as we
 XboxController xbox_left { 0, 0.15, 0.05 };
 ```
 
-#### `XboxController(int n, double s, double t, std::map<int, std::function<void()>> b) : frc::XboxController(n), stickDeadzone(s), triggerDeadzone(t), binds(b) {}`
+#### `XboxController(int port, double stick_deadzone, double trigger_deadzone, std::map<int, std::function<void()>> binds)`
 
 This is a more complex yet great addition. This initialization requires the same paramaters as before, but takes in a map of functions bound to events:
 

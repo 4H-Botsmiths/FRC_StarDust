@@ -3,6 +3,29 @@
 
 #include "StarDust/control/XboxController.hpp"
 
+XboxController::XboxController(int port) :
+    frc::XboxController(port)
+    {}
+
+XboxController::XboxController(int port, double stick_deadzone) :
+    frc::XboxController(port),
+    stickDeadzone(stick_deadzone),
+    triggerDeadzone(stick_deadzone)
+    {}
+
+XboxController::XboxController(int port, double stick_deadzone, double trigger_deadzone) :
+    frc::XboxController(port),
+    stickDeadzone(stick_deadzone),
+    triggerDeadzone(trigger_deadzone)
+    {}
+
+XboxController::XboxController(int port, double stick_deadzone, double trigger_deadzone, std::map<int, std::function<void()>> binds) :
+    frc::XboxController(port),
+    stickDeadzone(stick_deadzone),
+    triggerDeadzone(trigger_deadzone),
+    binds(binds)
+    {}
+
 void XboxController::__RobotPeriodic__() {
     clearCache();
 }
@@ -175,6 +198,17 @@ void XboxController::updateReleased() {
         XboxController::GetStickButtonReleased(frc::GenericHID::JoystickHand::kLeftHand)<<8 |
         XboxController::GetStickButtonReleased(frc::GenericHID::JoystickHand::kRightHand)<<9
     );
+}
+
+void XboxController::updateBoth() {
+    updatePressed();
+    updateReleased();
+}
+
+void XboxController::clearCache() {
+    //updating twice clears the xbox internal cache
+    updateBoth();
+    updateBoth();
 }
 
 double XboxController::deadzone(double value, double range) {

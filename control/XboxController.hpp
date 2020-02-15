@@ -16,24 +16,10 @@
 //  doing clearCache() while the robot is in idle will ensure that the buttons remain cleared
 class XboxController : public StarDustComponent, public frc::XboxController {
 public:
-    XboxController(int port)
-        : frc::XboxController(port) {}
-
-    XboxController(int port, double stick_deadzone)
-        : frc::XboxController(port),
-          stickDeadzone(stick_deadzone),
-          triggerDeadzone(stick_deadzone) {}
-
-    XboxController(int port, double stick_deadzone, double trigger_deadzone)
-        : frc::XboxController(port),
-          stickDeadzone(stick_deadzone),
-          triggerDeadzone(trigger_deadzone) {}
-
-    XboxController(int port, double stick_deadzone, double trigger_deadzone, std::map<int, std::function<void()>> _binds)
-        : frc::XboxController(port),
-          stickDeadzone(stick_deadzone),
-          triggerDeadzone(trigger_deadzone),
-          binds(_binds) {}
+    XboxController(int port);
+    XboxController(int port, double stick_deadzone);
+    XboxController(int port, double stick_deadzone, double trigger_deadzone);
+    XboxController(int port, double stick_deadzone, double trigger_deadzone, std::map<int, std::function<void()>> binds);
 
     void __RobotInit__() override;
     void __RobotPeriodic__() override;
@@ -140,16 +126,9 @@ public:
     void updatePressed();
     void updateReleased();
 
-    void updateBoth() {
-        updatePressed();
-        updateReleased();
-    }
+    void updateBoth();
 
-    void clearCache() {
-        //updating twice clears the xbox internal cache
-        updateBoth();
-        updateBoth();
-    }
+    void clearCache();
 
 private:
     double stickDeadzone=0;
@@ -169,8 +148,8 @@ private:
     1<<8 Left stick down
     1<<9 Right stock down
     */
-    int released;
-    int pressed;
+    unsigned long released;
+    unsigned long pressed;
 
     double deadzone(double v, double r);
 };
