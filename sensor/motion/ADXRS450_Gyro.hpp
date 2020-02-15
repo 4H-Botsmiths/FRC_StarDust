@@ -3,19 +3,17 @@
 #include <frc/ADXRS450_Gyro.h>
 #include <math.h>
 
+#include "StarDust/sensor/motion/Gyro_Base.hpp"
 #include "StarDust/core/StarDustComponent.hpp"
 
-/*
-Wrapper class for ADXRS450_Gyro
+//Wrapper class for ADXRS450_Gyro
 
-Original class has no built-in rotation mod functions, or closest path functions
-This class basically adds some more usefull functions
-*/
-
-class Gyro : public StarDustComponent, public frc::ADXRS450_Gyro {
+class ADXRS450_Gyro : public StarDustComponent, public frc::ADXRS450_Gyro {
 public:
     //there will probably be only one gyro anyways, only use default (SPI 0)
-    Gyro() : frc::ADXRS450_Gyro() {}
+    ADXRS450_Gyro() :
+        frc::ADXRS450_Gyro()
+        {}
 
     void __RobotInit__() override;
     void __RobotPeriodic__() override;
@@ -26,24 +24,16 @@ public:
     void __TestPeriodic__() override;
 
     //override original function to return cached degree not base class's degree
-    double GetAngle() {
-        return cached_degree;
-    }
+    double GetAngle();
 
-    double GetAngleMod() {
-        return GetAngleMod(360);
-    }
-    double GetAngleMod(double deg) {
-        return fmod(GetAngle(), deg);
-    }
+    double GetAngleMod();
+    double GetAngleMod(double deg);
 
     double FastestToZero();
     double FastestTo(double deg);
 
 private:
-    void update() {
-        cached_degree=ADXRS450_Gyro::GetAngle();
-    }
+    void update();
 
     double cached_degree=0;
 

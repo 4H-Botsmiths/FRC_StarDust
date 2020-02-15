@@ -1,51 +1,51 @@
-#include "StarDust/sensor/motion/AHRS_Gyro.hpp"
+#include "StarDust/sensor/motion/ADXRS450_Gyro.hpp"
 
-void AHRS_Gyro::__RobotInit__() {
+void ADXRS450_Gyro::__RobotInit__() {
     Reset();
 }
-void AHRS_Gyro::__RobotPeriodic__() {
+void ADXRS450_Gyro::__RobotPeriodic__() {
     if (!started) {
         //only calibrate if the robot is in pre-match state
         Calibrate();
     }
     update();
 }
-void AHRS_Gyro::__AutonomousInit__() {
+void ADXRS450_Gyro::__AutonomousInit__() {
     started=true;
     update();
 }
-void AHRS_Gyro::__AutonomousPeriodic__() {
+void ADXRS450_Gyro::__AutonomousPeriodic__() {
     update();
 }
-void AHRS_Gyro::__TeleopInit__() {
+void ADXRS450_Gyro::__TeleopInit__() {
     started=true;
     update();
 }
-void AHRS_Gyro::__TeleopPeriodic__() {
+void ADXRS450_Gyro::__TeleopPeriodic__() {
     update();
 }
-void AHRS_Gyro::__TestPeriodic__() {
+void ADXRS450_Gyro::__TestPeriodic__() {
     update();
 }
 
-double AHRS_Gyro::GetAngle() {
+double ADXRS450_Gyro::GetAngle() {
     return cached_degree;
 }
 
-double AHRS_Gyro::GetAngleMod() {
+double ADXRS450_Gyro::GetAngleMod() {
     return GetAngleMod(360);
 }
 
-double AHRS_Gyro::GetAngleMod(double deg) {
+double ADXRS450_Gyro::GetAngleMod(double deg) {
     return fmod(GetAngle(), deg);
 }
 
-double AHRS_Gyro::FastestToZero() {
+double ADXRS450_Gyro::FastestToZero() {
     return FastestTo(0.0);
 }
 
 //given a degree offset, calculate what angle is fastest to turn to
-double AHRS_Gyro::FastestTo(double desired) {
+double ADXRS450_Gyro::FastestTo(double desired) {
     double fastest=GetAngleMod() - desired;
 
     if (fastest <= 180 && fastest >= -180) {
@@ -59,6 +59,6 @@ double AHRS_Gyro::FastestTo(double desired) {
     }
 }
 
-void AHRS_Gyro::update() {
-    cached_degree=GetAngle();
+void ADXRS450_Gyro::update() {
+    cached_degree=frc::ADXRS450_Gyro::GetAngle();
 }
