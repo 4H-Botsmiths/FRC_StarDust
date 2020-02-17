@@ -1,9 +1,6 @@
-/*
 #pragma once
 
 #include <frc/GyroBase.h>
-#include <frc/I2C.h>
-#include <frc/SPI.h>
 #include <math.h>
 
 #include "StarDust/core/StarDustComponent.hpp"
@@ -13,7 +10,7 @@ Wrapper class for the Gyro base class
 
 Original class has no built-in rotation mod functions, or closest path functions
 This class basically adds some more usefull functions
-* /
+*/
 
 class Gyro_Base : public StarDustComponent {
 public:
@@ -30,9 +27,6 @@ public:
     void __TestPeriodic__() override;
 
     double GetAngle();
-    double GetRate();
-    void Reset();
-    void Calibrate();
 
     //get angle with a modulous applied
     double GetAngleMod();
@@ -52,4 +46,3 @@ private:
     //flag is set when teleop/auto is ran
     bool started=false;
 };
-*/

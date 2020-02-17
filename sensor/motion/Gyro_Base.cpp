@@ -1,13 +1,12 @@
-/*
 #include "StarDust/sensor/motion/Gyro_Base.hpp"
 
 void Gyro_Base::__RobotInit__() {
-    Reset();
+    gyro->Reset();
 }
 void Gyro_Base::__RobotPeriodic__() {
     if (!started) {
         //only calibrate if the robot is in pre-match state
-        Calibrate();
+        gyro->Calibrate();
     }
     update();
 }
@@ -31,18 +30,6 @@ void Gyro_Base::__TestPeriodic__() {
 
 double Gyro_Base::GetAngle() {
     return cached_degree;
-}
-
-double Gyro_Base::GetRate() {
-    return cached_rate;
-}
-
-void Gyro_Base::Reset() {
-    gyro->Reset();
-}
-
-void Gyro_Base::Calibrate() {
-    gyro->Calibrate();
 }
 
 double Gyro_Base::GetAngleMod() {
@@ -75,4 +62,3 @@ double Gyro_Base::FastestTo(double desired) {
 void Gyro_Base::update() {
     cached_degree=gyro->GetAngle();
 }
-*/

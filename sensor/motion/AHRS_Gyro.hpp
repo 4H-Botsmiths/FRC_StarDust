@@ -1,41 +1,19 @@
 #pragma once
 
-#include <AHRS.h>
+#include <frc/GyroBase.h>
 #include <frc/I2C.h>
+#include <AHRS.h>
 
-#include "StarDust/sensor/motion/ADXRS450_Gyro.hpp"
-#include "StarDust/core/StarDustComponent.hpp"
+#include "StarDust/sensor/motion/Gyro_Base.hpp"
 
 //Wrapper class for the AHRS Gyro
 
-class AHRS_Gyro : public StarDustComponent, public AHRS {
+class AHRS_Gyro : public AHRS, public Gyro_Base {
 public:
     AHRS_Gyro() :
-        AHRS(frc::I2C::Port::kOnboard)
+        AHRS(frc::I2C::Port::kOnboard),
+        Gyro_Base(dynamic_cast<frc::GyroBase*>(this))
         {}
 
-    void __RobotInit__() override;
-    void __RobotPeriodic__() override;
-    void __AutonomousInit__() override;
-    void __AutonomousPeriodic__() override;
-    void __TeleopInit__() override;
-    void __TeleopPeriodic__() override;
-    void __TestPeriodic__() override;
-
-    //override original function to return cached degree not base class's degree
-    double GetAngle();
-
-    double GetAngleMod();
-    double GetAngleMod(double deg);
-
-    double FastestToZero();
-    double FastestTo(double deg);
-
-private:
-    void update();
-
-    double cached_degree=0;
-
-    //flag is set when teleop/auto is ran
-    bool started=false;
+    using Gyro_Base::GetAngle;
 };
