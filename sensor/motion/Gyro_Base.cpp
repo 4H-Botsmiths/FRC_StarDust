@@ -1,5 +1,9 @@
 #include "StarDust/sensor/motion/Gyro_Base.hpp"
 
+Gyro_Base::Gyro_Base(frc::Gyro* gyro) :
+    gyro(gyro)
+    {}
+
 void Gyro_Base::__RobotInit__() {
     gyro->Reset();
 }

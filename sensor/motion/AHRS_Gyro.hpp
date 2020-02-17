@@ -12,7 +12,7 @@ class AHRS_Gyro : public AHRS, public Gyro_Base {
 public:
     AHRS_Gyro() :
         AHRS(frc::I2C::Port::kOnboard),
-        Gyro_Base(dynamic_cast<frc::GyroBase*>(this))
+        Gyro_Base(this)
         {}
 
     using Gyro_Base::GetAngle;

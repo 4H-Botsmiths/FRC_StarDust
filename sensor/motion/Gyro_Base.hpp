@@ -1,6 +1,6 @@
 #pragma once
 
-#include <frc/GyroBase.h>
+#include <frc/interfaces/Gyro.h>
 #include <math.h>
 
 #include "StarDust/core/StarDustComponent.hpp"
@@ -14,9 +14,7 @@ This class basically adds some more usefull functions
 
 class Gyro_Base : public StarDustComponent {
 public:
-    Gyro_Base(frc::GyroBase* gyro) :
-        gyro(gyro)
-        {}
+    Gyro_Base(frc::Gyro* gyro);
 
     void __RobotInit__() override;
     void __RobotPeriodic__() override;
@@ -37,7 +35,7 @@ public:
     double FastestTo(double deg);
 
 private:
-    frc::GyroBase* gyro;
+    frc::Gyro* gyro;
 
     void update();
 

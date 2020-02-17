@@ -5,7 +5,7 @@
 
 #include "StarDust/core/StarDustComponent.hpp"
 
-#define FILE_PATH "home/lvuser/data.csv"
+#define FILE_PATH "/home/lvuser/data.csv"
 
 class CSVLogger : public StarDustComponent {
 public:
