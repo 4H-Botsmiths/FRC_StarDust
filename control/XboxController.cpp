@@ -135,13 +135,13 @@ bool XboxController::GetLeftBumper() {
     return frc::XboxController::GetBumper(frc::GenericHID::kLeftHand);
 }
 bool XboxController::GetRightBumper() {
-    return frc::XboxController::GetBumper(frc::GenericHID::kLeftHand);
+    return frc::XboxController::GetBumper(frc::GenericHID::kRightHand);
 }
 bool XboxController::GetLeftStickButton() {
     return frc::XboxController::GetStickButton(frc::GenericHID::kLeftHand);
 }
 bool XboxController::GetRightStickButton() {
-    return frc::XboxController::GetStickButton(frc::GenericHID::kLeftHand);
+    return frc::XboxController::GetStickButton(frc::GenericHID::kRightHand);
 }
 
 bool XboxController::GetLeftBumperPressed() {
