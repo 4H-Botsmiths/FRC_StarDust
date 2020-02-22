@@ -37,3 +37,11 @@ Turn off the solenoid valves.
 #### `void Invert()`
 
 Switch from extended to retracted, and vice versa.
+
+#### `bool isRetracted()`
+
+Returns true if piston is retracted.
+
+#### `bool isExtended()`
+
+Returns true if piston is extended.

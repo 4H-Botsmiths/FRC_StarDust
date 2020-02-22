@@ -172,31 +172,31 @@ bool XboxController::GetRightStickButtonReleased() {
 
 void XboxController::updatePressed() {
     pressed=(
-        XboxController::GetAButtonPressed()<<0 |
-        XboxController::GetBButtonPressed()<<1 |
-        XboxController::GetXButtonPressed()<<2 |
-        XboxController::GetYButtonPressed()<<3 |
-        XboxController::GetStartButtonPressed()<<4 |
-        XboxController::GetBackButtonPressed()<<5 |
-        XboxController::GetBumperPressed(frc::GenericHID::JoystickHand::kLeftHand)<<6 |
-        XboxController::GetBumperPressed(frc::GenericHID::JoystickHand::kRightHand)<<7 |
-        XboxController::GetStickButtonPressed(frc::GenericHID::JoystickHand::kLeftHand)<<8 |
-        XboxController::GetStickButtonPressed(frc::GenericHID::JoystickHand::kRightHand)<<9
+        frc::XboxController::GetAButtonPressed()<<0 |
+        frc::XboxController::GetBButtonPressed()<<1 |
+        frc::XboxController::GetXButtonPressed()<<2 |
+        frc::XboxController::GetYButtonPressed()<<3 |
+        frc::XboxController::GetStartButtonPressed()<<4 |
+        frc::XboxController::GetBackButtonPressed()<<5 |
+        frc::XboxController::GetBumperPressed(frc::GenericHID::JoystickHand::kLeftHand)<<6 |
+        frc::XboxController::GetBumperPressed(frc::GenericHID::JoystickHand::kRightHand)<<7 |
+        frc::XboxController::GetStickButtonPressed(frc::GenericHID::JoystickHand::kLeftHand)<<8 |
+        frc::XboxController::GetStickButtonPressed(frc::GenericHID::JoystickHand::kRightHand)<<9
     );
 }
 
 void XboxController::updateReleased() {
     released=(
-        XboxController::GetAButtonReleased()<<0 |
-        XboxController::GetBButtonReleased()<<1 |
-        XboxController::GetXButtonReleased()<<2 |
-        XboxController::GetYButtonReleased()<<3 |
-        XboxController::GetStartButtonReleased()<<4 |
-        XboxController::GetBackButtonReleased()<<5 |
-        XboxController::GetBumperReleased(frc::GenericHID::JoystickHand::kLeftHand)<<6 |
-        XboxController::GetBumperReleased(frc::GenericHID::JoystickHand::kRightHand)<<7 |
-        XboxController::GetStickButtonReleased(frc::GenericHID::JoystickHand::kLeftHand)<<8 |
-        XboxController::GetStickButtonReleased(frc::GenericHID::JoystickHand::kRightHand)<<9
+        frc::XboxController::GetAButtonReleased()<<0 |
+        frc::XboxController::GetBButtonReleased()<<1 |
+        frc::XboxController::GetXButtonReleased()<<2 |
+        frc::XboxController::GetYButtonReleased()<<3 |
+        frc::XboxController::GetStartButtonReleased()<<4 |
+        frc::XboxController::GetBackButtonReleased()<<5 |
+        frc::XboxController::GetBumperReleased(frc::GenericHID::JoystickHand::kLeftHand)<<6 |
+        frc::XboxController::GetBumperReleased(frc::GenericHID::JoystickHand::kRightHand)<<7 |
+        frc::XboxController::GetStickButtonReleased(frc::GenericHID::JoystickHand::kLeftHand)<<8 |
+        frc::XboxController::GetStickButtonReleased(frc::GenericHID::JoystickHand::kRightHand)<<9
     );
 }
 

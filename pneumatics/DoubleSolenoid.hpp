@@ -7,7 +7,8 @@
 class DoubleSolenoid : public StarDustComponent, public frc::DoubleSolenoid {
 public:
     DoubleSolenoid(int port1, int port2) :
-        frc::DoubleSolenoid(port1, port2, false)
+        frc::DoubleSolenoid(port1, port2),
+        inverted(false)
         {}
 
     DoubleSolenoid(int port1, int port2, bool invert) :
@@ -36,6 +37,14 @@ public:
         else {
             Retract();
         }
+    }
+
+    bool isRetracted() {
+        return (Get()==frc::DoubleSolenoid::Value::kReverse) ^ inverted;
+    }
+
+    bool isExtended() {
+        return (Get()==frc::DoubleSolenoid::Value::kForward) ^ inverted;
     }
 
 private:
