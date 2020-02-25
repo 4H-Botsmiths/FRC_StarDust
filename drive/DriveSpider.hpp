@@ -47,7 +47,7 @@ public:
     }
 
     void drive(double x, double y, double rot) {
-        if (usingMec) {
+        if (isUsingMecanum()) {
             DriveMecanum::drive(x, y, rot);
         }
         else {
@@ -62,7 +62,7 @@ public:
     }
 
     void invert() {
-        if (usingMec) {
+        if (isUsingMecanum()) {
             useNormal();
         }
         else {
@@ -71,17 +71,21 @@ public:
     }
 
     void useMecanum() {
-        usingMec = true;
+        usingMecanum=true;
         shifter->Retract();
     }
 
     void useNormal() {
-        usingMec = false;
+        usingMecanum=false;
         shifter->Extend();
     }
 
+    bool isUsingMecanum() {
+        return usingMecanum;
+    }
+
 private:
-    bool usingMec=true;
+    bool usingMecanum=true;
 
     DoubleSolenoid* shifter;
 };

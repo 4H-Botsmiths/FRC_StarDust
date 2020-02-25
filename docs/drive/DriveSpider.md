@@ -55,3 +55,7 @@ Enables the solenoid so that the mecanum wheels are in use.
 #### `void useNormal()`
 
 Enables the solenoid so that the normal wheels are in use.
+
+#### `bool isUsingMecanum()`
+
+Returns true if the drivetrain is currently using mecanum.
