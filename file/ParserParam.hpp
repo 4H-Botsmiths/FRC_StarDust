@@ -31,7 +31,7 @@ public:
     //this is what actually parses and sets the input
     inline void parse(std::string data, T* input, T fail) {
         //code to parse when vector is passed
-        if (__is_vector<T>::value) {
+        if constexpr(__is_vector<T>::value) {
             input->clear();
 
             using TT=typename T::value_type;

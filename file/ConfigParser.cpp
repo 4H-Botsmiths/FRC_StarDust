@@ -3,7 +3,7 @@
 #include "StarDust/file/ConfigParser.hpp"
 
 ConfigParser::ConfigParser(std::vector<ParserParamBase*> parameters) :
-    ConfigParser(parameters, FILE_PATH)
+    ConfigParser(parameters, CONFIG_FILE_PATH)
     {}
 
 ConfigParser::ConfigParser(std::vector<ParserParamBase*> parameters, std::string filename) :

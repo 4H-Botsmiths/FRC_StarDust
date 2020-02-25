@@ -9,7 +9,7 @@
 #include "StarDust\file\ParserParamBase.hpp"
 #include "StarDust\file\ParserParam.hpp"
 
-#define FILE_PATH "/home/lvuser/config.dat"
+#define CONFIG_FILE_PATH "/home/lvuser/config.dat"
 
 class ConfigParser : public StarDustComponent {
 public:
