@@ -24,7 +24,8 @@ public:
         ON
     };
 
-    void setLights(bool on);
+    void turnLightsOn();
+    void turnLightsOff();
 
     //grabs value "key" from local network table
     double get(std::string key);

@@ -26,9 +26,13 @@ TestPeriodic
 
 ## Functions
 
-#### `void setLights(bool on)`
+#### `void turnLightsOff()`
 
-Turn the green lights off/on.
+Turn limelight lights off.
+
+#### `void turnLightsOn()`
+
+Turn limelight lights on.
 
 #### `double get(std::string key)`
 

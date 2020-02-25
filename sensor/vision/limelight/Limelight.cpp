@@ -20,10 +20,12 @@ void Limelight::__TestPeriodic__() {
     update();
 }
 
-void Limelight::setLights(bool on) {
-    limelight->PutNumber("ledMode", (
-        on ? ledMode::ON : ledMode::OFF
-    ));
+void Limelight::turnLightsOn() {
+    limelight->PutNumber("ledMode", ledMode::ON);
+}
+
+void Limelight::turnLightsOff() {
+    limelight->PutNumber("ledMode", ledMode::OFF);
 }
 
 double Limelight::get(std::string key) {
