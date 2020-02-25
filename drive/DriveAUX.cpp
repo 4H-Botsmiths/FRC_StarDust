@@ -45,6 +45,14 @@ void DriveAUX::GyroRotateTo(double degree, double range, double y_mult) {
     }
 }
 
+void DriveAUX::drive(XboxController* controller) {
+    DriveAUX::drive(
+        controller->GetXLeftDeadzone(),
+        controller->GetYLeftDeadzone(),
+        controller->GetXRightDeadzone()
+    );
+}
+
 void DriveAUX::drive(double x, double y, double rot) {
     DriveAUX::drive(
         x,

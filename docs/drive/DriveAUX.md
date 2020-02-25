@@ -32,6 +32,10 @@ Rotoate the robot towards `degree` degrees +/- `range` degrees.
 
 Rotoate the robot towards `degree` degrees +/- `range` degrees while moving at `y_mult` speed forward.
 
+#### `void DriveAUX::drive(XboxController* controller)`
+
+Run below function with input from controller.
+
 #### `void DriveAUX::drive(double x, double y, double z)`
 
 Drive the robot with given `x`, `y`, `z` multipliers relative to degree of current rotation of gyro.

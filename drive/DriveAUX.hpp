@@ -2,6 +2,7 @@
 
 #include "StarDust/sensor/motion/Gyro_Base.hpp"
 #include "StarDust/core/StarDustComponent.hpp"
+#include "StarDust/control/XboxController.hpp"
 #include "StarDust/drive/DriveBase.hpp"
 
 class DriveAUX : public StarDustComponent {
@@ -12,6 +13,7 @@ public:
     void GyroRotateTo(double degree, double range);
     void GyroRotateTo(double degree, double range, double y_mult);
 
+    void drive(XboxController* controller);
     void drive(double x, double y, double z);
     void drive(double x, double y, double z, double deg);
 
