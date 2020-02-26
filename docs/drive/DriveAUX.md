@@ -32,6 +32,18 @@ Rotoate the robot towards `degree` degrees +/- `range` degrees.
 
 Rotoate the robot towards `degree` degrees +/- `range` degrees while moving at `y_mult` speed forward.
 
+#### `void GyroRotateTo(double degree, double range, double x_mult double y_mult)`
+
+Rotoate the robot towards `degree` degrees +/- `range` degrees while moving at `x_mult` left/right, and `y_mult` speed forwards/backwards.
+
+#### `void driveGyro(double degree, double range, XboxController* controller)`
+
+Stay within +/- `range` degrees from `degree`, drive with player relative controls from the gyro.
+
+#### `void driveGyro(double degree, double range, double x_mult, double y_mult)`
+
+Move at `x_mult` speed left/right, `y_mult` speed forwards/backwards, and stay within +/- `range` degrees from `degree`.
+
 #### `void DriveAUX::drive(XboxController* controller)`
 
 Run below function with input from controller.

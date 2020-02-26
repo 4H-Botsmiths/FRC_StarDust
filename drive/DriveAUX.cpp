@@ -19,30 +19,21 @@ void DriveAUX::GyroRotateToZero(double range) {
 
 //go to a desired degree with "range" degrees +/- of accuracy
 void DriveAUX::GyroRotateTo(double degree, double range) {
-    GyroRotateTo(degree, range, 0);
+    GyroRotateTo(degree, range, 0, 0);
 }
 
 //go to a desired degree with "range" degrees +/- of accuracy while going still going at "y_mult" speed
 void DriveAUX::GyroRotateTo(double degree, double range, double y_mult) {
-    double fastestTo=gyro->FastestTo(degree);
+    GyroRotateTo(degree, range, 0, y_mult);
+}
 
-    if (!(-range<fastestTo && fastestTo<range)) {
-        if (fastestTo<0) {
-            driveBase->drive(
-                y_mult,
-                threshold+(-fastestTo * 0.0025)
-            );
-        }
-        else {
-            driveBase->drive(
-                y_mult,
-                -threshold-(fastestTo * 0.0025)
-            );
-        }
-    }
-    else {
-        driveBase->drive(y_mult, 0);
-    }
+//go to a desired degree with "range" degrees +/- of accuracy while going still going at x_mult and y_mult speed in the x and y direction
+void DriveAUX::GyroRotateTo(double degree, double range, double x_mult, double y_mult) {
+    driveBase->drive(
+        x_mult,
+        y_mult,
+        calculateRotation(degree, range)
+    );
 }
 
 void DriveAUX::drive(XboxController* controller) {
@@ -78,4 +69,34 @@ void DriveAUX::drive(double x, double y, double z, double deg) {
         hyp*sin(adjusted_rads),
         z
     );
+}
+
+void DriveAUX::driveGyro(double degree, double range, XboxController* controller) {
+    DriveAUX::drive(
+        controller->GetXRightDeadzone(),
+        controller->GetYRightDeadzone(),
+        calculateRotation(degree, range)
+    );
+}
+
+void DriveAUX::driveGyro(double degree, double range, double x_mult, double y_mult) {
+    DriveAUX::drive(
+        x_mult,
+        y_mult,
+        calculateRotation(degree, range)
+    );
+}
+
+double DriveAUX::calculateRotation(double degree, double range) {
+    double fastestTo=gyro->FastestTo(degree);
+
+    if (-range < fastestTo && fastestTo < range) {
+        return 0;
+    }
+    else if (fastestTo < 0) {
+        return threshold + (-fastestTo * 0.005);
+    }
+    else {
+        return -threshold - (fastestTo * 0.005);
+    }
 }
