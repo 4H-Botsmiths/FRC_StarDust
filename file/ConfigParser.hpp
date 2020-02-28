@@ -21,6 +21,7 @@ public:
 
     void __RobotInit__() override;
     void __AutonomousInit__() override;
+    void __TeleopInit__() override;
 
 private:
     void autorun();

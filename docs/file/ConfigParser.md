@@ -107,6 +107,7 @@ Below is a list of what this component does during certain robot functions.
 //these run the autorun() function
 __RobotInit__()
 __AutonomousInit__()
+__TeleopInit__()
 ```
 
 ## Functions

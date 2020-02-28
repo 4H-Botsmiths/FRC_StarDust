@@ -11,11 +11,14 @@ ConfigParser::ConfigParser(std::vector<ParserParamBase*> parameters, std::string
     filename(filename)
     {}
 
-//only parse and update the config file when the robot boots and when autonomous starts
+//only parse and update the config file when the robot boots, or telop/autonomous starts
 void ConfigParser::__RobotInit__() {
     autorun();
 }
 void ConfigParser::__AutonomousInit__() {
+    autorun();
+}
+void ConfigParser::__TeleopInit__() {
     autorun();
 }
 
