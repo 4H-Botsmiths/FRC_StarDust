@@ -39,8 +39,8 @@ public:
         Reset();
         frc::Timer::Start();
 
-        if (function) {
-            while(!HasPeriodPassed(time)) {
+        while(!HasPeriodPassed(time)) {
+            if (function) {
                 function();
             }
         }
