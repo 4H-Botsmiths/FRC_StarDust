@@ -59,6 +59,8 @@ public:
         Timer{true, [=] {
             DriveSpider::drive(x, y, rot);
         }, time};
+
+        DriveSpider::drive(0, 0, 0);
     }
 
     void invert() {
