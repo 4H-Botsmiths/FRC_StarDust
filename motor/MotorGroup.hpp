@@ -14,6 +14,14 @@ public:
         }
     }
 
+    void Set(double speed, double time) {
+        Timer {
+            true,
+            [=]{ Set(speed); },
+            time
+        };
+    }
+
 private:
     std::vector<Motor*> motors;
 };
