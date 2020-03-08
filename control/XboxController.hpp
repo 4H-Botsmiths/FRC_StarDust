@@ -17,9 +17,9 @@
 class XboxController : public StarDustComponent, public frc::XboxController {
 public:
     XboxController(int port);
-    XboxController(int port, double stick_deadzone);
-    XboxController(int port, double stick_deadzone, double trigger_deadzone);
-    XboxController(int port, double stick_deadzone, double trigger_deadzone, std::map<int, std::function<void()>> binds);
+    XboxController(int port, const double stick_deadzone);
+    XboxController(int port, const double stick_deadzone, const double trigger_deadzone);
+    XboxController(int port, const double stick_deadzone, const double trigger_deadzone, const std::map<int, std::function<void()>> binds);
 
     void __RobotInit__() override;
     void __RobotPeriodic__() override;
@@ -61,67 +61,67 @@ public:
     };
 
     //take in a map of {int, function} and check of the current cached values match any functions
-    void autorun();
+    void autorun() const;
 
     //Get() without needing to type out joystick hand, and auto deadzones
-    double GetXLeft();
-    double GetXLeftDeadzone();
-    double GetXLeftDeadzone(double r);
+    double GetXLeft() const;
+    double GetXLeftDeadzone() const;
+    double GetXLeftDeadzone(const double range) const;
 
-    double GetXRight();
-    double GetXRightDeadzone();
-    double GetXRightDeadzone(double r);
+    double GetXRight() const;
+    double GetXRightDeadzone() const;
+    double GetXRightDeadzone(const double range) const;
 
-    double GetYLeft();
-    double GetYLeftDeadzone();
-    double GetYLeftDeadzone(double r);
+    double GetYLeft() const;
+    double GetYLeftDeadzone() const;
+    double GetYLeftDeadzone(const double range) const;
 
-    double GetYRight();
-    double GetYRightDeadzone();
-    double GetYRightDeadzone(double r);
+    double GetYRight() const;
+    double GetYRightDeadzone() const;
+    double GetYRightDeadzone(const double range) const;
 
-    double GetTriggerLeft();
-    double GetTriggerLeftDeadzone();
-    double GetTriggerLeftDeadzone(double r);
+    double GetTriggerLeft() const;
+    double GetTriggerLeftDeadzone() const;
+    double GetTriggerLeftDeadzone(const double range) const;
 
-    double GetTriggerRight();
-    double GetTriggerRightDeadzone();
-    double GetTriggerRightDeadzone(double r);
+    double GetTriggerRight() const;
+    double GetTriggerRightDeadzone() const;
+    double GetTriggerRightDeadzone(const double range) const;
 
-    bool GetAButtonPressed();
-    bool GetAButtonReleased();
+    bool GetAButtonPressed() const;
+    bool GetAButtonReleased() const;
 
-    bool GetBButtonPressed();
-    bool GetBButtonReleased();
+    bool GetBButtonPressed() const;
+    bool GetBButtonReleased() const;
 
-    bool GetXButtonPressed();
-    bool GetXButtonReleased();
+    bool GetXButtonPressed() const;
+    bool GetXButtonReleased() const;
 
-    bool GetYButtonPressed();
-    bool GetYButtonReleased();
+    bool GetYButtonPressed() const;
+    bool GetYButtonReleased() const;
 
-    bool GetStartButtonPressed();
-    bool GetStartButtonReleased();
+    bool GetStartButtonPressed() const;
+    bool GetStartButtonReleased() const;
 
-    bool GetBackButtonPressed();
-    bool GetBackButtonReleased();
+    bool GetBackButtonPressed() const;
+    bool GetBackButtonReleased() const;
 
-    bool GetLeftBumper();
-    bool GetRightBumper();
-    bool GetLeftStickButton();
-    bool GetRightStickButton();
+    bool GetLeftBumper() const;
+    bool GetRightBumper() const;
+    bool GetLeftStickButton() const;
+    bool GetRightStickButton() const;
 
-    bool GetLeftBumperPressed();
-    bool GetRightBumperPressed();
+    bool GetLeftBumperPressed() const;
+    bool GetRightBumperPressed() const;
 
-    bool GetLeftBumperReleased();
-    bool GetRightBumperReleased();
+    bool GetLeftBumperReleased() const;
+    bool GetRightBumperReleased() const;
 
-    bool GetLeftStickButtonPressed();
-    bool GetRightStickButtonPressed();
+    bool GetLeftStickButtonPressed() const;
+    bool GetRightStickButtonPressed() const;
 
-    bool GetLeftStickButtonReleased();
-    bool GetRightStickButtonReleased();
+    bool GetLeftStickButtonReleased() const;
+    bool GetRightStickButtonReleased() const;
 
     void updatePressed();
     void updateReleased();
@@ -131,10 +131,10 @@ public:
     void clearCache();
 
 private:
-    double stickDeadzone=0;
-    double triggerDeadzone=0;
+    const double stickDeadzone=0;
+    const double triggerDeadzone=0;
 
-    std::map<int, std::function<void()>> binds; //stores a map of binds
+    const std::map<int, std::function<void()>> binds; //stores a map of binds
 
     /* flag states are as followed:
     1<<0 A button
@@ -151,5 +151,5 @@ private:
     unsigned long released;
     unsigned long pressed;
 
-    double deadzone(double v, double r);
+    double deadzone(const double value, const double range) const;
 };

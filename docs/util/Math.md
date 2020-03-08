@@ -10,16 +10,16 @@
 
 ## Functions
 
-#### `double signedAdd(double value, double delta)`
+#### `double signedAdd(const double value, const double delta)`
 
 Adds delta to value if positive.
 
 Subtracts delta from value if negative.
 
-#### `double signiness(double value)`
+#### `double signiness(const double value)`
 
 Returns -1 if value is negative, 1 if value is positive.
 
-#### `double updateSign(double& value, double sign)`
+#### `double updateSign(double& const value, double const sign)`
 
 Sets value to the signiness of "sign".

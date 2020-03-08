@@ -1,18 +1,16 @@
-# Gyro
+# Gyro_Base
 
 ```cpp
-#include "StarDust/motion/Gyro.hpp"
+#include "StarDust/motion/Gyro_Base.hpp"
 ```
 
-Wrapper class for the `ADXRS450` Gyro.
-
-Provides helper functions related to angle calculations.
+Extends the default gyro base for use in StarDust.
 
 ## Initialization
 
-#### `Gyro() : frc::ADXRS450_Gyro() {}`
+#### `Gyro_Base(frc::Gyro* const gyro)`
 
-Creates the gyro object (on SPI port 0).
+Create gyro base from existing `frc::Gyro`.
 
 ## RobotFunctions
 
@@ -33,22 +31,22 @@ TestPeriodic
 
 ## Functions
 
-#### `double GetAngle()`
+#### `double GetAngle() const`
 
 Returns the internally cached value of the gyro in degrees.
 
-#### `double GetAngleMod()`
+#### `double GetAngleMod() const`
 
 Returns `GetAngle()` but capped at +/- 360 degrees.
 
-#### `double GetAngleMod(double deg)`
+#### `double GetAngleMod(const double deg) const`
 
 Returns `GetAngle()` but capped at +/- `deg` degrees.
 
-#### `double FastestToZero()`
+#### `double FastestToZero() const`
 
 Returns the fastest angle towards zero.
 
-#### `double FastestTo(double deg)`
+#### `double FastestTo(const double deg) const`
 
 Returns the fastest angle towards `deg`.

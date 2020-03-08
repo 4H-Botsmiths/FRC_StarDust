@@ -9,28 +9,30 @@
 class Timer : public frc::Timer {
 public:
     //dummy timer, must be ran manually
-    Timer(double time)
-        : frc::Timer(), time(time) {}
+    Timer(const double time) :
+        frc::Timer(),
+        time(time)
+        {}
 
     //this timer takes a function and must be manually called with .Start()
-    Timer(std::function<void()> func, double time)
-        : frc::Timer(), function(func), time(time) {}
+    Timer(const std::function<void()> func, const double time) :
+        frc::Timer(),
+        func(func),
+        time(time) {}
 
     //this is a timer that immediately runs the function "func" and quits after "time" seconds
-    Timer(bool autoRun, std::function<void()> func, double time)
-        : frc::Timer(), function(func), time(time)
+    Timer(const bool autoRun, const std::function<void()> func, const double time) :
+        frc::Timer(),
+        func(func),
+        time(time)
     {
-        if (autoRun) {
-            Start();
-        }
+        if (autoRun) Start();
     }
 
-    bool HasPeriodPassed(double time) {
-        bool done=frc::Timer::HasPeriodPassed(time);
+    bool HasPeriodPassed(const double time) {
+        const bool done=frc::Timer::HasPeriodPassed(time);
 
-        if (done) {
-            Stop();
-        }
+        if (done) Stop();
 
         return done;
     }
@@ -40,13 +42,11 @@ public:
         frc::Timer::Start();
 
         while(!HasPeriodPassed(time)) {
-            if (function) {
-                function();
-            }
+            if (func) func();
         }
     }
 
 private:
-    std::function<void()> function;
-    double time;
+    const std::function<void()> func;
+    const double time;
 };

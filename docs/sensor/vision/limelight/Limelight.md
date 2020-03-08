@@ -34,26 +34,26 @@ Turn limelight lights off.
 
 Turn limelight lights on.
 
-#### `double get(std::string key)`
+#### `double get(std::string key) const`
 
 Get custom key from limelight.
 
-#### `bool getTV()`
+#### `bool getTV() const`
 
 Returns `true` or `false` based on if there is a valid target.
 
-#### `double getTX()`
+#### `double getTX() const`
 
 Returns target x-offset.
 
-#### `double getTY()`
+#### `double getTY() const`
 
 Returns target Y-offset.
 
-#### `double getTA()`
+#### `double getTA() const`
 
 Returns target area.
 
-#### `double getTS()`
+#### `double getTS() const`
 
 Returns target skew (left or right, in degrees).

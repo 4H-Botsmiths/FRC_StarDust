@@ -1,7 +1,7 @@
 //adds delta to value if positive.
 //subtracts delta from value if negative.
-double signedAdd(double value, double delta) {
-    if (value<0) {
+double signedAdd(const double value, const double delta) {
+    if (value < 0) {
         return value - delta;
     }
     else {
@@ -10,8 +10,8 @@ double signedAdd(double value, double delta) {
 }
 
 //returns -1 if value is negative, 1 if value is positive.
-double signiness(double value) {
-    if (value<0) {
+double signiness(const double value) {
+    if (value < 0) {
         return -1;
     }
     else {
@@ -20,6 +20,6 @@ double signiness(double value) {
 }
 
 //sets value to the signiness of "sign".
-double updateSign(double& value, double sign) {
+double updateSign(double& const value, const double sign) {
     value*=signiness(sign);
 }

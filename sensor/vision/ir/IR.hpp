@@ -10,7 +10,15 @@ class IR : public StarDustComponent, frc::AnalogInput {
 public:
     IR(int port) : frc::AnalogInput(port) {}
 
-    double getV() { return GetVoltage(); }
-    double getVV() { return GetValue(); }
-    double getAV() { return GetAverageVoltage(); }
+    double getV() const {
+        return GetVoltage();
+    }
+
+    double getVV() const {
+        return GetValue();
+    }
+
+    double getAV() const {
+        return GetAverageVoltage();
+    }
 };

@@ -18,14 +18,14 @@ None.
 
 ## Functions
 
-#### `double getV()`
+#### `double getV() const`
 
 Returns sensor voltage.
 
-#### `double getVV()`
+#### `double getVV() const`
 
 Returns sensor value.
 
-#### `double getAV()`
+#### `double getAV() const`
 
 Returns average voltage.

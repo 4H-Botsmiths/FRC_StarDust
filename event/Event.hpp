@@ -7,23 +7,23 @@
 
 class Event : public StarDustComponent {
 public:
-    Event(std::function<bool()> conditional, std::function<void()> action);
-    Event(std::function<bool()> conditional, std::vector<std::function<void()>> actions);
+    Event(const std::function<bool()> conditional, std::function<void()> action);
+    Event(const std::function<bool()> conditional, std::vector<std::function<void()>> actions);
 
-    void __RobotInit__() override;
-    void __RobotPeriodic__() override;
-    void __AutonomousInit__() override;
-    void __AutonomousPeriodic__() override;
-    void __TeleopInit__() override;
-    void __TeleopPeriodic__() override;
-    void __TestPeriodic__() override;
+    void __RobotInit__() const;
+    void __RobotPeriodic__() const;
+    void __AutonomousInit__() const;
+    void __AutonomousPeriodic__() const;
+    void __TeleopInit__() const;
+    void __TeleopPeriodic__() const;
+    void __TestPeriodic__() const;
 
-    void fire();
+    void fire() const;
 
-    void addAction(std::function<void()> action);
+    void addAction(const std::function<void()> action);
 
 private:
-    std::function<bool()> conditional;
+    const std::function<bool()> conditional;
 
     std::vector<std::function<void()>> actions;
 };

@@ -4,17 +4,17 @@
 
 class MotorGroup {
 public:
-    MotorGroup(std::vector<Motor*> motors) :
+    MotorGroup(const std::vector<Motor*> motors) :
         motors(motors)
         {}
 
-    void Set(double speed) {
-        for (auto& motor : motors) {
+    void Set(const double speed) {
+        for (const auto& motor : motors) {
             motor->Set(speed);
         }
     }
 
-    void Set(double speed, double time) {
+    void Set(const double speed, const double time) {
         Timer {
             true,
             [=]{ Set(speed); },
@@ -23,5 +23,5 @@ public:
     }
 
 private:
-    std::vector<Motor*> motors;
+    const std::vector<Motor*> motors;
 };

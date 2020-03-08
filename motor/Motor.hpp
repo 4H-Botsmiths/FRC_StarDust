@@ -16,7 +16,7 @@ public:
         {}
 
     //create PWM controller from port and polarity
-    Motor(int port, bool invert) :
+    Motor(int port, const bool invert) :
         frc::PWMSpeedController(port),
         dampen(1)
     {
@@ -24,9 +24,9 @@ public:
     }
 
     //create a motor controller from port, polarity, and input dampening
-    Motor(int port, double damp, bool invert) :
+    Motor(int port, const double dampen, const bool invert) :
         frc::PWMSpeedController(port),
-        dampen(damp)
+        dampen(dampen)
     {
         SetInverted(invert);
     }
@@ -37,27 +37,27 @@ public:
     void __TeleopPeriodic__() { update(); }
     void __TestPeriodic__() { update(); }
 
-    void Set(double input) {
+    void Set(const double input) {
         PWMSpeedController::Set(input * dampen);
     }
 
     //keep motor at "speed" percent for "time" seconds (will stop when done)
     //this is blocking code, use AsyncSet to keep other robot code running
-    void Set(double speed, double time) {
+    void Set(const double speed, const double time) {
         Set(speed, time, true);
     }
 
     //keep motor at "speed" percent for "time" seconds (will stop if "brake" is set)
     //this is blocking code, use AsyncSet to keep other robot code running
-    void Set(double speed, double time, bool brake) {
-        Timer bt { true, [=]{
+    void Set(const double speed, const double time, const bool brake) {
+        Timer { true, [=]{
             Motor::Set(speed);
         }, time};
 
         if (brake) Motor::Set(0);
     }
 
-    void AsyncSet(double speed, double time) {
+    void AsyncSet(const double speed, const double time) {
         asyncspeed=speed;
         asyncwait=time;
         asynctimer=new Timer(time);
@@ -77,7 +77,7 @@ private:
         }
     }
 
-    double dampen=0;
+    const double dampen=0;
 
     //only used by the SetAsync function, not needed to be set in the constructor
     Timer* asynctimer;

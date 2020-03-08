@@ -18,12 +18,7 @@ One vital feature all teams need is a deadzone for joysticks. This prevents slig
 
 On top of this, `XboxController` offers built-in lambda bindings to automatically run functions based on certain button events.
 
-All parameters are set to `0` by default, and `binds` is `NULL`
-
-XboxController(int port);
-XboxController(int port, double stick_deadzone);
-XboxController(int port, double stick_deadzone, double trigger_deadzone);
-XboxController(int port, double stick_deadzone, double trigger_deadzone, std::map<int, std::function<void()>> binds);
+All parameters are set to `0` by default, and `binds` is `NULL`.
 
 #### `XboxController(int port)`
 
@@ -33,7 +28,7 @@ Like the `XboxController` class, the most common use case is passing only the US
 XboxController xbox_left { 0 };
 ```
 
-#### `XboxController(int port, double stick_deadzone)`
+#### `XboxController(int port, const double stick_deadzone)`
 
 In addition, joystick deadzone can be specified upon creation:
 
@@ -41,7 +36,7 @@ In addition, joystick deadzone can be specified upon creation:
 XboxController xbox_left { 0, 0.15 };
 ```
 
-#### `XboxController(int port, double stick_deadzone, double trigger_deadzone)`
+#### `XboxController(int port, const double stick_deadzone, const double trigger_deadzone)`
 
 Not only the joysticks, but the left and right triggers can get a deadzone as well:
 
@@ -50,7 +45,7 @@ Not only the joysticks, but the left and right triggers can get a deadzone as we
 XboxController xbox_left { 0, 0.15, 0.05 };
 ```
 
-#### `XboxController(int port, double stick_deadzone, double trigger_deadzone, std::map<int, std::function<void()>> binds)`
+#### `XboxController(int port, const double stick_deadzone, const double trigger_deadzone, const std::map<int, std::function<void()>> binds)`
 
 This is a more complex yet great addition. This initialization requires the same paramaters as before, but takes in a map of functions bound to events:
 
@@ -91,7 +86,7 @@ __TestPeriodic__()
 
 ## Functions
 
-#### `void autorun();`
+#### `void autorun() const`
 
 The `autorun()` function will automatically check and run the binds passed in upon initialization (if any).
 
@@ -102,19 +97,19 @@ A bind consists of an event, and a function. Both of the below conditions must b
 
 If multiple binds with the same event was passed in, the bind most recently added will be ran.
 
-#### `void updatePressed();`
+#### `void updatePressed()`
 
 This will update the internal state of the pressed button states.
 
-#### `void updatReleased();`
+#### `void updatReleased()`
 
 This will update the internal state of the released button states.
 
-#### `void updateBoth();`
+#### `void updateBoth()`
 
 The `updateBoth()` function will update the pressed button states, and the released button states.
 
-#### `void clearCache();`
+#### `void clearCache()`
 
 This function will update 2 times, effectively clearing the cache when input is not required/desired.
 
@@ -124,21 +119,19 @@ Below is a list of functions that have similar names, but do the same action.
 
 Where you see `"X"`, it can be replace with `"Y"`.
 
-Where You see `"Left"`, it can be replaced with `"Right"`. It may also be prefixed with `"Trigger"`, for example:
+Where You see `"Left"`, it can be replaced with `"Right"`. It may also be prefixed with `"Trigger"`, for example: `double GetRightTrigger()`.
 
-`double GetRightTrigger();`
-
-#### `double GetXLeft();`
+#### `double GetXLeft() const`
 
 This is shorthand for `GetX(frc::GenericHID::JoystickHand::kLeft)` from the `XboxController` class.
 
-#### `double GetXLeftDeadzone();`
+#### `double GetXLeftDeadzone() const`
 
 This returns `GetXLeft()` With passed in deadzone applied.
 
-#### `double GetXLeftDeadzone(double d);`
+#### `double GetXLeftDeadzone(const double range) const`
 
-This returns `GetXLeft()` with deadzone `d` applied.
+This returns `GetXLeft()` with deadzone `range` applied.
 
 ## Repeated Button Functions
 
@@ -159,11 +152,11 @@ LeftStickButton
 RightStickButton
 ```
 
-#### `bool GetAButtonPressed();`
+#### `bool GetAButtonPressed() const`
 
 This will return true if the A button is being pressed, and it was not pressed last time.
 
-#### `bool GetAButtonReleased();`
+#### `bool GetAButtonReleased() const`
 
 This will return true if the A button is not being pressed, and it was pressed last time.
 

@@ -12,11 +12,11 @@
 
 Creates a header-less logger that writes to `/home/lvuser/data.csv`
 
-#### `CSVLogger(std::string header)`
+#### `CSVLogger(const std::string header)`
 
 Creates a logger with custom header that writes to `/home/lvuser/data.csv`
 
-#### `CSVLogger(std:;string filename, std::string header)`
+#### `CSVLogger(const std::string filename, const std::string header)`
 
 Creates a logger with custom header that writes to `filename`
 
@@ -26,7 +26,7 @@ None.
 
 ## Functions
 
-#### `void push(T data, Ts... args)`
+#### `void push(const T data, const Ts... args)`
 
 Push many items to the CSV file. Example:
 
@@ -36,7 +36,7 @@ CSVLogger csv { "name,age" };
 csv.push("bob", 123);
 ```
 
-#### `void push(T data)`
+#### `void push(const T data)`
 
 Push a single item to CSV file.
 

@@ -4,11 +4,11 @@ CSVLogger::CSVLogger() :
     CSVLogger("")
     {}
 
-CSVLogger::CSVLogger(std::string header) :
+CSVLogger::CSVLogger(const std::string header) :
     CSVLogger(FILE_PATH, header)
     {}
 
-CSVLogger::CSVLogger(std::string filename, std::string header) :
+CSVLogger::CSVLogger(const std::string filename, const std::string header) :
     filename(filename),
     header(header)
 {

@@ -12,7 +12,7 @@
 
 Setup a solenoid wired to ports `port1` and `port2` on the PCM.
 
-#### `DoubleSolenoid(int port1, int port2, bool invert)`
+#### `DoubleSolenoid(int port1, int port2, const bool invert)`
 
 Setup a solenoid wired to ports `port1` and `port2` on the PCM. Invert based on if `invert` is true.
 
@@ -38,10 +38,10 @@ Turn off the solenoid valves.
 
 Switch from extended to retracted, and vice versa.
 
-#### `bool isRetracted()`
+#### `bool isRetracted() const`
 
 Returns true if piston is retracted.
 
-#### `bool isExtended()`
+#### `bool isExtended() const`
 
 Returns true if piston is extended.

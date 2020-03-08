@@ -1,6 +1,6 @@
 #include "StarDust/sensor/motion/Gyro_Base.hpp"
 
-Gyro_Base::Gyro_Base(frc::Gyro* gyro) :
+Gyro_Base::Gyro_Base(frc::Gyro* const gyro) :
     gyro(gyro)
     {}
 
@@ -32,25 +32,25 @@ void Gyro_Base::__TestPeriodic__() {
     update();
 }
 
-double Gyro_Base::GetAngle() {
+double Gyro_Base::GetAngle() const {
     return cached_degree;
 }
 
-double Gyro_Base::GetAngleMod() {
+double Gyro_Base::GetAngleMod() const {
     return GetAngleMod(360);
 }
 
-double Gyro_Base::GetAngleMod(double deg) {
+double Gyro_Base::GetAngleMod(const double deg) const {
     return fmod(GetAngle(), deg);
 }
 
-double Gyro_Base::FastestToZero() {
+double Gyro_Base::FastestToZero() const {
     return FastestTo(0.0);
 }
 
 //given a degree offset, calculate what angle is fastest to turn to
-double Gyro_Base::FastestTo(double desired) {
-    double fastest=GetAngleMod() - desired;
+double Gyro_Base::FastestTo(const double desired) const {
+    const double fastest=GetAngleMod() - desired;
 
     if (fastest <= 180 && fastest >= -180) {
         return fastest;

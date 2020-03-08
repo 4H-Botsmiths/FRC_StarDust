@@ -28,19 +28,19 @@ public:
     void turnLightsOff();
 
     //grabs value "key" from local network table
-    double get(std::string key);
+    double get(std::string key) const;
 
     //wrappers for commonly used values
-    bool getTV();
-    double getTX();
-    double getTY();
-    double getTA();
-    double getTS();
+    bool getTV() const;
+    double getTX() const;
+    double getTY() const;
+    double getTA() const;
+    double getTS() const;
 
 private:
     void update();
 
-    std::shared_ptr<NetworkTable> limelight=nt::NetworkTableInstance::GetDefault().GetTable("limelight");
+    const std::shared_ptr<NetworkTable> limelight=nt::NetworkTableInstance::GetDefault().GetTable("limelight");
 
     bool TV=false;
     double TX=0;

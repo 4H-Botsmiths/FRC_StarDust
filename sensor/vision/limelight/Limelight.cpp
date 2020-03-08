@@ -28,32 +28,32 @@ void Limelight::turnLightsOff() {
     limelight->PutNumber("ledMode", ledMode::OFF);
 }
 
-double Limelight::get(std::string key) {
+double Limelight::get(std::string key) const {
     return limelight->GetNumber(key, 0);
 }
 
 //target valid
-bool Limelight::getTV() {
+bool Limelight::getTV() const {
     return TV;
 }
 
 //target x offset
-double Limelight::getTX() {
+double Limelight::getTX() const {
     return TX;
 }
 
 //target y offset
-double Limelight::getTY() {
+double Limelight::getTY() const {
     return TY;
 }
 
 //target area
-double Limelight::getTA() {
+double Limelight::getTA() const {
     return TA;
 }
 
 //target skew
-double Limelight::getTS() {
+double Limelight::getTS() const {
     return TS;
 }
 

@@ -10,16 +10,16 @@
 class CSVLogger : public StarDustComponent {
 public:
     CSVLogger();
-    CSVLogger(std::string header);
-    CSVLogger(std::string filename, std::string header);
+    CSVLogger(const std::string header);
+    CSVLogger(const std::string filename, const std::string header);
 
     template<typename T>
-    void push(T data) {
+    void push(const T data) {
         file << data << "\n";
     }
 
     template<typename T, typename... Ts>
-    void push(T data, Ts... args) {
+    void push(const T data, const Ts... args) {
         file << data << ",";
         push(args...);
     }
@@ -28,8 +28,8 @@ public:
     void stop();
 
 private:
-    std::string filename;
-    std::string header;
+    const std::string filename;
+    const std::string header;
 
     std::ofstream file;
 };

@@ -14,7 +14,7 @@ This class basically adds some more usefull functions
 
 class Gyro_Base : public StarDustComponent {
 public:
-    Gyro_Base(frc::Gyro* gyro);
+    Gyro_Base(frc::Gyro* const gyro);
 
     void __RobotInit__() override;
     void __RobotPeriodic__() override;
@@ -24,18 +24,18 @@ public:
     void __TeleopPeriodic__() override;
     void __TestPeriodic__() override;
 
-    double GetAngle();
+    double GetAngle() const;
 
     //get angle with a modulous applied
-    double GetAngleMod();
-    double GetAngleMod(double deg);
+    double GetAngleMod() const;
+    double GetAngleMod(const double deg) const;
 
     //returns the fastest way to turn to get to the desired degree
-    double FastestToZero();
-    double FastestTo(double deg);
+    double FastestToZero() const;
+    double FastestTo(const double deg) const;
 
 private:
-    frc::Gyro* gyro;
+    frc::Gyro* const gyro;
 
     void update();
 

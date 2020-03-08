@@ -11,7 +11,7 @@ public:
         inverted(false)
         {}
 
-    DoubleSolenoid(int port1, int port2, bool invert) :
+    DoubleSolenoid(int port1, int port2, const bool invert) :
         frc::DoubleSolenoid(port1, port2),
         inverted(invert)
         {}
@@ -39,14 +39,14 @@ public:
         }
     }
 
-    bool isRetracted() {
+    bool isRetracted() const {
         return (Get()==frc::DoubleSolenoid::Value::kReverse) ^ inverted;
     }
 
-    bool isExtended() {
+    bool isExtended() const {
         return (Get()==frc::DoubleSolenoid::Value::kForward) ^ inverted;
     }
 
 private:
-    bool inverted;
+    const bool inverted;
 };

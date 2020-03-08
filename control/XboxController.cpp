@@ -7,19 +7,19 @@ XboxController::XboxController(int port) :
     frc::XboxController(port)
     {}
 
-XboxController::XboxController(int port, double stick_deadzone) :
+XboxController::XboxController(int port, const double stick_deadzone) :
     frc::XboxController(port),
     stickDeadzone(stick_deadzone),
     triggerDeadzone(stick_deadzone)
     {}
 
-XboxController::XboxController(int port, double stick_deadzone, double trigger_deadzone) :
+XboxController::XboxController(int port, const double stick_deadzone, const double trigger_deadzone) :
     frc::XboxController(port),
     stickDeadzone(stick_deadzone),
     triggerDeadzone(trigger_deadzone)
     {}
 
-XboxController::XboxController(int port, double stick_deadzone, double trigger_deadzone, std::map<int, std::function<void()>> binds) :
+XboxController::XboxController(int port, const double stick_deadzone, const double trigger_deadzone, const std::map<int, std::function<void()>> binds) :
     frc::XboxController(port),
     stickDeadzone(stick_deadzone),
     triggerDeadzone(trigger_deadzone),
@@ -55,7 +55,7 @@ void XboxController::__TeleopInit__() {
 }
 
 //go through all binds and check/dispatch functions if event handler conditions are met
-void XboxController::autorun() {
+void XboxController::autorun() const {
     if (!binds.empty()) {
         for (const auto& i : binds) {
             if (i.first==on::AButton&&GetAButton()) i.second();
@@ -89,84 +89,84 @@ void XboxController::autorun() {
     }
 }
 
-double XboxController::GetXLeft() { return XboxController::GetX(frc::GenericHID::JoystickHand::kLeftHand); }
-double XboxController::GetXLeftDeadzone() { return deadzone(GetXLeft(), stickDeadzone); }
-double XboxController::GetXLeftDeadzone(double range) { return deadzone(GetXLeft(), range); }
+double XboxController::GetXLeft() const { return XboxController::GetX(frc::GenericHID::JoystickHand::kLeftHand); }
+double XboxController::GetXLeftDeadzone() const { return deadzone(GetXLeft(), stickDeadzone); }
+double XboxController::GetXLeftDeadzone(double range) const { return deadzone(GetXLeft(), range); }
 
-double XboxController::GetXRight() { return XboxController::GetX(frc::GenericHID::JoystickHand::kRightHand); }
-double XboxController::GetXRightDeadzone() { return deadzone(GetXRight(), stickDeadzone); }
-double XboxController::GetXRightDeadzone(double range) { return deadzone(GetXRight(), range); }
+double XboxController::GetXRight() const { return XboxController::GetX(frc::GenericHID::JoystickHand::kRightHand); }
+double XboxController::GetXRightDeadzone() const { return deadzone(GetXRight(), stickDeadzone); }
+double XboxController::GetXRightDeadzone(double range) const { return deadzone(GetXRight(), range); }
 
-double XboxController::GetYLeft() { return XboxController::GetY(frc::GenericHID::JoystickHand::kLeftHand); }
-double XboxController::GetYLeftDeadzone() { return deadzone(GetYLeft(), stickDeadzone); }
-double XboxController::GetYLeftDeadzone(double range) { return deadzone(GetYLeft(), range); }
+double XboxController::GetYLeft() const { return XboxController::GetY(frc::GenericHID::JoystickHand::kLeftHand); }
+double XboxController::GetYLeftDeadzone() const { return deadzone(GetYLeft(), stickDeadzone); }
+double XboxController::GetYLeftDeadzone(double range) const { return deadzone(GetYLeft(), range); }
 
-double XboxController::GetYRight() { return XboxController::GetY(frc::GenericHID::JoystickHand::kRightHand); }
-double XboxController::GetYRightDeadzone() { return deadzone(GetYRight(), stickDeadzone); }
-double XboxController::GetYRightDeadzone(double range) { return deadzone(GetYRight(), range); }
+double XboxController::GetYRight() const { return XboxController::GetY(frc::GenericHID::JoystickHand::kRightHand); }
+double XboxController::GetYRightDeadzone() const { return deadzone(GetYRight(), stickDeadzone); }
+double XboxController::GetYRightDeadzone(double range) const { return deadzone(GetYRight(), range); }
 
-double XboxController::GetTriggerLeft() { return XboxController::GetTriggerAxis(frc::GenericHID::JoystickHand::kLeftHand); }
-double XboxController::GetTriggerLeftDeadzone() { return deadzone(GetTriggerLeft(), triggerDeadzone); }
-double XboxController::GetTriggerLeftDeadzone(double range) { return deadzone(GetTriggerLeft(), range); }
+double XboxController::GetTriggerLeft() const { return XboxController::GetTriggerAxis(frc::GenericHID::JoystickHand::kLeftHand); }
+double XboxController::GetTriggerLeftDeadzone() const { return deadzone(GetTriggerLeft(), triggerDeadzone); }
+double XboxController::GetTriggerLeftDeadzone(double range) const { return deadzone(GetTriggerLeft(), range); }
 
-double XboxController::GetTriggerRight() { return XboxController::GetTriggerAxis(frc::GenericHID::JoystickHand::kRightHand); }
-double XboxController::GetTriggerRightDeadzone() { return deadzone(GetTriggerRight(), triggerDeadzone); }
-double XboxController::GetTriggerRightDeadzone(double range) { return deadzone(GetTriggerRight(), range); }
+double XboxController::GetTriggerRight() const { return XboxController::GetTriggerAxis(frc::GenericHID::JoystickHand::kRightHand); }
+double XboxController::GetTriggerRightDeadzone() const { return deadzone(GetTriggerRight(), triggerDeadzone); }
+double XboxController::GetTriggerRightDeadzone(double range) const { return deadzone(GetTriggerRight(), range); }
 
-bool XboxController::GetAButtonPressed() { return pressed & 1<<0; }
-bool XboxController::GetAButtonReleased() { return released & 1<<0; }
+bool XboxController::GetAButtonPressed() const { return pressed & 1<<0; }
+bool XboxController::GetAButtonReleased() const { return released & 1<<0; }
 
-bool XboxController::GetBButtonPressed() { return pressed & 1<<1; }
-bool XboxController::GetBButtonReleased() { return released & 1<<1; }
+bool XboxController::GetBButtonPressed() const { return pressed & 1<<1; }
+bool XboxController::GetBButtonReleased() const { return released & 1<<1; }
 
-bool XboxController::GetXButtonPressed() { return pressed & 1<<2; }
-bool XboxController::GetXButtonReleased() { return released & 1<<2; }
+bool XboxController::GetXButtonPressed() const { return pressed & 1<<2; }
+bool XboxController::GetXButtonReleased() const { return released & 1<<2; }
 
-bool XboxController::GetYButtonPressed() { return pressed & 1<<3; }
-bool XboxController::GetYButtonReleased() { return released & 1<<3; }
+bool XboxController::GetYButtonPressed() const { return pressed & 1<<3; }
+bool XboxController::GetYButtonReleased() const { return released & 1<<3; }
 
-bool XboxController::GetStartButtonPressed() { return pressed & 1<<4; }
-bool XboxController::GetStartButtonReleased() { return released & 1<<4; }
+bool XboxController::GetStartButtonPressed() const { return pressed & 1<<4; }
+bool XboxController::GetStartButtonReleased() const { return released & 1<<4; }
 
-bool XboxController::GetBackButtonPressed() { return pressed & 1<<5; }
-bool XboxController::GetBackButtonReleased() { return released & 1<<5; }
+bool XboxController::GetBackButtonPressed() const { return pressed & 1<<5; }
+bool XboxController::GetBackButtonReleased() const { return released & 1<<5; }
 
-bool XboxController::GetLeftBumper() {
+bool XboxController::GetLeftBumper() const {
     return frc::XboxController::GetBumper(frc::GenericHID::kLeftHand);
 }
-bool XboxController::GetRightBumper() {
+bool XboxController::GetRightBumper() const {
     return frc::XboxController::GetBumper(frc::GenericHID::kRightHand);
 }
-bool XboxController::GetLeftStickButton() {
+bool XboxController::GetLeftStickButton() const {
     return frc::XboxController::GetStickButton(frc::GenericHID::kLeftHand);
 }
-bool XboxController::GetRightStickButton() {
+bool XboxController::GetRightStickButton() const {
     return frc::XboxController::GetStickButton(frc::GenericHID::kRightHand);
 }
 
-bool XboxController::GetLeftBumperPressed() {
+bool XboxController::GetLeftBumperPressed() const {
     return pressed & 1 << 6;
 }
-bool XboxController::GetRightBumperPressed() {
+bool XboxController::GetRightBumperPressed() const {
     return pressed & 1 << 7;
 }
-bool XboxController::GetLeftBumperReleased() {
+bool XboxController::GetLeftBumperReleased() const {
     return released & 1 << 6;
 }
-bool XboxController::GetRightBumperReleased() {
+bool XboxController::GetRightBumperReleased() const {
     return released & 1 << 7;
 }
 
-bool XboxController::GetLeftStickButtonPressed() {
+bool XboxController::GetLeftStickButtonPressed() const {
     return pressed & 1 << 8;
 }
-bool XboxController::GetRightStickButtonPressed() {
+bool XboxController::GetRightStickButtonPressed() const {
     return pressed & 1 << 9;
 }
-bool XboxController::GetLeftStickButtonReleased() {
+bool XboxController::GetLeftStickButtonReleased() const {
     return released & 1 << 8;
 }
-bool XboxController::GetRightStickButtonReleased() {
+bool XboxController::GetRightStickButtonReleased() const {
     return released & 1 << 9;
 }
 
@@ -211,7 +211,7 @@ void XboxController::clearCache() {
     updateBoth();
 }
 
-double XboxController::deadzone(double value, double range) {
+double XboxController::deadzone(double value, double range) const {
     double old=value;
     value=abs(value);
 

@@ -14,21 +14,21 @@ It allows for easy dampening and inversion of motor controllers.
 
 Creates a motor attached to PWM port `port`
 
-#### `Motor(int port, bool invert)`
+#### `Motor(int port, const bool invert)`
 
 Creates a motor attached to PWM port `port`, invert based on `invert`.
 
-#### `Motor(int port, double dampen, bool invert)`
+#### `Motor(int port, const double dampen, const bool invert)`
 
 Creates a motor attached to PWM port `port`, invert based on `invert`. Dampen imputs by `damp` amount.
 
 ## Functions
 
-#### `void Set(double input)`
+#### `void Set(const double input)`
 
 Sets motor speed to `input` with `dampen` amount applied.
 
-#### `void Set(double speed, double time)`
+#### `void Set(const double speed, const double time)`
 
 Sets motor speed to `input` with `dampen` amount applied for `time` seconds. By default, will stop when done.
 
@@ -36,7 +36,7 @@ Sets motor speed to `input` with `dampen` amount applied for `time` seconds. By 
 
 > Use `AsyncSet` below for non-blocking version.
 
-#### `void Set(double speed, double time, bool brake)`
+#### `void Set(const double speed, const double time, const bool brake)`
 
 Sets motor speed to `input` with `dampen` amount applied for `time` seconds. Brakes if `brake` is set.
 
@@ -44,7 +44,7 @@ Sets motor speed to `input` with `dampen` amount applied for `time` seconds. Bra
 
 > Use `AsyncSet` below for non-blocking version.
 
-#### `void AsyncSet(double speed, double time)`
+#### `void AsyncSet(const double speed, const double time)`
 
 Set motor to speed `speed` for `time` seconds. Does not block execution.
 

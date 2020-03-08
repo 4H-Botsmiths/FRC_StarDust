@@ -12,7 +12,7 @@ It takes in all available `StarDustComponent`s, and automatically runs code amon
 
 For a `StarDustRobot` to be useful, components related to the robot must be passed to it.
 
-#### `StarDustRobot(std::vector<StarDustComponent*> cs)`
+#### `StarDustRobot(const std::vector<StarDustComponent*> components)`
 
 This step is pretty easy. Simply create a new robot, passing in all known `StarDustComponents`:
 
@@ -55,6 +55,6 @@ This is due to `RobotPeriodic()` being called even in teleop and auto.
 
 This variable is useful for when wanting to run something only while idle is desired.
 
-#### `std::vector<StarDustComponent*> components;`
+#### `const std::vector<StarDustComponent*> components;`
 
 `components` is an vector of all of the passed in `StarDustComponents`
